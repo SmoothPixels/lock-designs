@@ -116,11 +116,11 @@ Videos bundled directly in this repo, wallsflow's CDN blocks scripted downloads,
 |---|---|
 | Black Cat Water | [WallsFlow](https://wallsflow.com/live-wallpapers/animals/886-black-cat-emerald-water-ripples-live-wallpaper.html) |
 | Moonlit Roof Cat | [WallsFlow](https://wallsflow.com/live-wallpapers/animals/1075-moonlit-rooftop-cat-live-wallpaper.html) |
-| Anime Girl GTR | wallsflow.com (link pending) |
-| Nissan 350Z Night | wallsflow.com (link pending) |
+| Anime Girl GTR | [WallsFlow](https://wallsflow.com/live-wallpapers/anime/1048-anime-girl-nissan-skyline-gtr-live-wallpaper.html) |
+| Nissan 350Z Night | [WallsFlow](https://wallsflow.com/live-wallpapers/cars/1083-nissan-350z-japanese-night-streets-live-wallpaper.html) |
 | Skyline R34 Rain | wallsflow.com (link pending) |
-| Supercar Sakura | wallsflow.com (link pending) |
-| Porsche 911 Darkness | wallsflow.com (link pending) |
+| Supercar Sakura | [WallsFlow](https://wallsflow.com/live-wallpapers/cars/495-supercar-dreamscape-under-sakura-blossoms.html) |
+| Porsche 911 Darkness | [WallsFlow](https://wallsflow.com/live-wallpapers/cars/756-porsche-911-timeless-performance-in-darkness-live-wallpaper.html) |
 
 Lock Screen Explorer itself is [MIT licensed](https://github.com/SirJul1337/omarchy-lock-explorer), by SirJul1337.
 
