@@ -2,7 +2,7 @@
 
 ![preview](preview.png)
 
-44 extra lock screen designs for [Lock Screen Explorer](https://github.com/SirJul1337/omarchy-lock-explorer)'s Third Party tab: 38 fresh QML ports of themes from [Darkkal44/qylock](https://github.com/Darkkal44/qylock), plus 6 original video wallpaper designs built from [wallsflow.com](https://wallsflow.com) live wallpapers. Also throws in one original design, Starry City, a procedural pixel skyline that follows your active Omarchy theme.
+45 extra lock screen designs for [Lock Screen Explorer](https://github.com/SirJul1337/omarchy-lock-explorer)'s Third Party tab: 38 fresh QML ports of themes from [Darkkal44/qylock](https://github.com/Darkkal44/qylock), plus 7 original video wallpaper designs built from [wallsflow.com](https://wallsflow.com) live wallpapers. Also throws in one original design, Starry City, a procedural pixel skyline that follows your active Omarchy theme.
 
 [Install](#install) • [Settings](#settings) • [Remove](#remove) • [Gallery](#gallery) • [Acknowledgements](#acknowledgements) • [Development](#development)
 

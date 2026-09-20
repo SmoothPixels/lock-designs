@@ -27,8 +27,8 @@ _(leave blank)_
 
 **Maintainer notes**
 ```
-Adds 44 extra lock screen designs to Lock Screen Explorer's Third Party
-tab: 38 fresh QML ports of themes from Darkkal44/qylock (GPL-3.0), plus 6
+Adds 45 extra lock screen designs to Lock Screen Explorer's Third Party
+tab: 38 fresh QML ports of themes from Darkkal44/qylock (GPL-3.0), plus 7
 original video wallpaper designs built from wallsflow.com live wallpapers.
 
 Ships as a `service`-kind plugin with no UI of its own. It only copies its
