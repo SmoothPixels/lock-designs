@@ -90,4 +90,19 @@ DesignBase {
     color: Qt.rgba(0, 0, 0, 0.4)
     placeholder: "Enter password"
   }
+
+  // PasswordField's own border always follows the active Omarchy theme
+  // (Border.surfaceSpec looks up the theme's lock.border-active color
+  // before ever considering accentColor), which is right for theme-
+  // following designs but wrong here: this design has its own fixed
+  // palette and the border should never clash with an unrelated theme
+  // accent. Painting our own border on top, same shape, is the only way
+  // to override that without touching lock-explorer's shared component.
+  Rectangle {
+    anchors.fill: field
+    radius: field.radius
+    color: "transparent"
+    border.color: field.accentColor
+    border.width: field.outlineThickness
+  }
 }
