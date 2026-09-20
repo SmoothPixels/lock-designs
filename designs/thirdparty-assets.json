@@ -164,7 +164,7 @@
       },
       {
         "path": "font/GoogleSans.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/material-you/font/GoogleSans.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/material-you/font/GoogleSans-VariableFont_GRAD,opsz,wght.ttf"
       }
     ]
   },
@@ -177,7 +177,7 @@
       },
       {
         "path": "font/GoogleSans.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/material-you-dark/font/GoogleSans.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/material-you-dark/font/GoogleSans-VariableFont_GRAD,opsz,wght.ttf"
       }
     ]
   },
@@ -229,7 +229,7 @@
       },
       {
         "path": "font/Tektur-VariableFont.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/ninja_gaiden/font/Tektur-VariableFont.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/ninja_gaiden/font/Tektur-VariableFont_wdth,wght.ttf"
       }
     ]
   },
@@ -433,7 +433,7 @@
     "files": [
       {
         "path": "TheLastShuriken.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/sword/TheLastShuriken.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/sword/font/The%20Last%20Shuriken.ttf"
       },
       {
         "path": "bg.mp4",
@@ -475,7 +475,7 @@
     "files": [
       {
         "path": "Orbitron.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/winter/Orbitron.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/winter/font/Orbitron-VariableFont_wght.ttf"
       },
       {
         "path": "bg.mp4",
@@ -488,7 +488,7 @@
     "files": [
       {
         "path": "Itim-Regular.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/women-umbrella/Itim-Regular.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/women-umbrella/font/Itim-Regular.ttf"
       },
       {
         "path": "bg.png",
@@ -501,7 +501,7 @@
     "files": [
       {
         "path": "Orbitron.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/wuwa/Orbitron.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/wuwa/font/Orbitron-VariableFont_wght.ttf"
       },
       {
         "path": "bg.mp4",
