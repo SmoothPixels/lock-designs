@@ -40,10 +40,10 @@ This does not delete the files already copied into `~/.config/omarchy/lock-desig
 
 | | |
 |:---:|:---:|
-| **Anime Girl GTR**<br><img src="assets/AnimeGirlGTR.jpg" width="380"/> | **Black Cat Water**<br><img src="assets/BlackCatWater.jpg" width="380"/> |
-| **Moonlit Roof Cat**<br><img src="assets/MoonlitRoofCat.jpg" width="380"/> | **Nissan 350Z Night**<br><img src="assets/Nissan350zNight.jpg" width="380"/> |
-| **Porsche 911 Darkness**<br><img src="assets/Porsche911Darkness.jpg" width="380"/> | **Supercar Sakura**<br><img src="assets/SupercarSakura.jpg" width="380"/> |
-| **Skyline R34 Rain**<br><img src="assets/SkylineR34Rain.jpg" width="380"/> | |
+| **Anime Girl GTR**<br><img src="assets/AnimeGirlGTR.gif" width="380"/> | **Black Cat Water**<br><img src="assets/BlackCatWater.gif" width="380"/> |
+| **Moonlit Roof Cat**<br><img src="assets/MoonlitRoofCat.gif" width="380"/> | **Nissan 350Z Night**<br><img src="assets/Nissan350zNight.gif" width="380"/> |
+| **Porsche 911 Darkness**<br><img src="assets/Porsche911Darkness.gif" width="380"/> | **Supercar Sakura**<br><img src="assets/SupercarSakura.gif" width="380"/> |
+| **Skyline R34 Rain**<br><img src="assets/SkylineR34Rain.gif" width="380"/> | |
 
 `SkylineR34Rain.qml`'s video is re-encoded to 1080p (down from the original 4K source, which was 113MB, over GitHub's 100MB per-file limit) to fit in this repo at a fraction of the size with no visible quality loss on a lock screen background.
 
