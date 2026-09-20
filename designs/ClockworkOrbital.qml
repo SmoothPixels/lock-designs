@@ -27,7 +27,16 @@ DesignBase {
 
   readonly property real localMs: now.getHours() * 3600000 + now.getMinutes() * 60000 + now.getSeconds() * 1000 + now.getMilliseconds()
   readonly property real minAngle: -((localMs % 3600000) / 3600000.0) * 360.0
-  readonly property real secAngle: -((localMs % 60000) / 60000.0) * 360.0
+
+  // The minute ring above only needs to move once a second, `now` already
+  // ticks that often. The seconds ring is supposed to read as a gear
+  // spinning continuously, so it gets its own fast timer instead of
+  // inheriting `now`'s 1Hz update: at 1 update/sec each tick visibly jumps
+  // 6 degrees, which is what actually reads as "laggy", not a rendering
+  // performance problem.
+  property real fastSecMs: Date.now() % 60000
+  readonly property real secAngle: -((fastSecMs % 60000) / 60000.0) * 360.0
+  Timer { interval: 50; running: true; repeat: true; onTriggered: lock.fastSecMs = Date.now() % 60000 }
 
   FontLoader { id: outfit; source: lock.assetsUrl + "font/Outfit-Black.ttf" }
 

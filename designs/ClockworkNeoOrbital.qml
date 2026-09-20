@@ -26,7 +26,14 @@ DesignBase {
 
   readonly property real localMs: now.getHours() * 3600000 + now.getMinutes() * 60000 + now.getSeconds() * 1000 + now.getMilliseconds()
   readonly property real minAngle: -((localMs % 3600000) / 3600000.0) * 360.0
-  readonly property real secAngle: -((localMs % 60000) / 60000.0) * 360.0
+
+  // The seconds ring is supposed to read as a gear spinning continuously,
+  // so it gets its own fast timer instead of inheriting `now`'s 1Hz update:
+  // at 1 update/sec each tick visibly jumps 6 degrees, which is what
+  // actually reads as "laggy", not a rendering performance problem.
+  property real fastSecMs: Date.now() % 60000
+  readonly property real secAngle: -((fastSecMs % 60000) / 60000.0) * 360.0
+  Timer { interval: 50; running: true; repeat: true; onTriggered: lock.fastSecMs = Date.now() % 60000 }
 
   FontLoader { id: outfit; source: lock.assetsUrl + "font/Outfit-Black.ttf" }
 
@@ -45,6 +52,10 @@ DesignBase {
     onPositionChanged: lock.wakeRequested()
   }
 
+  // Off-screen circular dial, same trick as ClockworkOrbital.qml: a single
+  // Canvas repaint instead of 120 individually rotated+antialiased
+  // Rectangle/Text items, which Qt Quick's renderer can't batch and which
+  // is what actually caused the visible jank here before.
   Item {
     id: dial
     anchors.left: parent.left
@@ -56,50 +67,67 @@ DesignBase {
     readonly property real minR: Math.min(parent.height, parent.width) * 0.5
     readonly property real secR: minR * 1.5
 
-    Repeater {
-      model: 60
-      delegate: Item {
-        readonly property real disp: (index * 6 + lock.minAngle) * Math.PI / 180
-        readonly property real tx: dial.minR * Math.cos(disp)
-        readonly property real ty: dial.cy + dial.minR * Math.sin(disp)
-        readonly property bool major: index % 5 === 0
-        visible: tx > -40 && tx < dial.width + 40
-        Rectangle {
-          x: parent.tx - width / 2; y: parent.ty - height / 2
-          width: major ? 2.5 : 1.2; height: major ? 18 : 10
-          rotation: disp * 180 / Math.PI + 90
-          color: lock.outline
-          antialiasing: true
-        }
-        Text {
-          visible: major
-          readonly property real nr: dial.minR - 32
-          x: nr * Math.cos(disp) - width / 2
-          y: dial.cy + nr * Math.sin(disp) - height / 2
-          text: String(index).padStart(2, "0")
-          font.family: outfit.name
-          font.pixelSize: 18
-          font.bold: true
-          color: lock.mainText
-          rotation: disp * 180 / Math.PI
-        }
-      }
-    }
+    Canvas {
+      id: dialCanvas
+      anchors.fill: parent
+      property real minAngle: lock.minAngle
+      property real secAngle: lock.secAngle
+      property bool fontReady: outfit.status === FontLoader.Ready
+      onMinAngleChanged: requestPaint()
+      onSecAngleChanged: requestPaint()
+      onFontReadyChanged: requestPaint()
+      onWidthChanged: requestPaint()
+      onHeightChanged: requestPaint()
+      Component.onCompleted: requestPaint()
+      onPaint: {
+        var ctx = getContext("2d")
+        ctx.reset()
+        ctx.textBaseline = "middle"
+        ctx.textAlign = "center"
+        ctx.font = "bold 18px " + (fontReady ? outfit.name : "sans-serif")
 
-    Repeater {
-      model: 60
-      delegate: Item {
-        readonly property real disp: (index * 6 + lock.secAngle) * Math.PI / 180
-        readonly property real tx: dial.secR * Math.cos(disp)
-        readonly property real ty: dial.cy + dial.secR * Math.sin(disp)
-        readonly property bool major: index % 5 === 0
-        visible: tx > -40 && tx < dial.width + 40
-        Rectangle {
-          x: parent.tx - width / 2; y: parent.ty - height / 2
-          width: major ? 1.5 : 1; height: major ? 13 : 8
-          rotation: disp * 180 / Math.PI + 90
-          color: Qt.rgba(lock.outline.r, lock.outline.g, lock.outline.b, 0.6)
-          antialiasing: true
+        for (var i = 0; i < 60; i++) {
+          var disp = (i * 6 + minAngle) * Math.PI / 180
+          var tx = dial.minR * Math.cos(disp)
+          var ty = dial.cy + dial.minR * Math.sin(disp)
+          if (tx < -40 || tx > dial.width + 40) continue
+          var major = i % 5 === 0
+
+          ctx.save()
+          ctx.translate(tx, ty)
+          ctx.rotate(disp + Math.PI / 2)
+          ctx.strokeStyle = Qt.rgba(lock.outline.r, lock.outline.g, lock.outline.b, 1)
+          ctx.lineWidth = major ? 2.5 : 1.2
+          var len = major ? 18 : 10
+          ctx.beginPath(); ctx.moveTo(0, -len / 2); ctx.lineTo(0, len / 2); ctx.stroke()
+          ctx.restore()
+
+          if (major) {
+            var nr = dial.minR - 32
+            ctx.save()
+            ctx.translate(nr * Math.cos(disp), dial.cy + nr * Math.sin(disp))
+            ctx.rotate(disp)
+            ctx.fillStyle = lock.mainText
+            ctx.fillText(String(i).padStart(2, "0"), 0, 0)
+            ctx.restore()
+          }
+        }
+
+        for (var j = 0; j < 60; j++) {
+          var disp2 = (j * 6 + secAngle) * Math.PI / 180
+          var tx2 = dial.secR * Math.cos(disp2)
+          var ty2 = dial.cy + dial.secR * Math.sin(disp2)
+          if (tx2 < -40 || tx2 > dial.width + 40) continue
+          var major2 = j % 5 === 0
+
+          ctx.save()
+          ctx.translate(tx2, ty2)
+          ctx.rotate(disp2 + Math.PI / 2)
+          ctx.strokeStyle = Qt.rgba(lock.outline.r, lock.outline.g, lock.outline.b, 0.6)
+          ctx.lineWidth = major2 ? 1.5 : 1
+          var len2 = major2 ? 13 : 8
+          ctx.beginPath(); ctx.moveTo(0, -len2 / 2); ctx.lineTo(0, len2 / 2); ctx.stroke()
+          ctx.restore()
         }
       }
     }
