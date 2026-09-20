@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "io.github.smoothpixels.lock-designs",
+  "name": "Lock Designs",
+  "version": "1.0.0",
+  "author": "Jean Alvarado",
+  "license": "MIT",
+  "description": "A collection of extra lock screen designs for Lock Screen Explorer: fresh QML ports of qylock themes plus original wallsflow video wallpaper designs.",
+  "kinds": [
+    "service"
+  ],
+  "keepLoaded": true,
+  "entryPoints": {
+    "service": "Service.qml"
+  }
+}

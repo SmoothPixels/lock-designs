@@ -1,35 +1,36 @@
 # Lock Designs
 
-A drop-in collection of lock screen designs for [Lock Screen Explorer](https://github.com/SirJul1337/omarchy-lock-explorer), the lock screen picker plugin for [Omarchy](https://omarchy.org). Includes fresh QML ports of themes from [Darkkal44/qylock](https://github.com/Darkkal44/qylock) and a handful of original video-wallpaper designs built from [wallsflow.com](https://wallsflow.com) live wallpapers.
+![preview](preview.png)
 
-[Setup](#setup) • [Gallery](#gallery) • [How it works](#how-it-works) • [Acknowledgements](#acknowledgements) • [License](#license)
+44 extra lock screen designs for [Lock Screen Explorer](https://github.com/SirJul1337/omarchy-lock-explorer)'s Third Party tab: 38 fresh QML ports of themes from [Darkkal44/qylock](https://github.com/Darkkal44/qylock), plus 6 original video wallpaper designs built from [wallsflow.com](https://wallsflow.com) live wallpapers. Also throws in one original design, Starry City, a procedural pixel skyline that follows your active Omarchy theme.
 
-## Setup
+[Install](#install) • [Settings](#settings) • [Remove](#remove) • [Gallery](#gallery) • [Acknowledgements](#acknowledgements) • [Development](#development)
 
-These designs need Lock Screen Explorer installed first, that plugin is what actually renders the lock screen and the picker UI. This repo only supplies extra content for it.
-
-Clone this repo and run the installer, it installs Lock Screen Explorer if it is missing, then copies these designs into place:
+## Install
 
 ```sh
-git clone <this-repo-url> lock-designs
-cd lock-designs
-./install.sh
+omarchy plugin add https://github.com/SmoothPixels/lock-designs.git --enable
 ```
 
-Open the lock screen picker afterward and check the **Third Party** tab.
-
-If you already have Lock Screen Explorer installed, you can skip the script and just clone straight into place:
+This plugin only supplies content, it does nothing on its own. It requires [Lock Screen Explorer](https://github.com/SirJul1337/omarchy-lock-explorer) to actually render the lock screen and its picker:
 
 ```sh
-git clone <this-repo-url> ~/.config/omarchy/lock-designs
-omarchy-shell lock rescanDesigns
+omarchy plugin add https://github.com/SirJul1337/omarchy-lock-explorer.git --enable
 ```
 
-## How it works
+Order does not matter, install both, then open the lock screen picker and check the **Third Party** tab. Most designs need their video/font assets downloaded first (a Download button on each card), that keeps this plugin small since those assets are fetched straight from Darkkal44's own hosted files rather than bundled here. The wallsflow-sourced designs (the cats and cars) work immediately, their video is bundled directly.
 
-Any `DesignBase`-derived `.qml` file placed in `~/.config/omarchy/lock-designs/` is auto-discovered by Lock Screen Explorer, no packaging or registration step needed. A `// source: qylock` or `// source: wallsflow` marker comment routes a design into the picker's Third Party tab instead of Styling.
+## Settings
 
-Most of the qylock-ported designs fetch their video/font assets on demand (see the Download button on each card) straight from Darkkal44/qylock's own repo, so this repo stays small. Exception: the wallsflow-sourced designs (the cats and cars) bundle their video directly, wallsflow's CDN blocks scripted downloads, so there is no URL to fetch from later.
+None. This is a `service`-kind plugin with no UI or configuration of its own, it just places design files where Lock Screen Explorer looks for them.
+
+## Remove
+
+```sh
+omarchy plugin remove io.github.smoothpixels.lock-designs
+```
+
+This does not delete the files already copied into `~/.config/omarchy/lock-designs/`, that folder is shared with Lock Screen Explorer's own drop-in mechanism, so removing the plugin should not break anything currently in use. Delete the ones this plugin added yourself if you want them gone, being careful not to remove any of your own custom designs mixed into that same folder.
 
 ## Gallery
 
@@ -37,11 +38,11 @@ Most of the qylock-ported designs fetch their video/font assets on demand (see t
 
 | | | |
 |:---:|:---:|:---:|
-| **Anime Girl GTR**<br><img src="gallery/AnimeGirlGTR.jpg" width="260"/> | **Black Cat Water**<br><img src="gallery/BlackCatWater.jpg" width="260"/> | **Moonlit Roof Cat**<br><img src="gallery/MoonlitRoofCat.jpg" width="260"/> |
-| **Nissan 350Z Night**<br><img src="gallery/Nissan350zNight.jpg" width="260"/> | **Porsche 911 Darkness**<br><img src="gallery/Porsche911Darkness.jpg" width="260"/> | **Supercar Sakura**<br><img src="gallery/SupercarSakura.jpg" width="260"/> |
-| **Skyline R34 Rain** *(local only, see below)*<br><img src="gallery/SkylineR34Rain.jpg" width="260"/> | | |
+| **Anime Girl GTR**<br><img src="assets/AnimeGirlGTR.jpg" width="260"/> | **Black Cat Water**<br><img src="assets/BlackCatWater.jpg" width="260"/> | **Moonlit Roof Cat**<br><img src="assets/MoonlitRoofCat.jpg" width="260"/> |
+| **Nissan 350Z Night**<br><img src="assets/Nissan350zNight.jpg" width="260"/> | **Porsche 911 Darkness**<br><img src="assets/Porsche911Darkness.jpg" width="260"/> | **Supercar Sakura**<br><img src="assets/SupercarSakura.jpg" width="260"/> |
+| **Skyline R34 Rain** *(local only, see below)*<br><img src="assets/SkylineR34Rain.jpg" width="260"/> | | |
 
-`SkylineR34Rain.qml` is included in this repo, but its 113MB video is not committed (GitHub's per-file limit is 100MB). It only works if you already have `skyline-r34-rain-assets/bg.mp4` locally.
+`SkylineR34Rain.qml` is included, but its 113MB video is not committed to this repo (GitHub's per-file limit is 100MB). It only works if you already have `skyline-r34-rain-assets/bg.mp4` locally.
 
 ### Qylock ports
 
@@ -50,19 +51,19 @@ Most of the qylock-ported designs fetch their video/font assets on demand (see t
 
 | | | |
 |:---:|:---:|:---:|
-| **Clockwork Orbital**<br><img src="thirdparty-previews/my-clockworkorbital.jpg" width="200"/> | **Clockwork Neo Orbital**<br><img src="thirdparty-previews/my-clockworkneoorbital.jpg" width="200"/> | **Clockwork Tape**<br><img src="thirdparty-previews/my-clockworktape.jpg" width="200"/> |
-| **Dog Samurai**<br><img src="thirdparty-previews/my-dogsamurai.jpg" width="200"/> | **Enfield**<br><img src="thirdparty-previews/my-enfield.jpg" width="200"/> | **Field**<br><img src="thirdparty-previews/my-field.jpg" width="200"/> |
-| **Forest**<br><img src="thirdparty-previews/my-forest.jpg" width="200"/> | **Genshin Impact**<br><img src="thirdparty-previews/my-genshin.jpg" width="200"/> | **Girl Coffee**<br><img src="thirdparty-previews/my-girlcoffee.jpg" width="200"/> |
-| **Girl Pillow**<br><img src="thirdparty-previews/my-girlpillow.jpg" width="200"/> | **The Last of Us**<br><img src="thirdparty-previews/my-lastofus.jpg" width="200"/> | **Man Bicycle**<br><img src="thirdparty-previews/my-manbicycle.jpg" width="200"/> |
-| **Material You**<br><img src="thirdparty-previews/my-materialyou.jpg" width="200"/> | **Material You Dark**<br><img src="thirdparty-previews/my-materialyoudark.jpg" width="200"/> | **Minecraft**<br><img src="thirdparty-previews/my-minecraft.jpg" width="200"/> |
-| **NieR: Automata**<br><img src="thirdparty-previews/my-nierautomata.jpg" width="200"/> | **Nine Sols**<br><img src="thirdparty-previews/my-ninesols.jpg" width="200"/> | **Ninja Gaiden**<br><img src="thirdparty-previews/my-ninjagaiden.jpg" width="200"/> |
-| **Nothing**<br><img src="thirdparty-previews/my-nothing.jpg" width="200"/> | **Pixel Coffee**<br><img src="thirdparty-previews/my-pixelcoffee.jpg" width="200"/> | **Pixel Cyberpunk**<br><img src="thirdparty-previews/my-pixelcyberpunk.jpg" width="200"/> |
-| **Pixel Dusk City**<br><img src="thirdparty-previews/my-pixelduskcity.jpg" width="200"/> | **Pixel Emerald**<br><img src="thirdparty-previews/my-pixelemerald.jpg" width="200"/> | **Pixel Hollow Knight**<br><img src="thirdparty-previews/my-pixelhollowknight.jpg" width="200"/> |
-| **Pixel Munchlax**<br><img src="thirdparty-previews/my-pixelmunchlax.jpg" width="200"/> | **Pixel Night City**<br><img src="thirdparty-previews/my-pixelnightcity.jpg" width="200"/> | **Pixel Rainy Room**<br><img src="thirdparty-previews/my-pixelrainyroom.jpg" width="200"/> |
-| **Pixel Sakura**<br><img src="thirdparty-previews/my-pixelsakura.jpg" width="200"/> | **Pixel Skyscrapers**<br><img src="thirdparty-previews/my-pixelskyscrapers.jpg" width="200"/> | **Pixel Waterfall**<br><img src="thirdparty-previews/my-pixelwaterfall.jpg" width="200"/> |
-| **Reverse: 1999 - I**<br><img src="thirdparty-previews/my-reverse1999first.jpg" width="200"/> | **Reverse: 1999 - II**<br><img src="thirdparty-previews/my-reverse1999second.jpg" width="200"/> | **Honkai: Star Rail**<br><img src="thirdparty-previews/my-starrail.jpg" width="200"/> |
-| **Sword**<br><img src="thirdparty-previews/my-sword.jpg" width="200"/> | **Terraria**<br><img src="thirdparty-previews/my-terraria.jpg" width="200"/> | **Winter**<br><img src="thirdparty-previews/my-winter.jpg" width="200"/> |
-| **Women Umbrella**<br><img src="thirdparty-previews/my-womenumbrella.jpg" width="200"/> | **Wuthering Waves**<br><img src="thirdparty-previews/my-wuwa.jpg" width="200"/> | |
+| **Clockwork Orbital**<br><img src="designs/thirdparty-previews/my-clockworkorbital.jpg" width="200"/> | **Clockwork Neo Orbital**<br><img src="designs/thirdparty-previews/my-clockworkneoorbital.jpg" width="200"/> | **Clockwork Tape**<br><img src="designs/thirdparty-previews/my-clockworktape.jpg" width="200"/> |
+| **Dog Samurai**<br><img src="designs/thirdparty-previews/my-dogsamurai.jpg" width="200"/> | **Enfield**<br><img src="designs/thirdparty-previews/my-enfield.jpg" width="200"/> | **Field**<br><img src="designs/thirdparty-previews/my-field.jpg" width="200"/> |
+| **Forest**<br><img src="designs/thirdparty-previews/my-forest.jpg" width="200"/> | **Genshin Impact**<br><img src="designs/thirdparty-previews/my-genshin.jpg" width="200"/> | **Girl Coffee**<br><img src="designs/thirdparty-previews/my-girlcoffee.jpg" width="200"/> |
+| **Girl Pillow**<br><img src="designs/thirdparty-previews/my-girlpillow.jpg" width="200"/> | **The Last of Us**<br><img src="designs/thirdparty-previews/my-lastofus.jpg" width="200"/> | **Man Bicycle**<br><img src="designs/thirdparty-previews/my-manbicycle.jpg" width="200"/> |
+| **Material You**<br><img src="designs/thirdparty-previews/my-materialyou.jpg" width="200"/> | **Material You Dark**<br><img src="designs/thirdparty-previews/my-materialyoudark.jpg" width="200"/> | **Minecraft**<br><img src="designs/thirdparty-previews/my-minecraft.jpg" width="200"/> |
+| **NieR: Automata**<br><img src="designs/thirdparty-previews/my-nierautomata.jpg" width="200"/> | **Nine Sols**<br><img src="designs/thirdparty-previews/my-ninesols.jpg" width="200"/> | **Ninja Gaiden**<br><img src="designs/thirdparty-previews/my-ninjagaiden.jpg" width="200"/> |
+| **Nothing**<br><img src="designs/thirdparty-previews/my-nothing.jpg" width="200"/> | **Pixel Coffee**<br><img src="designs/thirdparty-previews/my-pixelcoffee.jpg" width="200"/> | **Pixel Cyberpunk**<br><img src="designs/thirdparty-previews/my-pixelcyberpunk.jpg" width="200"/> |
+| **Pixel Dusk City**<br><img src="designs/thirdparty-previews/my-pixelduskcity.jpg" width="200"/> | **Pixel Emerald**<br><img src="designs/thirdparty-previews/my-pixelemerald.jpg" width="200"/> | **Pixel Hollow Knight**<br><img src="designs/thirdparty-previews/my-pixelhollowknight.jpg" width="200"/> |
+| **Pixel Munchlax**<br><img src="designs/thirdparty-previews/my-pixelmunchlax.jpg" width="200"/> | **Pixel Night City**<br><img src="designs/thirdparty-previews/my-pixelnightcity.jpg" width="200"/> | **Pixel Rainy Room**<br><img src="designs/thirdparty-previews/my-pixelrainyroom.jpg" width="200"/> |
+| **Pixel Sakura**<br><img src="designs/thirdparty-previews/my-pixelsakura.jpg" width="200"/> | **Pixel Skyscrapers**<br><img src="designs/thirdparty-previews/my-pixelskyscrapers.jpg" width="200"/> | **Pixel Waterfall**<br><img src="designs/thirdparty-previews/my-pixelwaterfall.jpg" width="200"/> |
+| **Reverse: 1999 - I**<br><img src="designs/thirdparty-previews/my-reverse1999first.jpg" width="200"/> | **Reverse: 1999 - II**<br><img src="designs/thirdparty-previews/my-reverse1999second.jpg" width="200"/> | **Honkai: Star Rail**<br><img src="designs/thirdparty-previews/my-starrail.jpg" width="200"/> |
+| **Sword**<br><img src="designs/thirdparty-previews/my-sword.jpg" width="200"/> | **Terraria**<br><img src="designs/thirdparty-previews/my-terraria.jpg" width="200"/> | **Winter**<br><img src="designs/thirdparty-previews/my-winter.jpg" width="200"/> |
+| **Women Umbrella**<br><img src="designs/thirdparty-previews/my-womenumbrella.jpg" width="200"/> | **Wuthering Waves**<br><img src="designs/thirdparty-previews/my-wuwa.jpg" width="200"/> | |
 
 </details>
 
@@ -109,7 +110,7 @@ The QML in this repo is written from scratch against Omarchy's `DesignBase`/`Pas
 
 ### Wallsflow originals
 
-Videos bundled directly in this repo (wallsflow's CDN blocks scripted downloads, so there is no on-demand fetch option for these).
+Videos bundled directly in this repo, wallsflow's CDN blocks scripted downloads, so there is no on-demand fetch option for these.
 
 | Design | Wallpaper source |
 |---|---|
@@ -121,6 +122,17 @@ Videos bundled directly in this repo (wallsflow's CDN blocks scripted downloads,
 | Supercar Sakura | wallsflow.com (link pending) |
 | Porsche 911 Darkness | wallsflow.com (link pending) |
 
-## License
+Lock Screen Explorer itself is [MIT licensed](https://github.com/SirJul1337/omarchy-lock-explorer), by SirJul1337.
 
-The QML in this repo is original work. The qylock-ported designs are inspired by [Darkkal44/qylock](https://github.com/Darkkal44/qylock) (GPL-3.0) but written fresh, not copied, per that license's terms for derivative works, and their bundled assets remain Darkkal44's to license since this repo only links to Darkkal44's own hosted copies rather than redistributing them itself. [Lock Screen Explorer](https://github.com/SirJul1337/omarchy-lock-explorer) itself is MIT licensed, by SirJul1337.
+## Development
+
+Any `DesignBase`-derived `.qml` file dropped in `designs/` shows up automatically once copied into `~/.config/omarchy/lock-designs/`. A `// source: qylock` or `// source: wallsflow` marker comment (first line) routes it into the picker's Third Party tab instead of Styling. Qylock ports that fetch assets on demand need an entry in `designs/thirdparty-assets.json`, pointing at the real files in Darkkal44's repo.
+
+Validate before publishing:
+
+```sh
+omarchy plugin validate ~/.config/omarchy/plugins/io.github.smoothpixels.lock-designs
+qmllint -I "$OMARCHY_PATH/shell" Service.qml
+```
+
+See [NOTICE.md](NOTICE.md) for the full licensing picture.
