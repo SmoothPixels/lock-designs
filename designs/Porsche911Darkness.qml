@@ -77,6 +77,19 @@ DesignBase {
     }
   }
 
+  Text {
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.bottom: parent.bottom
+    anchors.bottomMargin: 158
+    text: lock.userName.toUpperCase()
+    color: "white"
+    font.family: Style.font.family
+    font.pixelSize: Style.font.body
+    font.letterSpacing: 3
+    layer.enabled: true
+    layer.effect: MultiEffect { shadowEnabled: true; shadowColor: "black"; shadowBlur: 0.6; shadowOpacity: 0.5 }
+  }
+
   PasswordField {
     id: field
     lock: lock
