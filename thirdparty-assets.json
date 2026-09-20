@@ -1,0 +1,516 @@
+{
+  "my-clockworkneoorbital": {
+    "assetsDir": "clockwork-neo-orbital-assets",
+    "files": [
+      {
+        "path": "bg.png",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/clockwork/neo-orbital/bg.png"
+      },
+      {
+        "path": "font/Outfit-Black.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/clockwork/neo-orbital/font/Outfit-Black.ttf"
+      }
+    ]
+  },
+  "my-clockworkorbital": {
+    "assetsDir": "clockwork-orbital-assets",
+    "files": [
+      {
+        "path": "font/Outfit-Black.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/clockwork/orbital/font/Outfit-Black.ttf"
+      }
+    ]
+  },
+  "my-clockworktape": {
+    "assetsDir": "clockwork-tape-assets",
+    "files": [
+      {
+        "path": "font/Outfit-Black.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/clockwork/tape/font/Outfit-Black.ttf"
+      }
+    ]
+  },
+  "my-dogsamurai": {
+    "assetsDir": "dog-samurai-assets",
+    "files": [
+      {
+        "path": "bg.mp4",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/dog-samurai/bg.mp4"
+      },
+      {
+        "path": "font/Orbitron-VariableFont_wght.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/dog-samurai/font/Orbitron-VariableFont_wght.ttf"
+      }
+    ]
+  },
+  "my-enfield": {
+    "assetsDir": "enfield-assets",
+    "files": [
+      {
+        "path": "bg.mp4",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/enfield/bg.mp4"
+      },
+      {
+        "path": "font/Orbitron-VariableFont_wght.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/enfield/font/Orbitron-VariableFont_wght.ttf"
+      }
+    ]
+  },
+  "my-field": {
+    "assetsDir": "field-assets",
+    "files": [
+      {
+        "path": "bg.png",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/field/bg.png"
+      },
+      {
+        "path": "font/Orbitron-VariableFont_wght.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/field/font/Orbitron-VariableFont_wght.ttf"
+      }
+    ]
+  },
+  "my-forest": {
+    "assetsDir": "forest-assets",
+    "files": [
+      {
+        "path": "bg.mp4",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/forest/bg.mp4"
+      },
+      {
+        "path": "font/Figtree-Bold.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/forest/font/Figtree-Bold.ttf"
+      }
+    ]
+  },
+  "my-genshin": {
+    "assetsDir": "genshin-assets",
+    "files": [
+      {
+        "path": "dawn.mp4",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/Genshin/dawn.mp4"
+      },
+      {
+        "path": "day.mp4",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/Genshin/day.mp4"
+      },
+      {
+        "path": "dusk.mp4",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/Genshin/dusk.mp4"
+      },
+      {
+        "path": "night.mp4",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/Genshin/night.mp4"
+      }
+    ]
+  },
+  "my-girlcoffee": {
+    "assetsDir": "girl-coffee-assets",
+    "files": [
+      {
+        "path": "bg.png",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/girl-coffee/bg.png"
+      },
+      {
+        "path": "font/Itim-Regular.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/girl-coffee/font/Itim-Regular.ttf"
+      }
+    ]
+  },
+  "my-girlpillow": {
+    "assetsDir": "girl-pillow-assets",
+    "files": [
+      {
+        "path": "bg.png",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/girl-pillow/bg.png"
+      },
+      {
+        "path": "font/Itim-Regular.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/girl-pillow/font/Itim-Regular.ttf"
+      }
+    ]
+  },
+  "my-lastofus": {
+    "assetsDir": "last-of-us-assets",
+    "files": [
+      {
+        "path": "bg.mp4",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/last-of-us/bg.mp4"
+      },
+      {
+        "path": "font/Outfit-Black.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/last-of-us/font/Outfit-Black.ttf"
+      }
+    ]
+  },
+  "my-manbicycle": {
+    "assetsDir": "man-bicycle-assets",
+    "files": [
+      {
+        "path": "bg.png",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/man-bicycle/bg.png"
+      },
+      {
+        "path": "font/Itim-Regular.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/man-bicycle/font/Itim-Regular.ttf"
+      }
+    ]
+  },
+  "my-materialyou": {
+    "assetsDir": "material-you-assets",
+    "files": [
+      {
+        "path": "bg.png",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/material-you/bg.png"
+      },
+      {
+        "path": "font/GoogleSans.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/material-you/font/GoogleSans.ttf"
+      }
+    ]
+  },
+  "my-materialyoudark": {
+    "assetsDir": "material-you-dark-assets",
+    "files": [
+      {
+        "path": "bg.png",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/material-you-dark/bg.png"
+      },
+      {
+        "path": "font/GoogleSans.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/material-you-dark/font/GoogleSans.ttf"
+      }
+    ]
+  },
+  "my-minecraft": {
+    "assetsDir": "minecraft-assets",
+    "files": [
+      {
+        "path": "background.png",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/minecraft/background.png"
+      },
+      {
+        "path": "title.png",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/minecraft/title.png"
+      }
+    ]
+  },
+  "my-nierautomata": {
+    "assetsDir": "nier-automata-assets",
+    "files": [
+      {
+        "path": "bg.png",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/nier-automata/bg.png"
+      }
+    ]
+  },
+  "my-ninesols": {
+    "assetsDir": "ninesols-assets",
+    "files": [
+      {
+        "path": "bg.png",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/ninesols/bg.png"
+      },
+      {
+        "path": "font/DejaVuSans.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/ninesols/font/DejaVuSans.ttf"
+      },
+      {
+        "path": "logo.png",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/ninesols/logo.png"
+      }
+    ]
+  },
+  "my-ninjagaiden": {
+    "assetsDir": "ninja-gaiden-assets",
+    "files": [
+      {
+        "path": "bg.png",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/ninja_gaiden/bg.png"
+      },
+      {
+        "path": "font/Tektur-VariableFont.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/ninja_gaiden/font/Tektur-VariableFont.ttf"
+      }
+    ]
+  },
+  "my-nothing": {
+    "assetsDir": "nothing-assets",
+    "files": [
+      {
+        "path": "font/NDot55.otf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/nothing/font/NDot55.otf"
+      },
+      {
+        "path": "font/NType82.otf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/nothing/font/NType82.otf"
+      }
+    ]
+  },
+  "my-pixelcoffee": {
+    "assetsDir": "pixel-coffee-assets",
+    "files": [
+      {
+        "path": "bg.mp4",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-coffee/bg.mp4"
+      },
+      {
+        "path": "font/PixelifySans-Bold.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-coffee/font/PixelifySans-Bold.ttf"
+      }
+    ]
+  },
+  "my-pixelcyberpunk": {
+    "assetsDir": "pixel-cyberpunk-assets",
+    "files": [
+      {
+        "path": "bg.mp4",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-cyberpunk/bg.mp4"
+      },
+      {
+        "path": "font/PixelifySans-Bold.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-cyberpunk/font/PixelifySans-Bold.ttf"
+      }
+    ]
+  },
+  "my-pixelduskcity": {
+    "assetsDir": "pixel-dusk-city-assets",
+    "files": [
+      {
+        "path": "bg.mp4",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-dusk-city/bg.mp4"
+      },
+      {
+        "path": "font/PixelifySans-Bold.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-dusk-city/font/PixelifySans-Bold.ttf"
+      }
+    ]
+  },
+  "my-pixelemerald": {
+    "assetsDir": "pixel-emerald-assets",
+    "files": [
+      {
+        "path": "bg.mp4",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-emerald/bg.mp4"
+      },
+      {
+        "path": "font/PixelifySans-Bold.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-emerald/font/PixelifySans-Bold.ttf"
+      }
+    ]
+  },
+  "my-pixelhollowknight": {
+    "assetsDir": "pixel-hollowknight-assets",
+    "files": [
+      {
+        "path": "bg.mp4",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-hollowknight/bg.mp4"
+      },
+      {
+        "path": "font/PixelifySans-Bold.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-hollowknight/font/PixelifySans-Bold.ttf"
+      }
+    ]
+  },
+  "my-pixelmunchlax": {
+    "assetsDir": "pixel-munchlax-assets",
+    "files": [
+      {
+        "path": "bg.mp4",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-munchlax/bg.mp4"
+      },
+      {
+        "path": "font/PixelifySans-Bold.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-munchlax/font/PixelifySans-Bold.ttf"
+      }
+    ]
+  },
+  "my-pixelnightcity": {
+    "assetsDir": "pixel-night-city-assets",
+    "files": [
+      {
+        "path": "bg.mp4",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-night-city/bg.mp4"
+      },
+      {
+        "path": "font/PixelifySans-Bold.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-night-city/font/PixelifySans-Bold.ttf"
+      }
+    ]
+  },
+  "my-pixelrainyroom": {
+    "assetsDir": "pixel-rainyroom-assets",
+    "files": [
+      {
+        "path": "bg.mp4",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-rainyroom/bg.mp4"
+      },
+      {
+        "path": "font/PixelifySans-Bold.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-rainyroom/font/PixelifySans-Bold.ttf"
+      }
+    ]
+  },
+  "my-pixelsakura": {
+    "assetsDir": "pixel-sakura-assets",
+    "files": [
+      {
+        "path": "bg.mp4",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-sakura/bg.mp4"
+      },
+      {
+        "path": "font/PixelifySans-Bold.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-sakura/font/PixelifySans-Bold.ttf"
+      }
+    ]
+  },
+  "my-pixelskyscrapers": {
+    "assetsDir": "pixel-skyscrapers-assets",
+    "files": [
+      {
+        "path": "bg.mp4",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-skyscrapers/bg.mp4"
+      },
+      {
+        "path": "font/PixelifySans-Bold.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-skyscrapers/font/PixelifySans-Bold.ttf"
+      }
+    ]
+  },
+  "my-pixelwaterfall": {
+    "assetsDir": "pixel-waterfall-assets",
+    "files": [
+      {
+        "path": "bg.mp4",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-waterfall/bg.mp4"
+      },
+      {
+        "path": "font/PixelifySans-Bold.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-waterfall/font/PixelifySans-Bold.ttf"
+      }
+    ]
+  },
+  "my-reverse1999first": {
+    "assetsDir": "reverse1999-first-assets",
+    "files": [
+      {
+        "path": "bg.mp4",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/R1999_1/bg.mp4"
+      },
+      {
+        "path": "font/Cinzel-Bold.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/R1999_1/font/Cinzel-Bold.ttf"
+      }
+    ]
+  },
+  "my-reverse1999second": {
+    "assetsDir": "reverse1999-second-assets",
+    "files": [
+      {
+        "path": "bg.mp4",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/R1999_2/bg.mp4"
+      },
+      {
+        "path": "font/Cinzel-Bold.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/R1999_2/font/Cinzel-Bold.ttf"
+      },
+      {
+        "path": "logo.png",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/R1999_2/logo.png"
+      }
+    ]
+  },
+  "my-starrail": {
+    "assetsDir": "star-rail-assets",
+    "files": [
+      {
+        "path": "bg.mp4",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/star-rail/bg.mp4"
+      }
+    ]
+  },
+  "my-sword": {
+    "assetsDir": "sword-assets",
+    "files": [
+      {
+        "path": "TheLastShuriken.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/sword/TheLastShuriken.ttf"
+      },
+      {
+        "path": "bg.mp4",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/sword/bg.mp4"
+      }
+    ]
+  },
+  "my-terraria": {
+    "assetsDir": "terraria-assets",
+    "files": [
+      {
+        "path": "ter1.png",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/terraria/ter1.png"
+      },
+      {
+        "path": "ter2.png",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/terraria/ter2.png"
+      },
+      {
+        "path": "ter3.png",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/terraria/ter3.png"
+      },
+      {
+        "path": "ter4.png",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/terraria/ter4.png"
+      },
+      {
+        "path": "ter5.png",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/terraria/ter5.png"
+      },
+      {
+        "path": "terraria_logo.png",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/terraria/terraria_logo.png"
+      }
+    ]
+  },
+  "my-winter": {
+    "assetsDir": "winter-assets",
+    "files": [
+      {
+        "path": "Orbitron.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/winter/Orbitron.ttf"
+      },
+      {
+        "path": "bg.mp4",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/winter/bg.mp4"
+      }
+    ]
+  },
+  "my-womenumbrella": {
+    "assetsDir": "women-umbrella-assets",
+    "files": [
+      {
+        "path": "Itim-Regular.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/women-umbrella/Itim-Regular.ttf"
+      },
+      {
+        "path": "bg.png",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/women-umbrella/bg.png"
+      }
+    ]
+  },
+  "my-wuwa": {
+    "assetsDir": "wuwa-assets",
+    "files": [
+      {
+        "path": "Orbitron.ttf",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/wuwa/Orbitron.ttf"
+      },
+      {
+        "path": "bg.mp4",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/wuwa/bg.mp4"
+      },
+      {
+        "path": "logo.png",
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/wuwa/logo.png"
+      }
+    ]
+  }
+}

@@ -1,0 +1,195 @@
+// source: qylock
+// Original design inspired by Darkkal44's qylock "clockwork/orbital" theme
+// (github.com/Darkkal44/qylock, GPL-3.0). The source renders a huge circular
+// minute/second dial centered off-screen so only a bowed vertical slice of
+// ticks is visible next to a giant hour digit -- like looking at the edge of
+// a clockwork gear. That layout technique (trig-positioned tick Repeaters on
+// an off-screen circle) is recreated here from scratch against Omarchy's
+// DesignBase/PasswordField, not copied from qylock's GPL source, and drops
+// the SDDM-only multi-user/session/power row. Only the bundled Outfit-Black
+// font is reused (bundled in clockwork-orbital-assets/), which tested clean
+// for every letterform, so it is used throughout.
+import QtQuick
+import Quickshell
+import qs.Commons
+import "../plugins/io.github.sirjul1337.lock-explorer/designs"
+
+DesignBase {
+  id: lock
+  inputItem: field.input
+
+  readonly property string assetsUrl: Qt.resolvedUrl("clockwork-orbital-assets/")
+  property color bg: "#000000"
+  property color mainText: "#ffffff"
+  property color dimText: "#666666"
+  property color pillColor: "#080808"
+  property color pillBorder: "#1a1a1a"
+
+  readonly property real localMs: now.getHours() * 3600000 + now.getMinutes() * 60000 + now.getSeconds() * 1000 + now.getMilliseconds()
+  readonly property real minAngle: -((localMs % 3600000) / 3600000.0) * 360.0
+  readonly property real secAngle: -((localMs % 60000) / 60000.0) * 360.0
+
+  FontLoader { id: outfit; source: lock.assetsUrl + "font/Outfit-Black.ttf" }
+
+  Rectangle { anchors.fill: parent; color: lock.bg }
+
+  MouseArea {
+    anchors.fill: parent
+    hoverEnabled: true
+    onClicked: { lock.wakeRequested(); lock.forcePasswordFocus() }
+    onPositionChanged: lock.wakeRequested()
+  }
+
+  // Off-screen circular dial: the same trick as the source, an oversized
+  // radius centered just past the left edge so only a bowed vertical slice
+  // of ticks is ever on screen.
+  Item {
+    id: dial
+    anchors.left: parent.left
+    anchors.verticalCenter: parent.verticalCenter
+    width: parent.width * 0.62
+    height: parent.height
+    readonly property real cx: 56
+    readonly property real cy: height * 0.5
+    readonly property real minR: Math.min(parent.height, parent.width) * 0.62
+    readonly property real secR: minR * 1.5
+
+    // The 120 tick marks (2x60) used to be individual rotated, antialiased
+    // Rectangle/Text items — Qt Quick's renderer generally can't batch
+    // rotated+antialiased primitives, which is a well-known source of frame
+    // jank ("laggy") that doesn't necessarily show up as high average CPU.
+    // A single Canvas repaint (only on second/minute change, not per frame)
+    // is the same technique StarryCity/Neon already use in this plugin.
+    Canvas {
+      id: dialCanvas
+      anchors.fill: parent
+      property real minAngle: lock.minAngle
+      property real secAngle: lock.secAngle
+      property bool fontReady: outfit.status === FontLoader.Ready
+      onMinAngleChanged: requestPaint()
+      onSecAngleChanged: requestPaint()
+      onFontReadyChanged: requestPaint()
+      onWidthChanged: requestPaint()
+      onHeightChanged: requestPaint()
+      Component.onCompleted: requestPaint()
+      onPaint: {
+        var ctx = getContext("2d")
+        ctx.reset()
+        ctx.textBaseline = "middle"
+        ctx.textAlign = "center"
+        ctx.font = "20px " + (fontReady ? outfit.name : "sans-serif")
+
+        for (var i = 0; i < 60; i++) {
+          var disp = (i * 6 + minAngle) * Math.PI / 180
+          var tx = dial.cx + dial.minR * Math.cos(disp)
+          var ty = dial.cy + dial.minR * Math.sin(disp)
+          if (tx < -40 || tx > dial.width + 40) continue
+          var major = i % 5 === 0
+
+          ctx.save()
+          ctx.translate(tx, ty)
+          ctx.rotate(disp + Math.PI / 2)
+          ctx.strokeStyle = major ? "rgba(255,255,255,0.3)" : "rgba(255,255,255,0.15)"
+          ctx.lineWidth = major ? 2 : 1
+          var len = major ? 18 : 10
+          ctx.beginPath(); ctx.moveTo(0, -len / 2); ctx.lineTo(0, len / 2); ctx.stroke()
+          ctx.restore()
+
+          if (major) {
+            var nr = dial.minR - 34
+            ctx.save()
+            ctx.translate(dial.cx + nr * Math.cos(disp), dial.cy + nr * Math.sin(disp))
+            ctx.rotate(disp)
+            ctx.fillStyle = "rgba(255,255,255,0.25)"
+            ctx.fillText(String(i).padStart(2, "0"), 0, 0)
+            ctx.restore()
+          }
+        }
+
+        for (var j = 0; j < 60; j++) {
+          var disp2 = (j * 6 + secAngle) * Math.PI / 180
+          var tx2 = dial.cx + dial.secR * Math.cos(disp2)
+          var ty2 = dial.cy + dial.secR * Math.sin(disp2)
+          if (tx2 < -40 || tx2 > dial.width + 40) continue
+          var major2 = j % 5 === 0
+
+          ctx.save()
+          ctx.translate(tx2, ty2)
+          ctx.rotate(disp2 + Math.PI / 2)
+          ctx.strokeStyle = major2 ? "rgba(255,255,255,0.25)" : "rgba(255,255,255,0.12)"
+          ctx.lineWidth = major2 ? 1.5 : 1
+          var len2 = major2 ? 13 : 8
+          ctx.beginPath(); ctx.moveTo(0, -len2 / 2); ctx.lineTo(0, len2 / 2); ctx.stroke()
+          ctx.restore()
+        }
+      }
+    }
+  }
+
+  // Hour digit + indicator pill + date, matching the source's layout.
+  Item {
+    anchors.centerIn: parent
+    width: 800
+    height: 90
+
+    Text {
+      id: hourText
+      anchors.right: pill.left
+      anchors.rightMargin: 40
+      anchors.verticalCenter: parent.verticalCenter
+      text: lock.clock("HH")
+      font.family: outfit.name
+      font.pixelSize: 110
+      font.weight: Font.Black
+      color: lock.mainText
+    }
+
+    Rectangle {
+      id: pill
+      anchors.horizontalCenter: parent.horizontalCenter
+      anchors.verticalCenter: parent.verticalCenter
+      width: 330; height: 90; radius: 45
+      color: lock.pillColor
+      border.color: lock.pillBorder
+      border.width: 1
+      Rectangle { anchors.centerIn: parent; width: 1; height: 35; color: "#222222" }
+    }
+
+    Column {
+      anchors.left: pill.right
+      anchors.leftMargin: 40
+      anchors.verticalCenter: parent.verticalCenter
+      spacing: 5
+      Text {
+        text: Qt.formatDate(lock.now, "dd MMM yyyy").toUpperCase()
+        font.family: Style.font.family
+        font.pixelSize: 13
+        font.letterSpacing: 4
+        color: lock.dimText
+      }
+      Text {
+        text: Qt.formatDate(lock.now, "dddd").toUpperCase()
+        font.family: Style.font.family
+        font.pixelSize: 18
+        font.letterSpacing: 8
+        font.bold: true
+        color: lock.mainText
+      }
+    }
+  }
+
+  PasswordField {
+    id: field
+    lock: lock
+    accentColor: lock.mainText
+    placeholderColor: lock.dimText
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.bottom: parent.bottom
+    anchors.bottomMargin: 90
+    width: 360
+    height: 56
+    color: lock.pillColor
+    radius: 28
+    placeholder: "Enter key"
+  }
+}
