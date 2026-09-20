@@ -4,6 +4,8 @@
 
 45 extra lock screen designs for [Lock Screen Explorer](https://github.com/SirJul1337/omarchy-lock-explorer)'s Third Party tab: 38 fresh QML ports of themes from [Darkkal44/qylock](https://github.com/Darkkal44/qylock), plus 7 original video wallpaper designs built from [wallsflow.com](https://wallsflow.com) live wallpapers. Also throws in one original design, Starry City, a procedural pixel skyline that follows your active Omarchy theme.
 
+Two of the qylock ports, **Genshin Impact** and **Terraria**, change their background on their own depending on the time of day: Genshin cycles through dawn/day/dusk/night video clips by wall-clock hour, Terraria switches between 5 screenshots the same way. Both are marked "Time-based" in the picker's Third Party tab.
+
 [Install](#install) • [Settings](#settings) • [Remove](#remove) • [Gallery](#gallery) • [Acknowledgements](#acknowledgements) • [Development](#development)
 
 ## Install
@@ -52,7 +54,7 @@ This does not delete the files already copied into `~/.config/omarchy/lock-desig
 | **Clockwork Orbital**<br><img src="designs/thirdparty-previews/my-clockworkorbital.jpg" width="380"/> | **Clockwork Neo Orbital**<br><img src="designs/thirdparty-previews/my-clockworkneoorbital.jpg" width="380"/> |
 | **Clockwork Tape**<br><img src="designs/thirdparty-previews/my-clockworktape.jpg" width="380"/> | **Dog Samurai**<br><img src="designs/thirdparty-previews/my-dogsamurai.jpg" width="380"/> |
 | **Enfield**<br><img src="designs/thirdparty-previews/my-enfield.jpg" width="380"/> | **Field**<br><img src="designs/thirdparty-previews/my-field.jpg" width="380"/> |
-| **Forest**<br><img src="designs/thirdparty-previews/my-forest.jpg" width="380"/> | **Genshin Impact**<br><img src="designs/thirdparty-previews/my-genshin.jpg" width="380"/> |
+| **Forest**<br><img src="designs/thirdparty-previews/my-forest.jpg" width="380"/> | **Genshin Impact** *(time-based)*<br><img src="designs/thirdparty-previews/my-genshin.jpg" width="380"/> |
 | **Girl Coffee**<br><img src="designs/thirdparty-previews/my-girlcoffee.jpg" width="380"/> | **Girl Pillow**<br><img src="designs/thirdparty-previews/my-girlpillow.jpg" width="380"/> |
 | **The Last of Us**<br><img src="designs/thirdparty-previews/my-lastofus.jpg" width="380"/> | **Man Bicycle**<br><img src="designs/thirdparty-previews/my-manbicycle.jpg" width="380"/> |
 | **Material You**<br><img src="designs/thirdparty-previews/my-materialyou.jpg" width="380"/> | **Material You Dark**<br><img src="designs/thirdparty-previews/my-materialyoudark.jpg" width="380"/> |
@@ -66,7 +68,7 @@ This does not delete the files already copied into `~/.config/omarchy/lock-desig
 | **Pixel Skyscrapers**<br><img src="designs/thirdparty-previews/my-pixelskyscrapers.jpg" width="380"/> | **Pixel Waterfall**<br><img src="designs/thirdparty-previews/my-pixelwaterfall.jpg" width="380"/> |
 | **Reverse: 1999 - I**<br><img src="designs/thirdparty-previews/my-reverse1999first.jpg" width="380"/> | **Reverse: 1999 - II**<br><img src="designs/thirdparty-previews/my-reverse1999second.jpg" width="380"/> |
 | **Honkai: Star Rail**<br><img src="designs/thirdparty-previews/my-starrail.jpg" width="380"/> | **Sword**<br><img src="designs/thirdparty-previews/my-sword.jpg" width="380"/> |
-| **Terraria**<br><img src="designs/thirdparty-previews/my-terraria.jpg" width="380"/> | **Winter**<br><img src="designs/thirdparty-previews/my-winter.jpg" width="380"/> |
+| **Terraria** *(time-based)*<br><img src="designs/thirdparty-previews/my-terraria.jpg" width="380"/> | **Winter**<br><img src="designs/thirdparty-previews/my-winter.jpg" width="380"/> |
 | **Women Umbrella**<br><img src="designs/thirdparty-previews/my-womenumbrella.jpg" width="380"/> | **Wuthering Waves**<br><img src="designs/thirdparty-previews/my-wuwa.jpg" width="380"/> |
 
 ## Acknowledgements
