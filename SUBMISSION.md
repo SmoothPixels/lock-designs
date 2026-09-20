@@ -19,11 +19,13 @@ Appearance
 
 **Tags** (max 3)
 ```
-Lock Screen, Quickshell, Wallpaper
+Quickshell, Media, System
 ```
 
 **Suggest a missing tag**
-_(leave blank)_
+```
+Lock Screen
+```
 
 **Maintainer notes**
 ```
@@ -46,7 +48,7 @@ plugin is missing.
 Most designs fetch their video/font assets on demand (a Download button
 per design in the picker) straight from Darkkal44's own hosted files, so
 this repo stays small, that is the only network access this plugin ever
-makes, and only when the user clicks Download. The 6 wallsflow-sourced
+makes, and only when the user clicks Download. The 7 wallsflow-sourced
 designs bundle their video directly since wallsflow's CDN blocks scripted
 downloads.
 
