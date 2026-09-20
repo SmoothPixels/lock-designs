@@ -76,6 +76,7 @@ DesignBase {
   }
 
   Column {
+    id: infoCol
     anchors.top: logo.bottom
     anchors.left: logo.left
     anchors.topMargin: 24
@@ -105,9 +106,15 @@ DesignBase {
 
   Column {
     id: menuCol
-    anchors.top: logo.bottom
+    // Was independently anchored to logo.bottom with a fixed topMargin
+    // that assumed infoCol was always exactly 2 lines tall. Adding the
+    // username as a 3rd line grew infoCol past that fixed margin and
+    // it started overlapping "Start Game". Anchoring to infoCol's own
+    // bottom instead means this never goes stale again if infoCol's
+    // height changes.
+    anchors.top: infoCol.bottom
     anchors.left: logo.left
-    anchors.topMargin: 90
+    anchors.topMargin: 30
     spacing: 16
 
     // Start Game — submits the typed password.
