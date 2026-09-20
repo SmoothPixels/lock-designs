@@ -1,9 +1,9 @@
 // source: wallsflow
-// "Sleeping Calico Cat Pond" live wallpaper (wallsflow.com), used as a lock
-// screen background with a clock, date and the shared password field over
-// it — see BlackCatWater.qml's header for why this is a fresh minimal
-// layout rather than a ported UI, and why the video is bundled locally
-// instead of fetched on demand.
+// "Nissan 350Z Japanese Night Streets" live wallpaper (wallsflow.com), used
+// as a lock screen background with a clock, date and the shared password
+// field over it — see BlackCatWater.qml's header for why this is a fresh
+// minimal layout rather than a ported UI, and why the video is bundled
+// locally instead of fetched on demand.
 import QtQuick
 import QtQuick.Effects
 import QtMultimedia
@@ -15,11 +15,11 @@ DesignBase {
   id: lock
   inputItem: field.input
 
-  readonly property string assetsUrl: Qt.resolvedUrl("calico-cat-pond-assets/")
-  property color accent: "#ffb385"
+  readonly property string assetsUrl: Qt.resolvedUrl("nissan-350z-night-assets/")
+  property color accent: "#f0a868"
   property color dim: Qt.rgba(1, 1, 1, 0.5)
 
-  Rectangle { anchors.fill: parent; color: "#0e1a2c" }
+  Rectangle { anchors.fill: parent; color: "#0e0a08" }
 
   MediaPlayer {
     id: bgPlayer
