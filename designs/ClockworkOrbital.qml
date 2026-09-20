@@ -135,38 +135,44 @@ DesignBase {
     }
   }
 
-  // Hour digit + indicator pill + date, matching the source's layout.
-  Item {
+  // Hour + date in one card. The source theme put a purely decorative pill
+  // (just a divider line, no content) floating on its own between the hour
+  // digit and the date -- which is exactly what read as broken/missing
+  // content here rather than intentional. Putting all three pieces inside
+  // one bordered card fixes that: the divider now separates two halves of
+  // the same readout instead of sitting empty by itself.
+  Rectangle {
+    id: card
     anchors.centerIn: parent
-    width: 800
-    height: 90
+    width: 460
+    height: 110
+    radius: 45
+    color: lock.pillColor
+    border.color: lock.pillBorder
+    border.width: 1
 
     Text {
       id: hourText
-      anchors.right: pill.left
-      anchors.rightMargin: 40
+      anchors.right: divider.left
+      anchors.rightMargin: 30
       anchors.verticalCenter: parent.verticalCenter
       text: lock.clock("HH")
       font.family: outfit.name
-      font.pixelSize: 110
+      font.pixelSize: 90
       font.weight: Font.Black
       color: lock.mainText
     }
 
     Rectangle {
-      id: pill
-      anchors.horizontalCenter: parent.horizontalCenter
-      anchors.verticalCenter: parent.verticalCenter
-      width: 330; height: 90; radius: 45
-      color: lock.pillColor
-      border.color: lock.pillBorder
-      border.width: 1
-      Rectangle { anchors.centerIn: parent; width: 1; height: 35; color: "#222222" }
+      id: divider
+      anchors.centerIn: parent
+      width: 1; height: 50
+      color: "#222222"
     }
 
     Column {
-      anchors.left: pill.right
-      anchors.leftMargin: 40
+      anchors.left: divider.right
+      anchors.leftMargin: 30
       anchors.verticalCenter: parent.verticalCenter
       spacing: 5
       Text {
