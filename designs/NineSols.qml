@@ -11,6 +11,7 @@
 // in "THE QUICK BROWN FOX WELCOME" unambiguous) so it is used throughout,
 // matching the original.
 import QtQuick
+import QtQuick.Effects
 import Quickshell
 import qs.Commons
 import "../plugins/io.github.sirjul1337.lock-explorer/designs"
@@ -36,11 +37,24 @@ DesignBase {
 
   Rectangle { anchors.fill: parent; color: "#050608" }
 
+  // The source bg.png is only 1080x607, stretched edge-to-edge that is a
+  // 3x+ upscale on a 4K display and looks visibly soft/pixelated. A light
+  // blur turns that softness into an intentional-looking background blur
+  // instead of a broken-looking low-res stretch.
   Image {
+    id: bgImage
     anchors.fill: parent
     source: lock.loadBackground ? lock.assetsUrl + "bg.png" : ""
     fillMode: Image.PreserveAspectCrop
     asynchronous: true
+    visible: false
+  }
+  MultiEffect {
+    anchors.fill: bgImage
+    source: bgImage
+    blurEnabled: true
+    blur: 0.35
+    blurMax: 32
   }
 
   Rectangle {
