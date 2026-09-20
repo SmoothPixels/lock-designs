@@ -40,9 +40,9 @@ This does not delete the files already copied into `~/.config/omarchy/lock-desig
 |:---:|:---:|:---:|
 | **Anime Girl GTR**<br><img src="assets/AnimeGirlGTR.jpg" width="260"/> | **Black Cat Water**<br><img src="assets/BlackCatWater.jpg" width="260"/> | **Moonlit Roof Cat**<br><img src="assets/MoonlitRoofCat.jpg" width="260"/> |
 | **Nissan 350Z Night**<br><img src="assets/Nissan350zNight.jpg" width="260"/> | **Porsche 911 Darkness**<br><img src="assets/Porsche911Darkness.jpg" width="260"/> | **Supercar Sakura**<br><img src="assets/SupercarSakura.jpg" width="260"/> |
-| **Skyline R34 Rain** *(local only, see below)*<br><img src="assets/SkylineR34Rain.jpg" width="260"/> | | |
+| **Skyline R34 Rain**<br><img src="assets/SkylineR34Rain.jpg" width="260"/> | | |
 
-`SkylineR34Rain.qml` is included, but its 113MB video is not committed to this repo (GitHub's per-file limit is 100MB). It only works if you already have `skyline-r34-rain-assets/bg.mp4` locally.
+`SkylineR34Rain.qml`'s video is re-encoded to 1080p (down from the original 4K source, which was 113MB, over GitHub's 100MB per-file limit) to fit in this repo at a fraction of the size with no visible quality loss on a lock screen background.
 
 ### Qylock ports
 
@@ -118,7 +118,7 @@ Videos bundled directly in this repo, wallsflow's CDN blocks scripted downloads,
 | Moonlit Roof Cat | [WallsFlow](https://wallsflow.com/live-wallpapers/animals/1075-moonlit-rooftop-cat-live-wallpaper.html) |
 | Anime Girl GTR | [WallsFlow](https://wallsflow.com/live-wallpapers/anime/1048-anime-girl-nissan-skyline-gtr-live-wallpaper.html) |
 | Nissan 350Z Night | [WallsFlow](https://wallsflow.com/live-wallpapers/cars/1083-nissan-350z-japanese-night-streets-live-wallpaper.html) |
-| Skyline R34 Rain | wallsflow.com (link pending) |
+| Skyline R34 Rain | [WallsFlow](https://wallsflow.com/live-wallpapers/cars/870-pink-flower-field-nissan-skyline-r34-rain-live-wallpaper.html) |
 | Supercar Sakura | [WallsFlow](https://wallsflow.com/live-wallpapers/cars/495-supercar-dreamscape-under-sakura-blossoms.html) |
 | Porsche 911 Darkness | [WallsFlow](https://wallsflow.com/live-wallpapers/cars/756-porsche-911-timeless-performance-in-darkness-live-wallpaper.html) |
 

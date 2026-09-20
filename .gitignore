@@ -12,8 +12,5 @@
 !moonlit-rooftop-cat-assets/
 !nissan-350z-night-assets/
 !porsche-911-darkness-assets/
+!skyline-r34-rain-assets/
 !supercar-sakura-assets/
-
-# Too big for a normal git push (over GitHub's 100MB per-file limit),
-# kept local only.
-skyline-r34-rain-assets/
