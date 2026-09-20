@@ -155,6 +155,17 @@ DesignBase {
     }
   }
 
+  Text {
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.bottom: parent.bottom
+    anchors.bottomMargin: 128
+    text: lock.userName.toUpperCase()
+    color: lock.mainText
+    font.family: outfit.name
+    font.pixelSize: 12
+    font.letterSpacing: 4
+  }
+
   PasswordField {
     id: field
     lock: lock

@@ -185,6 +185,17 @@ DesignBase {
       font.letterSpacing: 2
     }
 
+    Text {
+      anchors.horizontalCenter: parent.horizontalCenter
+      anchors.bottom: parent.top
+      anchors.bottomMargin: 30
+      text: "USER // " + lock.userName.toUpperCase()
+      color: lock.fgDim
+      font.family: tekturFont.name
+      font.pixelSize: 11
+      font.letterSpacing: 2
+    }
+
     Rectangle {
       anchors.fill: parent
       color: lock.backing

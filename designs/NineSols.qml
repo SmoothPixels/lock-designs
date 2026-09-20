@@ -94,6 +94,13 @@ DesignBase {
       font.pixelSize: 13
       font.letterSpacing: 1
     }
+    Text {
+      text: lock.userName.toUpperCase()
+      color: lock.goldDim
+      font.family: dejavuFont.name
+      font.pixelSize: 13
+      font.letterSpacing: 1
+    }
   }
 
   Column {
