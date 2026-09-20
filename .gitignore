@@ -1,5 +1,19 @@
 # Real video/font assets for Third Party designs are fetched on demand
 # (see the "Download" button in the lock screen picker) and can be
-# regenerated from thirdparty-assets.json at any time — never commit them,
+# regenerated from thirdparty-assets.json at any time, never commit them,
 # that's the entire point of the download-on-demand design.
 *-assets/
+
+# The wallsflow-sourced designs below have no legitimate re-download URL
+# (their CDN blocks scripted access), so their videos are committed
+# directly instead of going through the download-on-demand system.
+!anime-girl-gtr-assets/
+!black-cat-water-assets/
+!moonlit-rooftop-cat-assets/
+!nissan-350z-night-assets/
+!porsche-911-darkness-assets/
+!supercar-sakura-assets/
+
+# Too big for a normal git push (over GitHub's 100MB per-file limit),
+# kept local only.
+skyline-r34-rain-assets/
