@@ -36,36 +36,38 @@ This does not delete the files already copied into `~/.config/omarchy/lock-desig
 
 ### Wallsflow originals
 
-| | | |
-|:---:|:---:|:---:|
-| **Anime Girl GTR**<br><img src="assets/AnimeGirlGTR.jpg" width="260"/> | **Black Cat Water**<br><img src="assets/BlackCatWater.jpg" width="260"/> | **Moonlit Roof Cat**<br><img src="assets/MoonlitRoofCat.jpg" width="260"/> |
-| **Nissan 350Z Night**<br><img src="assets/Nissan350zNight.jpg" width="260"/> | **Porsche 911 Darkness**<br><img src="assets/Porsche911Darkness.jpg" width="260"/> | **Supercar Sakura**<br><img src="assets/SupercarSakura.jpg" width="260"/> |
-| **Skyline R34 Rain**<br><img src="assets/SkylineR34Rain.jpg" width="260"/> | | |
+| | |
+|:---:|:---:|
+| **Anime Girl GTR**<br><img src="assets/AnimeGirlGTR.jpg" width="380"/> | **Black Cat Water**<br><img src="assets/BlackCatWater.jpg" width="380"/> |
+| **Moonlit Roof Cat**<br><img src="assets/MoonlitRoofCat.jpg" width="380"/> | **Nissan 350Z Night**<br><img src="assets/Nissan350zNight.jpg" width="380"/> |
+| **Porsche 911 Darkness**<br><img src="assets/Porsche911Darkness.jpg" width="380"/> | **Supercar Sakura**<br><img src="assets/SupercarSakura.jpg" width="380"/> |
+| **Skyline R34 Rain**<br><img src="assets/SkylineR34Rain.jpg" width="380"/> | |
 
 `SkylineR34Rain.qml`'s video is re-encoded to 1080p (down from the original 4K source, which was 113MB, over GitHub's 100MB per-file limit) to fit in this repo at a fraction of the size with no visible quality loss on a lock screen background.
 
 ### Qylock ports
 
-<details>
-<summary>38 designs, click to expand</summary>
-
-| | | |
-|:---:|:---:|:---:|
-| **Clockwork Orbital**<br><img src="designs/thirdparty-previews/my-clockworkorbital.jpg" width="200"/> | **Clockwork Neo Orbital**<br><img src="designs/thirdparty-previews/my-clockworkneoorbital.jpg" width="200"/> | **Clockwork Tape**<br><img src="designs/thirdparty-previews/my-clockworktape.jpg" width="200"/> |
-| **Dog Samurai**<br><img src="designs/thirdparty-previews/my-dogsamurai.jpg" width="200"/> | **Enfield**<br><img src="designs/thirdparty-previews/my-enfield.jpg" width="200"/> | **Field**<br><img src="designs/thirdparty-previews/my-field.jpg" width="200"/> |
-| **Forest**<br><img src="designs/thirdparty-previews/my-forest.jpg" width="200"/> | **Genshin Impact**<br><img src="designs/thirdparty-previews/my-genshin.jpg" width="200"/> | **Girl Coffee**<br><img src="designs/thirdparty-previews/my-girlcoffee.jpg" width="200"/> |
-| **Girl Pillow**<br><img src="designs/thirdparty-previews/my-girlpillow.jpg" width="200"/> | **The Last of Us**<br><img src="designs/thirdparty-previews/my-lastofus.jpg" width="200"/> | **Man Bicycle**<br><img src="designs/thirdparty-previews/my-manbicycle.jpg" width="200"/> |
-| **Material You**<br><img src="designs/thirdparty-previews/my-materialyou.jpg" width="200"/> | **Material You Dark**<br><img src="designs/thirdparty-previews/my-materialyoudark.jpg" width="200"/> | **Minecraft**<br><img src="designs/thirdparty-previews/my-minecraft.jpg" width="200"/> |
-| **NieR: Automata**<br><img src="designs/thirdparty-previews/my-nierautomata.jpg" width="200"/> | **Nine Sols**<br><img src="designs/thirdparty-previews/my-ninesols.jpg" width="200"/> | **Ninja Gaiden**<br><img src="designs/thirdparty-previews/my-ninjagaiden.jpg" width="200"/> |
-| **Nothing**<br><img src="designs/thirdparty-previews/my-nothing.jpg" width="200"/> | **Pixel Coffee**<br><img src="designs/thirdparty-previews/my-pixelcoffee.jpg" width="200"/> | **Pixel Cyberpunk**<br><img src="designs/thirdparty-previews/my-pixelcyberpunk.jpg" width="200"/> |
-| **Pixel Dusk City**<br><img src="designs/thirdparty-previews/my-pixelduskcity.jpg" width="200"/> | **Pixel Emerald**<br><img src="designs/thirdparty-previews/my-pixelemerald.jpg" width="200"/> | **Pixel Hollow Knight**<br><img src="designs/thirdparty-previews/my-pixelhollowknight.jpg" width="200"/> |
-| **Pixel Munchlax**<br><img src="designs/thirdparty-previews/my-pixelmunchlax.jpg" width="200"/> | **Pixel Night City**<br><img src="designs/thirdparty-previews/my-pixelnightcity.jpg" width="200"/> | **Pixel Rainy Room**<br><img src="designs/thirdparty-previews/my-pixelrainyroom.jpg" width="200"/> |
-| **Pixel Sakura**<br><img src="designs/thirdparty-previews/my-pixelsakura.jpg" width="200"/> | **Pixel Skyscrapers**<br><img src="designs/thirdparty-previews/my-pixelskyscrapers.jpg" width="200"/> | **Pixel Waterfall**<br><img src="designs/thirdparty-previews/my-pixelwaterfall.jpg" width="200"/> |
-| **Reverse: 1999 - I**<br><img src="designs/thirdparty-previews/my-reverse1999first.jpg" width="200"/> | **Reverse: 1999 - II**<br><img src="designs/thirdparty-previews/my-reverse1999second.jpg" width="200"/> | **Honkai: Star Rail**<br><img src="designs/thirdparty-previews/my-starrail.jpg" width="200"/> |
-| **Sword**<br><img src="designs/thirdparty-previews/my-sword.jpg" width="200"/> | **Terraria**<br><img src="designs/thirdparty-previews/my-terraria.jpg" width="200"/> | **Winter**<br><img src="designs/thirdparty-previews/my-winter.jpg" width="200"/> |
-| **Women Umbrella**<br><img src="designs/thirdparty-previews/my-womenumbrella.jpg" width="200"/> | **Wuthering Waves**<br><img src="designs/thirdparty-previews/my-wuwa.jpg" width="200"/> | |
-
-</details>
+| | |
+|:---:|:---:|
+| **Clockwork Orbital**<br><img src="designs/thirdparty-previews/my-clockworkorbital.jpg" width="380"/> | **Clockwork Neo Orbital**<br><img src="designs/thirdparty-previews/my-clockworkneoorbital.jpg" width="380"/> |
+| **Clockwork Tape**<br><img src="designs/thirdparty-previews/my-clockworktape.jpg" width="380"/> | **Dog Samurai**<br><img src="designs/thirdparty-previews/my-dogsamurai.jpg" width="380"/> |
+| **Enfield**<br><img src="designs/thirdparty-previews/my-enfield.jpg" width="380"/> | **Field**<br><img src="designs/thirdparty-previews/my-field.jpg" width="380"/> |
+| **Forest**<br><img src="designs/thirdparty-previews/my-forest.jpg" width="380"/> | **Genshin Impact**<br><img src="designs/thirdparty-previews/my-genshin.jpg" width="380"/> |
+| **Girl Coffee**<br><img src="designs/thirdparty-previews/my-girlcoffee.jpg" width="380"/> | **Girl Pillow**<br><img src="designs/thirdparty-previews/my-girlpillow.jpg" width="380"/> |
+| **The Last of Us**<br><img src="designs/thirdparty-previews/my-lastofus.jpg" width="380"/> | **Man Bicycle**<br><img src="designs/thirdparty-previews/my-manbicycle.jpg" width="380"/> |
+| **Material You**<br><img src="designs/thirdparty-previews/my-materialyou.jpg" width="380"/> | **Material You Dark**<br><img src="designs/thirdparty-previews/my-materialyoudark.jpg" width="380"/> |
+| **Minecraft**<br><img src="designs/thirdparty-previews/my-minecraft.jpg" width="380"/> | **NieR: Automata**<br><img src="designs/thirdparty-previews/my-nierautomata.jpg" width="380"/> |
+| **Nine Sols**<br><img src="designs/thirdparty-previews/my-ninesols.jpg" width="380"/> | **Ninja Gaiden**<br><img src="designs/thirdparty-previews/my-ninjagaiden.jpg" width="380"/> |
+| **Nothing**<br><img src="designs/thirdparty-previews/my-nothing.jpg" width="380"/> | **Pixel Coffee**<br><img src="designs/thirdparty-previews/my-pixelcoffee.jpg" width="380"/> |
+| **Pixel Cyberpunk**<br><img src="designs/thirdparty-previews/my-pixelcyberpunk.jpg" width="380"/> | **Pixel Dusk City**<br><img src="designs/thirdparty-previews/my-pixelduskcity.jpg" width="380"/> |
+| **Pixel Emerald**<br><img src="designs/thirdparty-previews/my-pixelemerald.jpg" width="380"/> | **Pixel Hollow Knight**<br><img src="designs/thirdparty-previews/my-pixelhollowknight.jpg" width="380"/> |
+| **Pixel Munchlax**<br><img src="designs/thirdparty-previews/my-pixelmunchlax.jpg" width="380"/> | **Pixel Night City**<br><img src="designs/thirdparty-previews/my-pixelnightcity.jpg" width="380"/> |
+| **Pixel Rainy Room**<br><img src="designs/thirdparty-previews/my-pixelrainyroom.jpg" width="380"/> | **Pixel Sakura**<br><img src="designs/thirdparty-previews/my-pixelsakura.jpg" width="380"/> |
+| **Pixel Skyscrapers**<br><img src="designs/thirdparty-previews/my-pixelskyscrapers.jpg" width="380"/> | **Pixel Waterfall**<br><img src="designs/thirdparty-previews/my-pixelwaterfall.jpg" width="380"/> |
+| **Reverse: 1999 - I**<br><img src="designs/thirdparty-previews/my-reverse1999first.jpg" width="380"/> | **Reverse: 1999 - II**<br><img src="designs/thirdparty-previews/my-reverse1999second.jpg" width="380"/> |
+| **Honkai: Star Rail**<br><img src="designs/thirdparty-previews/my-starrail.jpg" width="380"/> | **Sword**<br><img src="designs/thirdparty-previews/my-sword.jpg" width="380"/> |
+| **Terraria**<br><img src="designs/thirdparty-previews/my-terraria.jpg" width="380"/> | **Winter**<br><img src="designs/thirdparty-previews/my-winter.jpg" width="380"/> |
+| **Women Umbrella**<br><img src="designs/thirdparty-previews/my-womenumbrella.jpg" width="380"/> | **Wuthering Waves**<br><img src="designs/thirdparty-previews/my-wuwa.jpg" width="380"/> |
 
 ## Acknowledgements
 
