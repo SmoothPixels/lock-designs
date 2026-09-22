@@ -14,10 +14,13 @@ DesignBase {
   inputItem: field.input
 
   readonly property real u: Math.min(width, height) / 100
-  readonly property color lit: lock.errorState ? Color.lock.textError : Color.accent
-  readonly property color unlit: lock.withAlpha(Color.foreground, 0.09)
+  // Lit dots sit a notch toward the foreground so they clear the accent's own
+  // brightness; unlit ones are only a faint trace of the grid, fainter on dark
+  // themes where the glow already separates the digits.
+  readonly property color lit: lock.errorState ? Color.lock.textError : lock.raise(Color.accent, 1.1)
+  readonly property color unlit: lock.withAlpha(Color.foreground, lock.lightTheme ? 0.09 : 0.05)
   readonly property color panel: lock.deepen(Color.background, 1.65)
-  readonly property real pitch: lock.u * 2.4
+  readonly property real pitch: lock.u * 2.8
   readonly property string digits: lock.clock("HH:mm").substring(0, 5)
   readonly property bool colonOn: lock.now.getSeconds() % 2 === 0
 
@@ -90,7 +93,7 @@ DesignBase {
     id: board
     anchors.horizontalCenter: parent.horizontalCenter
     y: Math.round(lock.height * 0.36 - height / 2)
-    spacing: Math.round(lock.pitch * 1.1)
+    spacing: Math.round(lock.pitch * 1.7)
 
     Repeater {
       model: 5
@@ -102,14 +105,14 @@ DesignBase {
         readonly property bool colon: ch === ":"
         readonly property int cols: pattern[0].length
         columns: cols
-        spacing: Math.round(lock.pitch * 0.32)
+        spacing: Math.round(lock.pitch * 0.26)
 
         Repeater {
           model: digit.cols * 7
           delegate: Item {
             required property int index
             readonly property bool on: digit.pattern[Math.floor(index / digit.cols)].charAt(index % digit.cols) === "1" && (!digit.colon || lock.colonOn)
-            width: Math.round(lock.pitch * 0.68)
+            width: Math.round(lock.pitch * 0.74)
             height: width
 
             Rectangle {
@@ -118,7 +121,7 @@ DesignBase {
               height: width
               radius: width / 2
               color: lock.lit
-              opacity: parent.on ? 0.12 : 0
+              opacity: parent.on && !lock.lightTheme ? 0.14 : 0
               visible: opacity > 0
             }
             Rectangle {
