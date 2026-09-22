@@ -4,11 +4,15 @@
     "files": [
       {
         "path": "bg.png",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/clockwork/neo-orbital/bg.png"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/clockwork/neo-orbital/bg.png",
+        "sha256": "14c51a859747dc09b39abb11fc0e1104070a8c2556880fa727a3c45f4c09d986",
+        "size": 2316938
       },
       {
         "path": "font/Outfit-Black.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/clockwork/neo-orbital/font/Outfit-Black.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/clockwork/neo-orbital/font/Outfit-Black.ttf",
+        "sha256": "f240e6128c31a75aa3f456ea1ff3b0fda382176681788ae3d244d08e3fa7d6cd",
+        "size": 55372
       }
     ]
   },
@@ -17,7 +21,9 @@
     "files": [
       {
         "path": "font/Outfit-Black.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/clockwork/orbital/font/Outfit-Black.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/clockwork/orbital/font/Outfit-Black.ttf",
+        "sha256": "f240e6128c31a75aa3f456ea1ff3b0fda382176681788ae3d244d08e3fa7d6cd",
+        "size": 55372
       }
     ]
   },
@@ -26,7 +32,9 @@
     "files": [
       {
         "path": "font/Outfit-Black.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/clockwork/tape/font/Outfit-Black.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/clockwork/tape/font/Outfit-Black.ttf",
+        "sha256": "f240e6128c31a75aa3f456ea1ff3b0fda382176681788ae3d244d08e3fa7d6cd",
+        "size": 55372
       }
     ]
   },
@@ -35,11 +43,15 @@
     "files": [
       {
         "path": "bg.mp4",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/dog-samurai/bg.mp4"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/dog-samurai/bg.mp4",
+        "sha256": "78e3b5227f9e8dd64164d445cdf9612e581bc6a34f77fb211efd6793a755ede8",
+        "size": 15814471
       },
       {
         "path": "font/Orbitron-VariableFont_wght.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/dog-samurai/font/Orbitron-VariableFont_wght.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/dog-samurai/font/Orbitron-VariableFont_wght.ttf",
+        "sha256": "46eefc7084fd9abffd87547c47f729b6071c7f7a8d5af281266bb09e5461c435",
+        "size": 38548
       }
     ]
   },
@@ -48,11 +60,15 @@
     "files": [
       {
         "path": "bg.mp4",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/enfield/bg.mp4"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/enfield/bg.mp4",
+        "sha256": "d6a57ef404c08c5246029aa724b9ad9cb0294799696495c08dd15b8c044a47ae",
+        "size": 20439635
       },
       {
         "path": "font/Orbitron-VariableFont_wght.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/enfield/font/Orbitron-VariableFont_wght.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/enfield/font/Orbitron-VariableFont_wght.ttf",
+        "sha256": "46eefc7084fd9abffd87547c47f729b6071c7f7a8d5af281266bb09e5461c435",
+        "size": 38548
       }
     ]
   },
@@ -61,11 +77,15 @@
     "files": [
       {
         "path": "bg.png",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/field/bg.png"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/field/bg.png",
+        "sha256": "4e673009ca8421907a03360e992d934ebefc4d97bc763f6d4541be50329175a7",
+        "size": 1784920
       },
       {
         "path": "font/Orbitron-VariableFont_wght.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/field/font/Orbitron-VariableFont_wght.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/field/font/Orbitron-VariableFont_wght.ttf",
+        "sha256": "46eefc7084fd9abffd87547c47f729b6071c7f7a8d5af281266bb09e5461c435",
+        "size": 38548
       }
     ]
   },
@@ -74,11 +94,15 @@
     "files": [
       {
         "path": "bg.mp4",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/forest/bg.mp4"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/forest/bg.mp4",
+        "sha256": "97d54ce5e4cd06d1c0d53adb681b6809dda68334b5fcaff6f2ce2fe6bfdf0814",
+        "size": 53320657
       },
       {
         "path": "font/Figtree-Bold.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/forest/font/Figtree-Bold.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/forest/font/Figtree-Bold.ttf",
+        "sha256": "183bf1a8523731738c72be9aa8236453a21d6a3ed70bd8e5266723b212331dc4",
+        "size": 40324
       }
     ]
   },
@@ -87,19 +111,27 @@
     "files": [
       {
         "path": "dawn.mp4",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/Genshin/dawn.mp4"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/Genshin/dawn.mp4",
+        "sha256": "eb552c2335662e73b1fecc5fad4c49c5a9673e6b43cad7c614b4dc76dd013509",
+        "size": 13783996
       },
       {
         "path": "day.mp4",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/Genshin/day.mp4"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/Genshin/day.mp4",
+        "sha256": "a0f83548bc7d265768bc72cc7973f737176ce4ec18ab2a6156338255aceb4fdc",
+        "size": 11865025
       },
       {
         "path": "dusk.mp4",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/Genshin/dusk.mp4"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/Genshin/dusk.mp4",
+        "sha256": "4ebab81ef76cff03f61f64570fbf7bdb7bc34ed64c0a07944f1c5094aa0edbb4",
+        "size": 12909349
       },
       {
         "path": "night.mp4",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/Genshin/night.mp4"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/Genshin/night.mp4",
+        "sha256": "511b6e735d4754abd38ae0125a4130dd8f8b26446bb33a449fd43787654977e1",
+        "size": 13188947
       }
     ]
   },
@@ -108,11 +140,15 @@
     "files": [
       {
         "path": "bg.png",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/girl-coffee/bg.png"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/girl-coffee/bg.png",
+        "sha256": "7019b5c5b6fb59aff1ad523ef8e980b48a751a79e0720686213d2743873c81ef",
+        "size": 1053098
       },
       {
         "path": "font/Itim-Regular.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/girl-coffee/font/Itim-Regular.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/girl-coffee/font/Itim-Regular.ttf",
+        "sha256": "acdd351e7e72ab5e3d16cc26cda212c51482905cd83cc5bfb8c799c272e0e09a",
+        "size": 362640
       }
     ]
   },
@@ -121,11 +157,15 @@
     "files": [
       {
         "path": "bg.png",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/girl-pillow/bg.png"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/girl-pillow/bg.png",
+        "sha256": "6fc76427616c2566a1d392ec05b2c066321a9fedc2e54abe5680a2cdf2d3739d",
+        "size": 485309
       },
       {
         "path": "font/Itim-Regular.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/girl-pillow/font/Itim-Regular.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/girl-pillow/font/Itim-Regular.ttf",
+        "sha256": "acdd351e7e72ab5e3d16cc26cda212c51482905cd83cc5bfb8c799c272e0e09a",
+        "size": 362640
       }
     ]
   },
@@ -134,11 +174,15 @@
     "files": [
       {
         "path": "bg.mp4",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/last-of-us/bg.mp4"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/last-of-us/bg.mp4",
+        "sha256": "da57a8e3ace0c78f862c252603998c730ed9289bbd5e7866fb6b930fcda7e639",
+        "size": 78248674
       },
       {
         "path": "font/Outfit-Black.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/last-of-us/font/Outfit-Black.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/last-of-us/font/Outfit-Black.ttf",
+        "sha256": "f240e6128c31a75aa3f456ea1ff3b0fda382176681788ae3d244d08e3fa7d6cd",
+        "size": 55372
       }
     ]
   },
@@ -147,11 +191,15 @@
     "files": [
       {
         "path": "bg.png",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/man-bicycle/bg.png"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/man-bicycle/bg.png",
+        "sha256": "cced9213b0bd0437fc331216b841fc000c3e525ea00eade7fd19cdfc56a6947d",
+        "size": 5005352
       },
       {
         "path": "font/Itim-Regular.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/man-bicycle/font/Itim-Regular.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/man-bicycle/font/Itim-Regular.ttf",
+        "sha256": "acdd351e7e72ab5e3d16cc26cda212c51482905cd83cc5bfb8c799c272e0e09a",
+        "size": 362640
       }
     ]
   },
@@ -160,11 +208,15 @@
     "files": [
       {
         "path": "bg.png",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/material-you/bg.png"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/material-you/bg.png",
+        "sha256": "a27c8408266933a145a4330d1267aa082831b589f29a155ed06b149638b4380f",
+        "size": 735445
       },
       {
         "path": "font/GoogleSans.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/material-you/font/GoogleSans-VariableFont_GRAD,opsz,wght.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/material-you/font/GoogleSans-VariableFont_GRAD,opsz,wght.ttf",
+        "sha256": "08f022f46f30b5fb77368a1c7b7033e494f73aaac045ca2063e71d5f3fb0df4f",
+        "size": 4712272
       }
     ]
   },
@@ -173,11 +225,15 @@
     "files": [
       {
         "path": "bg.png",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/material-you-dark/bg.png"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/material-you-dark/bg.png",
+        "sha256": "5319cc79f5a46c3cabf013f1423f5d262cae3957867d026be54ecdd6961559d9",
+        "size": 354787
       },
       {
         "path": "font/GoogleSans.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/material-you-dark/font/GoogleSans-VariableFont_GRAD,opsz,wght.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/material-you-dark/font/GoogleSans-VariableFont_GRAD,opsz,wght.ttf",
+        "sha256": "08f022f46f30b5fb77368a1c7b7033e494f73aaac045ca2063e71d5f3fb0df4f",
+        "size": 4712272
       }
     ]
   },
@@ -186,11 +242,15 @@
     "files": [
       {
         "path": "background.png",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/minecraft/background.png"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/minecraft/background.png",
+        "sha256": "c961a47b8cb6f941a8a83b688ce89116105a20ee38f68b70034f57909783cb6e",
+        "size": 99483
       },
       {
         "path": "title.png",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/minecraft/title.png"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/minecraft/title.png",
+        "sha256": "416559556fbe3eae4fa2c9f12f43e409103d3cb5b785e38a036a1f2ad80c0af6",
+        "size": 119404
       }
     ]
   },
@@ -199,7 +259,9 @@
     "files": [
       {
         "path": "bg.png",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/nier-automata/bg.png"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/nier-automata/bg.png",
+        "sha256": "24c143cb85ca412ebab0f8013b5f0b2c224063ffdec7d4cf70d7d439117b9fd8",
+        "size": 161561
       }
     ]
   },
@@ -208,15 +270,21 @@
     "files": [
       {
         "path": "bg.png",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/ninesols/bg.png"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/ninesols/bg.png",
+        "sha256": "791cd6dc3b4451f6bbd5c3b1b309d7e540f157c60de98fc901c3b48c7720e9a0",
+        "size": 793159
       },
       {
         "path": "font/DejaVuSans.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/ninesols/font/DejaVuSans.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/ninesols/font/DejaVuSans.ttf",
+        "sha256": "08ca98e69d9d8fa1065584b4f9ab7d49b6205abea6572b90e171b254845bb990",
+        "size": 741536
       },
       {
         "path": "logo.png",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/ninesols/logo.png"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/ninesols/logo.png",
+        "sha256": "84329b73a9ee81e94a18e134132830f0e9c331fb3c5618a7a392fe64a8f95925",
+        "size": 163776
       }
     ]
   },
@@ -225,11 +293,15 @@
     "files": [
       {
         "path": "bg.png",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/ninja_gaiden/bg.png"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/ninja_gaiden/bg.png",
+        "sha256": "5bf876b930e4d006803e2de48911fc8526f354c221adafc3930a91c703a129ed",
+        "size": 265063
       },
       {
         "path": "font/Tektur-VariableFont.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/ninja_gaiden/font/Tektur-VariableFont_wdth,wght.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/ninja_gaiden/font/Tektur-VariableFont_wdth,wght.ttf",
+        "sha256": "1ff1792ecc4728cf011d31e43a53a5c97e82f5c7cc7b9f23af24b209106e962c",
+        "size": 162656
       }
     ]
   },
@@ -238,11 +310,15 @@
     "files": [
       {
         "path": "font/NDot55.otf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/nothing/font/NDot55.otf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/nothing/font/NDot55.otf",
+        "sha256": "2ca128bd28c27bcfcc561cdf4539f780446f58b1505278475dc68af702f02d9c",
+        "size": 224708
       },
       {
         "path": "font/NType82.otf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/nothing/font/NType82.otf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/nothing/font/NType82.otf",
+        "sha256": "51afd15702d82b7ceb4819fd7b39805b18de67ed8df8f4ceaf39aa40e208efc3",
+        "size": 23544
       }
     ]
   },
@@ -251,11 +327,15 @@
     "files": [
       {
         "path": "bg.mp4",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-coffee/bg.mp4"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/pixel-coffee/bg.mp4",
+        "sha256": "4dae055f9a0bb80ce605b490dd146431b894cc134d189e421003a51454dae582",
+        "size": 2350926
       },
       {
         "path": "font/PixelifySans-Bold.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-coffee/font/PixelifySans-Bold.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/pixel-coffee/font/PixelifySans-Bold.ttf",
+        "sha256": "7da4a657e842e0266b1f225acfe080756e2b20df064a16edc3733a42d4789ca8",
+        "size": 50872
       }
     ]
   },
@@ -264,11 +344,15 @@
     "files": [
       {
         "path": "bg.mp4",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-cyberpunk/bg.mp4"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/pixel-cyberpunk/bg.mp4",
+        "sha256": "9c65f676144466ad7f64f7353c42deafc18f1cc3e1d2b48998ad0f5123ab122b",
+        "size": 9183955
       },
       {
         "path": "font/PixelifySans-Bold.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-cyberpunk/font/PixelifySans-Bold.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/pixel-cyberpunk/font/PixelifySans-Bold.ttf",
+        "sha256": "7da4a657e842e0266b1f225acfe080756e2b20df064a16edc3733a42d4789ca8",
+        "size": 50872
       }
     ]
   },
@@ -277,11 +361,15 @@
     "files": [
       {
         "path": "bg.mp4",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-dusk-city/bg.mp4"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/pixel-dusk-city/bg.mp4",
+        "sha256": "265b90e56f811338e4dacc5b0e517a1d3a653ba3f7c4f4a8482b605e48f52cd9",
+        "size": 2865191
       },
       {
         "path": "font/PixelifySans-Bold.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-dusk-city/font/PixelifySans-Bold.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/pixel-dusk-city/font/PixelifySans-Bold.ttf",
+        "sha256": "7da4a657e842e0266b1f225acfe080756e2b20df064a16edc3733a42d4789ca8",
+        "size": 50872
       }
     ]
   },
@@ -290,11 +378,15 @@
     "files": [
       {
         "path": "bg.mp4",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-emerald/bg.mp4"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/pixel-emerald/bg.mp4",
+        "sha256": "e904eb50757e5569e6666f3f41acf1f1fbe7427d9143783b923ed9e9a1c88cdb",
+        "size": 15354720
       },
       {
         "path": "font/PixelifySans-Bold.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-emerald/font/PixelifySans-Bold.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/pixel-emerald/font/PixelifySans-Bold.ttf",
+        "sha256": "7da4a657e842e0266b1f225acfe080756e2b20df064a16edc3733a42d4789ca8",
+        "size": 50872
       }
     ]
   },
@@ -303,11 +395,15 @@
     "files": [
       {
         "path": "bg.mp4",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-hollowknight/bg.mp4"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/pixel-hollowknight/bg.mp4",
+        "sha256": "6678f406a6af8b8a566a51fac6d2a96a86258f18b7707e6bcb990d0f247a043f",
+        "size": 40617754
       },
       {
         "path": "font/PixelifySans-Bold.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-hollowknight/font/PixelifySans-Bold.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/pixel-hollowknight/font/PixelifySans-Bold.ttf",
+        "sha256": "7da4a657e842e0266b1f225acfe080756e2b20df064a16edc3733a42d4789ca8",
+        "size": 50872
       }
     ]
   },
@@ -316,11 +412,15 @@
     "files": [
       {
         "path": "bg.mp4",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-munchlax/bg.mp4"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/pixel-munchlax/bg.mp4",
+        "sha256": "896f121b73654c8b1eb9c910226ba1f9b0b660d697e1e98e2c7b1aa96194bf7d",
+        "size": 3473010
       },
       {
         "path": "font/PixelifySans-Bold.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-munchlax/font/PixelifySans-Bold.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/pixel-munchlax/font/PixelifySans-Bold.ttf",
+        "sha256": "7da4a657e842e0266b1f225acfe080756e2b20df064a16edc3733a42d4789ca8",
+        "size": 50872
       }
     ]
   },
@@ -329,11 +429,15 @@
     "files": [
       {
         "path": "bg.mp4",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-night-city/bg.mp4"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/pixel-night-city/bg.mp4",
+        "sha256": "e74465d4c4ded1168c1f3a0e00bf8c05998538a232fbdfc2d1bc5e0c87a8d2ee",
+        "size": 12037452
       },
       {
         "path": "font/PixelifySans-Bold.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-night-city/font/PixelifySans-Bold.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/pixel-night-city/font/PixelifySans-Bold.ttf",
+        "sha256": "7da4a657e842e0266b1f225acfe080756e2b20df064a16edc3733a42d4789ca8",
+        "size": 50872
       }
     ]
   },
@@ -342,11 +446,15 @@
     "files": [
       {
         "path": "bg.mp4",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-rainyroom/bg.mp4"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/pixel-rainyroom/bg.mp4",
+        "sha256": "0c58010f246933296a21c370502927d4e4ac36690baa1671611fd41a98909e36",
+        "size": 14740048
       },
       {
         "path": "font/PixelifySans-Bold.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-rainyroom/font/PixelifySans-Bold.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/pixel-rainyroom/font/PixelifySans-Bold.ttf",
+        "sha256": "7da4a657e842e0266b1f225acfe080756e2b20df064a16edc3733a42d4789ca8",
+        "size": 50872
       }
     ]
   },
@@ -355,11 +463,15 @@
     "files": [
       {
         "path": "bg.mp4",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-sakura/bg.mp4"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/pixel-sakura/bg.mp4",
+        "sha256": "c752929b3dcb2a57d4f35ee8272f231da9d2802209d87154b96e970bbe421b6a",
+        "size": 11450770
       },
       {
         "path": "font/PixelifySans-Bold.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-sakura/font/PixelifySans-Bold.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/pixel-sakura/font/PixelifySans-Bold.ttf",
+        "sha256": "7da4a657e842e0266b1f225acfe080756e2b20df064a16edc3733a42d4789ca8",
+        "size": 50872
       }
     ]
   },
@@ -368,11 +480,15 @@
     "files": [
       {
         "path": "bg.mp4",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-skyscrapers/bg.mp4"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/pixel-skyscrapers/bg.mp4",
+        "sha256": "c56402cd9f5cad1c2f5d923a9677a3758ab152a6cf97a767a638b6aaed5cbedf",
+        "size": 21632174
       },
       {
         "path": "font/PixelifySans-Bold.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-skyscrapers/font/PixelifySans-Bold.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/pixel-skyscrapers/font/PixelifySans-Bold.ttf",
+        "sha256": "7da4a657e842e0266b1f225acfe080756e2b20df064a16edc3733a42d4789ca8",
+        "size": 50872
       }
     ]
   },
@@ -381,11 +497,15 @@
     "files": [
       {
         "path": "bg.mp4",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-waterfall/bg.mp4"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/pixel-waterfall/bg.mp4",
+        "sha256": "5d4ee70254eccd271c5b23f6f3dddc69da8e41cccb4874d43198dd34a181949b",
+        "size": 3062043
       },
       {
         "path": "font/PixelifySans-Bold.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/pixel-waterfall/font/PixelifySans-Bold.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/pixel-waterfall/font/PixelifySans-Bold.ttf",
+        "sha256": "7da4a657e842e0266b1f225acfe080756e2b20df064a16edc3733a42d4789ca8",
+        "size": 50872
       }
     ]
   },
@@ -394,11 +514,15 @@
     "files": [
       {
         "path": "bg.mp4",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/R1999_1/bg.mp4"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/R1999_1/bg.mp4",
+        "sha256": "2048b2c3c3caa45142c65825bac33a9902197f54afe87289308bce7d7e636163",
+        "size": 21155204
       },
       {
         "path": "font/Cinzel-Bold.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/R1999_1/font/Cinzel-Bold.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/R1999_1/font/Cinzel-Bold.ttf",
+        "sha256": "f606ab3a8a0a75863022676ea496478bb0f4d520ae8c40b6050df3d6dbffad20",
+        "size": 77060
       }
     ]
   },
@@ -407,15 +531,21 @@
     "files": [
       {
         "path": "bg.mp4",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/R1999_2/bg.mp4"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/R1999_2/bg.mp4",
+        "sha256": "6a75da81c19749d280b7e7f02987a007eecfa89521661fa0d0290af8d9e7cc0e",
+        "size": 6323204
       },
       {
         "path": "font/Cinzel-Bold.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/R1999_2/font/Cinzel-Bold.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/R1999_2/font/Cinzel-Bold.ttf",
+        "sha256": "f606ab3a8a0a75863022676ea496478bb0f4d520ae8c40b6050df3d6dbffad20",
+        "size": 77060
       },
       {
         "path": "logo.png",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/R1999_2/logo.png"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/R1999_2/logo.png",
+        "sha256": "c97d56f2272dcc03c848c9d43912b7a444dcfd976a2bded6f70df981cc4a9b22",
+        "size": 61345
       }
     ]
   },
@@ -424,7 +554,9 @@
     "files": [
       {
         "path": "bg.mp4",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/star-rail/bg.mp4"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/star-rail/bg.mp4",
+        "sha256": "0d470c88fff7252ef4cac3fea2a29a4305c0cc84fa3384f7af78f7764d20c961",
+        "size": 12489809
       }
     ]
   },
@@ -433,11 +565,15 @@
     "files": [
       {
         "path": "TheLastShuriken.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/sword/font/The%20Last%20Shuriken.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/sword/font/The%20Last%20Shuriken.ttf",
+        "sha256": "9edd03523accde78f242620d44c450876b6450eb4dd0c7293bbc1bc821bf1f4e",
+        "size": 28716
       },
       {
         "path": "bg.mp4",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/sword/bg.mp4"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/sword/bg.mp4",
+        "sha256": "6e8ee0f36d35d507d872ace3a12bf0813eb2db01b42831db2e8f825b2a630809",
+        "size": 43826686
       }
     ]
   },
@@ -446,27 +582,39 @@
     "files": [
       {
         "path": "ter1.png",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/terraria/ter1.png"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/terraria/ter1.png",
+        "sha256": "03857dbd6c6d2bea59e70b41db43815b85a0500038472f71933df466cb5d8f56",
+        "size": 92262
       },
       {
         "path": "ter2.png",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/terraria/ter2.png"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/terraria/ter2.png",
+        "sha256": "84cfa4c6bfa29a2b6072944e495016be3be802f2c4eb0c1658882aede9672ad3",
+        "size": 107595
       },
       {
         "path": "ter3.png",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/terraria/ter3.png"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/terraria/ter3.png",
+        "sha256": "929bd9b291734aa8750540fcbf57e2aea00e67e50fb651a8d95a3866fe0f544b",
+        "size": 116189
       },
       {
         "path": "ter4.png",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/terraria/ter4.png"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/terraria/ter4.png",
+        "sha256": "7c62878dc2c58b66a4bd5ed47a0b3fe28ed7be857d7575cc1c11ccc3fbfffadd",
+        "size": 85345
       },
       {
         "path": "ter5.png",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/terraria/ter5.png"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/terraria/ter5.png",
+        "sha256": "74e38c4acd0b50be4809dfb62770104b211e4dc2566780902273bedaa3d1b134",
+        "size": 92888
       },
       {
         "path": "terraria_logo.png",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/terraria/terraria_logo.png"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/terraria/terraria_logo.png",
+        "sha256": "7b8941dde02eaa5319d1a9c36e29da02fede94fcc63911d570d6d3d8e28732e9",
+        "size": 12570
       }
     ]
   },
@@ -475,11 +623,15 @@
     "files": [
       {
         "path": "Orbitron.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/winter/font/Orbitron-VariableFont_wght.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/winter/font/Orbitron-VariableFont_wght.ttf",
+        "sha256": "46eefc7084fd9abffd87547c47f729b6071c7f7a8d5af281266bb09e5461c435",
+        "size": 38548
       },
       {
         "path": "bg.mp4",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/winter/bg.mp4"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/winter/bg.mp4",
+        "sha256": "47e61fa6ada109c1fb577ef43010289eb00a04f2577ebc61677ddc7c9be1e026",
+        "size": 17692687
       }
     ]
   },
@@ -488,11 +640,15 @@
     "files": [
       {
         "path": "Itim-Regular.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/women-umbrella/font/Itim-Regular.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/women-umbrella/font/Itim-Regular.ttf",
+        "sha256": "acdd351e7e72ab5e3d16cc26cda212c51482905cd83cc5bfb8c799c272e0e09a",
+        "size": 362640
       },
       {
         "path": "bg.png",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/women-umbrella/bg.png"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/women-umbrella/bg.png",
+        "sha256": "8524ac4c367827143b3e2ef9e9abe5700b874ab39e81626878571b07d01c0513",
+        "size": 3025537
       }
     ]
   },
@@ -501,15 +657,21 @@
     "files": [
       {
         "path": "Orbitron.ttf",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/wuwa/font/Orbitron-VariableFont_wght.ttf"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/wuwa/font/Orbitron-VariableFont_wght.ttf",
+        "sha256": "46eefc7084fd9abffd87547c47f729b6071c7f7a8d5af281266bb09e5461c435",
+        "size": 38548
       },
       {
         "path": "bg.mp4",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/wuwa/bg.mp4"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/wuwa/bg.mp4",
+        "sha256": "a9db69711c6ff628000f86b4e33171c935d69909c225620637a6b59d4c83a698",
+        "size": 28229588
       },
       {
         "path": "logo.png",
-        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/main/themes/wuwa/logo.png"
+        "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2ceae33f26e5e660742a5df2f725cbe514/themes/wuwa/logo.png",
+        "sha256": "368b0aecc48bb864f308e65e72ab9036e0380eec89180e1c7f9d2176bdb1f54f",
+        "size": 13208
       }
     ]
   }
