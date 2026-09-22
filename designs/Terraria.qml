@@ -1,5 +1,7 @@
 // source: qylock
 // timebased: 1
+// name: Terraria
+// description: Five screenshots that follow the time of day
 // Port of Darkkal44's qylock "terraria" theme (github.com/Darkkal44/qylock,
 // GPL-3.0). The source picks one of 5 bundled screenshots based on the
 // wall-clock hour; this keeps that behavior exactly, using the same
@@ -14,7 +16,6 @@
 // so every label here uses the shell's normal font.
 import QtQuick
 import qs.Commons
-import "../plugins/io.github.sirjul1337.lock-explorer/designs"
 
 DesignBase {
   id: lock
@@ -143,7 +144,7 @@ DesignBase {
       // following designs but wrong here: this design has its own fixed
       // palette and the border should never clash with an unrelated theme
       // accent. Painting our own border on top, same shape, is the only
-      // way to override that without touching lock-explorer's shared
+      // way to override that without touching the shared
       // component. A child of field (not a sibling) so it still works
       // when field's parent is a Column/Row that forbids anchors on its
       // own children.

@@ -1,4 +1,6 @@
 // source: qylock
+// name: Pixel Sakura
+// description: Pixel art video · Pixelify Sans font
 // Original design inspired by Darkkal44's qylock "pixel-sakura" theme
 // (github.com/Darkkal44/qylock, GPL-3.0). Bundles the source's bg.mp4 and
 // PixelifySans-Bold font for a true-to-source look; the QML itself is
@@ -19,7 +21,6 @@ import QtQuick
 import QtMultimedia
 import Quickshell
 import qs.Commons
-import "../plugins/io.github.sirjul1337.lock-explorer/designs"
 
 DesignBase {
   id: lock

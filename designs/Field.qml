@@ -1,4 +1,6 @@
 // source: qylock
+// name: Field
+// description: Wallpaper from MoeWalls · Orbitron font
 // Original design inspired by Darkkal44's qylock "field" theme
 // (github.com/Darkkal44/qylock, GPL-3.0): a quiet landscape-photo background
 // with a light, shadowed clock tucked in the top-left corner and a minimal
@@ -14,7 +16,6 @@ import QtQuick
 import QtQuick.Effects
 import Quickshell
 import qs.Commons
-import "../plugins/io.github.sirjul1337.lock-explorer/designs"
 
 DesignBase {
   id: lock

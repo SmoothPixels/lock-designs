@@ -1,4 +1,6 @@
 // source: qylock
+// name: Girl Pillow
+// description: Wallpaper from MoeWalls · Itim font
 // Faithful port of Darkkal44's qylock "girl-pillow" theme
 // (github.com/Darkkal44/qylock, GPL-3.0). The QML is written from scratch
 // against Omarchy's DesignBase/LockInput, not copied from qylock's GPL
@@ -9,7 +11,6 @@
 import QtQuick
 import Quickshell
 import qs.Commons
-import "../plugins/io.github.sirjul1337.lock-explorer/designs"
 
 DesignBase {
   id: lock

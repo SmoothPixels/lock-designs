@@ -1,4 +1,6 @@
 // source: qylock
+// name: Pixel Coffee
+// description: Pixel art video from MoeWalls · Pixelify Sans font
 // Original design inspired by Darkkal44's qylock "pixel-coffee" theme
 // (github.com/Darkkal44/qylock, GPL-3.0). Bundles the source's bg.mp4 and
 // its PixelifySans-Bold font (bundled alongside this file in
@@ -17,7 +19,6 @@ import QtQuick
 import QtMultimedia
 import Quickshell
 import qs.Commons
-import "../plugins/io.github.sirjul1337.lock-explorer/designs"
 
 DesignBase {
   id: lock

@@ -1,4 +1,6 @@
 // source: qylock
+// name: Clockwork Tape
+// description: Clock mechanism wallpaper from Wallsflow · Outfit font
 // Original design inspired by Darkkal44's qylock "clockwork/tape" theme
 // (github.com/Darkkal44/qylock, GPL-3.0): three vertical "film reel" columns
 // (hour/minute/second) with sprocket holes down the sides and a sepia/gold
@@ -16,7 +18,6 @@
 import QtQuick
 import Quickshell
 import qs.Commons
-import "../plugins/io.github.sirjul1337.lock-explorer/designs"
 
 DesignBase {
   id: lock
@@ -25,7 +26,11 @@ DesignBase {
   readonly property string assetsUrl: Qt.resolvedUrl("clockwork-tape-assets/")
   property color bg: "#060504"
   property color mainText: "#e8dcc8"
-  property color dimText: "#5a5040"
+  property color dimText: "#8a7f6a"
+  // The reels were laid out in 1080p pixels; scale the whole group with the
+  // screen so they keep their proportions on larger panels.
+  readonly property real u: Math.min(width, height) / 100
+  readonly property real k: Math.max(1, u / 10.8)
   property color accent: "#d4a44c"
   property color tapeBg: "#0c0b09"
   property color tapeBorder: "#2a2418"
@@ -133,6 +138,8 @@ DesignBase {
   Column {
     anchors.centerIn: parent
     spacing: 20
+    scale: lock.k
+    transformOrigin: Item.Center
 
     Row {
       id: tapeRow
@@ -158,11 +165,11 @@ DesignBase {
   Text {
     anchors.horizontalCenter: parent.horizontalCenter
     anchors.bottom: parent.bottom
-    anchors.bottomMargin: 128
+    anchors.bottomMargin: Math.round(lock.u * 12)
     text: lock.userName.toUpperCase()
     color: lock.mainText
     font.family: outfit.name
-    font.pixelSize: 12
+    font.pixelSize: Math.round(lock.u * 1.2)
     font.letterSpacing: 4
   }
 
@@ -173,9 +180,9 @@ DesignBase {
     placeholderColor: lock.dimText
     anchors.horizontalCenter: parent.horizontalCenter
     anchors.bottom: parent.bottom
-    anchors.bottomMargin: 64
-    width: 340
-    height: 54
+    anchors.bottomMargin: Math.round(lock.u * 6)
+    width: Math.round(lock.u * 28)
+    height: Math.round(lock.u * 4.3)
     radius: 4
     color: lock.tapeBg
     placeholder: "Enter key"
@@ -186,7 +193,7 @@ DesignBase {
     // following designs but wrong here: this design has its own fixed
     // palette and the border should never clash with an unrelated theme
     // accent. Painting our own border on top, same shape, is the only
-    // way to override that without touching lock-explorer's shared
+    // way to override that without touching the shared
     // component. A child of field (not a sibling) so it still works
     // when field's parent is a Column/Row that forbids anchors on its
     // own children.

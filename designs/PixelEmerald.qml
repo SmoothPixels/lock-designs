@@ -1,4 +1,6 @@
 // source: qylock
+// name: Pixel Emerald
+// description: Pixel art video · Pixelify Sans font
 // Original design inspired by Darkkal44's qylock "pixel-emerald" theme
 // (github.com/Darkkal44/qylock, GPL-3.0), styled after a certain
 // Game-Boy-era monster-trainer RPG's menu chrome. Bundles the source's
@@ -19,7 +21,6 @@ import QtQuick
 import QtMultimedia
 import Quickshell
 import qs.Commons
-import "../plugins/io.github.sirjul1337.lock-explorer/designs"
 
 DesignBase {
   id: lock

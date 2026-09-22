@@ -1,4 +1,6 @@
 // source: qylock
+// name: Nothing
+// description: NDot55 and NType82 fonts
 // Original design inspired by Darkkal44's qylock "nothing" theme
 // (github.com/Darkkal44/qylock, GPL-3.0), styled after Nothing OS's
 // dot-matrix/glyph look. Bundles the source's NDot55 and NType82 fonts
@@ -17,7 +19,6 @@
 import QtQuick
 import Quickshell
 import qs.Commons
-import "../plugins/io.github.sirjul1337.lock-explorer/designs"
 
 DesignBase {
   id: lock

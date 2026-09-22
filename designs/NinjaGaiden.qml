@@ -1,4 +1,6 @@
 // source: qylock
+// name: Ninja Gaiden
+// description: Art from Noisy Pixel · Tektur font
 // Original design inspired by Darkkal44's qylock "ninja_gaiden" theme
 // (github.com/Darkkal44/qylock, GPL-3.0). Bundles the source's bg.png and
 // its Tektur variable-weight font (bundled alongside this file in
@@ -15,7 +17,6 @@
 import QtQuick
 import Quickshell
 import qs.Commons
-import "../plugins/io.github.sirjul1337.lock-explorer/designs"
 
 DesignBase {
   id: lock

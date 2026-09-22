@@ -1,4 +1,6 @@
 // source: qylock
+// name: Honkai: Star Rail
+// description: Video from YouTube
 // Port of Darkkal44's qylock "star-rail" theme (github.com/Darkkal44/qylock,
 // GPL-3.0). Keeps the source's looping bg.mp4 (bundled in star-rail-assets/)
 // and its gold/blue palette. Written from scratch against Omarchy's
@@ -10,7 +12,6 @@
 import QtQuick
 import QtMultimedia
 import qs.Commons
-import "../plugins/io.github.sirjul1337.lock-explorer/designs"
 
 DesignBase {
   id: lock
@@ -138,7 +139,7 @@ DesignBase {
       // following designs but wrong here: this design has its own fixed
       // palette and the border should never clash with an unrelated theme
       // accent. Painting our own border on top, same shape, is the only
-      // way to override that without touching lock-explorer's shared
+      // way to override that without touching the shared
       // component. A child of field (not a sibling) so it still works
       // when field's parent is a Column/Row that forbids anchors on its
       // own children.

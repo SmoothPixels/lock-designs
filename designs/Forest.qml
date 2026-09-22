@@ -1,4 +1,6 @@
 // source: qylock
+// name: Forest
+// description: Early morning forest video from MoeWalls · Figtree font
 // Original design inspired by Darkkal44's qylock "forest" theme
 // (github.com/Darkkal44/qylock, GPL-3.0): a forest video background behind
 // frosted "liquid glass" panels -- a rounded pebble holding the clock in the
@@ -18,7 +20,6 @@ import QtQuick.Effects
 import QtMultimedia
 import Quickshell
 import qs.Commons
-import "../plugins/io.github.sirjul1337.lock-explorer/designs"
 
 DesignBase {
   id: lock
@@ -154,7 +155,7 @@ DesignBase {
         // following designs but wrong here: this design has its own fixed
         // palette and the border should never clash with an unrelated theme
         // accent. Painting our own border on top, same shape, is the only
-        // way to override that without touching lock-explorer's shared
+        // way to override that without touching the shared
         // component. A child of field (not a sibling) so it still works
         // when field's parent is a Column/Row that forbids anchors on its
         // own children.

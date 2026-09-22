@@ -1,4 +1,6 @@
 // source: qylock
+// name: Pixel Cyberpunk
+// description: Pixel art video from Pixiv · Pixelify Sans font
 // Faithful port of Darkkal44's qylock "pixel-cyberpunk" theme
 // (github.com/Darkkal44/qylock, GPL-3.0). Unlike StarryCity — an unrelated
 // original design — this one deliberately keeps the source's fixed neon
@@ -25,7 +27,6 @@ import QtMultimedia
 import Quickshell
 import Quickshell.Io
 import qs.Commons
-import "../plugins/io.github.sirjul1337.lock-explorer/designs"
 
 DesignBase {
   id: lock

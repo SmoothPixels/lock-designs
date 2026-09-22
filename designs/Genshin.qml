@@ -1,5 +1,7 @@
 // source: qylock
 // timebased: 1
+// name: Genshin Impact
+// description: Dawn, day, dusk and night clips picked by the hour
 // Port of Darkkal44's qylock "Genshin" theme (github.com/Darkkal44/qylock,
 // GPL-3.0). The source cycles through 4 bundled videos (dawn/day/dusk/night)
 // based on the wall-clock hour; this keeps that behavior exactly, using the
@@ -14,7 +16,6 @@
 import QtQuick
 import QtMultimedia
 import qs.Commons
-import "../plugins/io.github.sirjul1337.lock-explorer/designs"
 
 DesignBase {
   id: lock
@@ -171,7 +172,7 @@ DesignBase {
       // following designs but wrong here: this design has its own fixed
       // palette and the border should never clash with an unrelated theme
       // accent. Painting our own border on top, same shape, is the only
-      // way to override that without touching lock-explorer's shared
+      // way to override that without touching the shared
       // component. A child of field (not a sibling) so it still works
       // when field's parent is a Column/Row that forbids anchors on its
       // own children.

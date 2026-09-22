@@ -1,4 +1,6 @@
 // source: qylock
+// name: Girl Coffee
+// description: Wallpaper from MoeWalls · Itim font
 // Original design inspired by Darkkal44's qylock "girl-coffee" theme
 // (github.com/Darkkal44/qylock, GPL-3.0): a cozy illustrated background with
 // a cream rounded card on the left holding a greeting, clock, date, a
@@ -12,7 +14,6 @@ import QtQuick
 import QtQuick.Effects
 import Quickshell
 import qs.Commons
-import "../plugins/io.github.sirjul1337.lock-explorer/designs"
 
 DesignBase {
   id: lock
@@ -141,7 +142,7 @@ DesignBase {
         // following designs but wrong here: this design has its own fixed
         // palette and the border should never clash with an unrelated theme
         // accent. Painting our own border on top, same shape, is the only
-        // way to override that without touching lock-explorer's shared
+        // way to override that without touching the shared
         // component. A child of field (not a sibling) so it still works
         // when field's parent is a Column/Row that forbids anchors on its
         // own children.
