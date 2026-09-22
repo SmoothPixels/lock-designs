@@ -1,0 +1,6 @@
+// A fragment for ~/.config/omarchy/extensions/omarchy-menu.jsonc, not a full
+// file. Install it with tools/install-menu-entries.sh, which splices this key
+// into your own extension file. Adds Style > Lock Designs, which opens the
+// Lock Designs picker. The key and aliases match earlier lock screen picker
+// rows, so an existing row is swapped rather than doubled.
+  "style.lockscreen": {"icon":"󰌾","label":"Lock Designs","aliases":["lockscreen","lock-screen","lock-designs"],"description":"Pick a lock screen design","action":"omarchy-shell lock explore"},
