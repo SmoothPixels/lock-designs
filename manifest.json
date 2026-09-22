@@ -2,15 +2,20 @@
   "schemaVersion": 1,
   "id": "io.github.smoothpixels.lock-designs",
   "name": "Lock Designs",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "Jean Alvarado",
   "license": "MIT",
-  "description": "A collection of extra lock screen designs for Lock Screen Explorer: fresh QML ports of qylock themes plus original wallsflow video wallpaper designs.",
+  "description": "A lock screen for Omarchy with 58 designs and a picker: thirteen theme-following originals, fresh QML ports of qylock themes and wallsflow video wallpapers. Video and font assets download on demand and are verified against pinned SHA-256 digests.",
   "kinds": [
-    "service"
+    "service",
+    "overlay"
   ],
   "keepLoaded": true,
   "entryPoints": {
-    "service": "Service.qml"
+    "service": "Service.qml",
+    "overlay": "Picker.qml"
+  },
+  "omarchy": {
+    "clonedFrom": "omarchy.lock"
   }
 }

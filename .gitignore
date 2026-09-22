@@ -14,3 +14,7 @@
 !porsche-911-darkness-assets/
 !skyline-r34-rain-assets/
 !supercar-sakura-assets/
+
+# Local test output for the SDDM theme, never the real config.
+sddm/lock-designs/theme.conf.user
+sddm/lock-designs/current/
