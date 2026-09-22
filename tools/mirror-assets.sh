@@ -37,19 +37,25 @@ CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/lock-designs/pin/$COMMIT"
 gh release view "$TAG" >/dev/null 2>&1 || gh release create "$TAG" --title "Assets $TAG" --notes "Verified asset mirror for designs/thirdparty-assets.json. Every file's SHA-256 is recorded in the catalog." --latest=false
 
 results="$(mktemp)"
-trap 'rm -f "$results"' EXIT
-while IFS=$'\t' read -r id path sha; do
+stage="$(mktemp -d)"
+trap 'rm -rf "$stage" "$results"' EXIT
+while IFS=$'\t' read -r id path sha url; do
   if (( FONTS_ONLY )) && [[ ! ${path,,} =~ \.(ttf|otf)$ ]]; then continue; fi
+  # Files already served from a release of this repository need no mirror.
+  if [[ $url == https://github.com/$REPO/releases/download/* ]]; then continue; fi
   src="$CACHE/$id/$path"
   [[ -f $src ]] || { echo "missing from cache: $src" >&2; exit 1; }
   got=$(sha256sum "$src" | cut -d' ' -f1)
   [[ $got == "$sha" ]] || { echo "cache file does not match catalog digest: $id/$path" >&2; exit 1; }
   # Release asset names are flat; keep them unique and readable.
+  # gh names an asset after the file it is given (the #label form only sets a
+  # display label), so stage a link under the flat name first.
   asset="${id#my-}--${path//\//__}"
+  ln -sf "$src" "$stage/$asset"
   echo "uploading $asset"
-  gh release upload "$TAG" "$src#$asset" --clobber >/dev/null
+  gh release upload "$TAG" "$stage/$asset" --clobber >/dev/null
   printf '%s\t%s\t%s\n' "$id" "$path" "https://github.com/$REPO/releases/download/$TAG/$asset" >> "$results"
-done < <(jq -r 'to_entries[] | .key as $id | .value.files[] | [$id, .path, .sha256] | @tsv' "$CATALOG")
+done < <(jq -r 'to_entries[] | .key as $id | .value.files[] | [$id, .path, .sha256, .url] | @tsv' "$CATALOG")
 
 merged=$(jq -Rs 'split("\n") | map(select(length > 0) | split("\t")) | map({ key: (.[0] + "\t" + .[1]), value: .[2] }) | from_entries' "$results")
 jq --argjson m "$merged" '
