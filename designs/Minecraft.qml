@@ -32,7 +32,7 @@ DesignBase {
   property color textGray: "#aaaaaa"
   property color textRed: "#ff5555"
 
-  readonly property var splashes: ["I use Arch btw", "|||RTFM!|||", "sudo rm -rf /", "Kernel Panic!", "Btw I use Omarchy!", "Pacman -Syu", "chmod 777", "Segmentation Fault"]
+  readonly property var splashes: ["I use Arch btw", "|||RTFM!|||", "Have you tried rebooting?", "Kernel Panic!", "Btw I use Omarchy!", "Updating 512 packages!", "chmod 777", "Segmentation Fault"]
   property string splash: splashes[Math.floor(Math.random() * splashes.length)]
 
   Rectangle { anchors.fill: parent; color: "#1e1e1e" }
