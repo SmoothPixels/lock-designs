@@ -104,8 +104,8 @@ DesignBase {
     property string digit: "0"
     readonly property real glassW: lock.u * 12.5
     readonly property real glassH: lock.u * 25
-    readonly property real k: glassH * 0.5 / 160
-    readonly property real digitY: glassH * 0.20
+    readonly property real k: glassH * 0.52 / 160
+    readonly property real digitY: (glassH - 160 * k) / 2 - lock.u * 0.6
     width: glassW
     height: glassH + lock.u * 6.4
 
@@ -129,6 +129,19 @@ DesignBase {
         height: Math.max(2, lock.u * 0.3)
         radius: height / 2
         color: lock.withAlpha(Color.foreground, 0.22)
+      }
+      // The digit's light falling on the socket.
+      Rectangle {
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.margins: 2
+        height: parent.height * 0.5
+        radius: parent.radius
+        gradient: Gradient {
+          GradientStop { position: 0; color: lock.withAlpha(lock.neon, 0.16) }
+          GradientStop { position: 1; color: "transparent" }
+        }
       }
     }
     Row {
@@ -156,8 +169,31 @@ DesignBase {
       radius: width / 2
       color: Qt.rgba(0, 0, 0, 0.34)
       border.width: 1
-      border.color: lock.withAlpha(Color.foreground, 0.16)
+      border.color: lock.withAlpha(Color.foreground, 0.22)
       clip: true
+
+      // Ionised gas: a soft orange fill around the lit digit that fades out
+      // toward the glass, which is what makes a real tube look lit from
+      // inside rather than a shape drawn on black.
+      Shape {
+        id: gas
+        anchors.fill: parent
+        preferredRendererType: Shape.CurveRenderer
+        ShapePath {
+          strokeWidth: 0
+          fillGradient: RadialGradient {
+            centerX: gas.width / 2
+            centerY: tube.digitY + 80 * tube.k
+            focalX: centerX
+            focalY: centerY
+            centerRadius: gas.width * 0.95
+            GradientStop { position: 0; color: lock.withAlpha(lock.neon, 0.30) }
+            GradientStop { position: 0.45; color: lock.withAlpha(lock.neon, 0.10) }
+            GradientStop { position: 1; color: "transparent" }
+          }
+          PathSvg { path: "M 0 0 H " + gas.width + " V " + gas.height + " H 0 Z" }
+        }
+      }
 
       // The nine unlit cathodes, stacked with a hint of depth.
       Repeater {
@@ -170,33 +206,52 @@ DesignBase {
           k: tube.k
           x: (glass.width - width) / 2 + (index - 4.5) * lock.u * 0.09
           y: tube.digitY + (index - 4.5) * lock.u * 0.05
-          stroke: lock.withAlpha(Color.foreground, 0.055)
-          thickness: 6
+          stroke: Qt.rgba(0, 0, 0, 0.24)
+          thickness: 5
         }
       }
 
       // The lit cathode: a wide glow, a tight glow, the wire, a hot core.
       Item {
-        x: (glass.width - width) / 2
-        y: tube.digitY
-        width: 100 * tube.k
-        height: 160 * tube.k
-        layer.enabled: true
-        layer.effect: MultiEffect { blurEnabled: true; blur: 1.0; blurMax: 64; brightness: 0.2 }
-        opacity: 0.85
-        Wire { anchors.fill: parent; ch: tube.digit; k: tube.k; stroke: lock.neon; thickness: 9 }
+        id: lit
+        anchors.fill: parent
+
+        // Striking a new digit: the glow dips and recovers.
+        NumberAnimation {
+          id: strike
+          target: lit
+          property: "opacity"
+          from: 0.25
+          to: 1
+          duration: 260
+          easing.type: Easing.OutCubic
+        }
+        Connections {
+          target: tube
+          function onDigitChanged() { if (!lock.videoPlaying) strike.restart() }
+        }
+
+        Item {
+          x: (glass.width - width) / 2
+          y: tube.digitY
+          width: 100 * tube.k
+          height: 160 * tube.k
+          layer.enabled: true
+          layer.effect: MultiEffect { blurEnabled: true; blur: 1.0; blurMax: 96; brightness: 0.25 }
+          Wire { anchors.fill: parent; ch: tube.digit; k: tube.k; stroke: lock.neon; thickness: 12 }
+        }
+        Item {
+          x: (glass.width - width) / 2
+          y: tube.digitY
+          width: 100 * tube.k
+          height: 160 * tube.k
+          layer.enabled: true
+          layer.effect: MultiEffect { blurEnabled: true; blur: 0.6; blurMax: 20; brightness: 0.35 }
+          Wire { anchors.fill: parent; ch: tube.digit; k: tube.k; stroke: lock.neon; thickness: 9 }
+        }
+        Wire { x: (glass.width - width) / 2; y: tube.digitY; ch: tube.digit; k: tube.k; stroke: lock.neon; thickness: 7 }
+        Wire { x: (glass.width - width) / 2; y: tube.digitY; ch: tube.digit; k: tube.k; stroke: lock.core; thickness: 3 }
       }
-      Item {
-        x: (glass.width - width) / 2
-        y: tube.digitY
-        width: 100 * tube.k
-        height: 160 * tube.k
-        layer.enabled: true
-        layer.effect: MultiEffect { blurEnabled: true; blur: 0.5; blurMax: 16; brightness: 0.3 }
-        Wire { anchors.fill: parent; ch: tube.digit; k: tube.k; stroke: lock.neon; thickness: 8 }
-      }
-      Wire { x: (glass.width - width) / 2; y: tube.digitY; ch: tube.digit; k: tube.k; stroke: lock.neon; thickness: 7 }
-      Wire { x: (glass.width - width) / 2; y: tube.digitY; ch: tube.digit; k: tube.k; stroke: lock.core; thickness: 3 }
 
       // Glass: a sheen over the dome and a streak down the left.
       Rectangle {
