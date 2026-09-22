@@ -1,11 +1,11 @@
 // source: wallsflow
 // name: Skyline R34 Rain
-// description: Wallsflow live wallpaper, bundled at 1080p
+// description: Wallsflow live wallpaper, 1080p
 // "Pink Flower Field Nissan Skyline R34 Rain" live wallpaper (wallsflow.com),
 // used as a lock screen background with a clock, date and the shared
-// password field over it — see BlackCatWater.qml's header for why this is a
-// fresh minimal layout rather than a ported UI, and why the video is
-// bundled locally instead of fetched on demand.
+// password field over it;
+// see BlackCatWater.qml's header for why this is a fresh minimal layout
+// rather than a ported UI, and where the video comes from.
 import QtQuick
 import QtQuick.Effects
 import QtMultimedia

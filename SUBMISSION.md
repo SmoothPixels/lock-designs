@@ -32,7 +32,9 @@ Lock Screen
 A lock screen for Omarchy with 58 designs and a picker: thirteen originals
 that follow the active Omarchy theme with nothing to download, 38 fresh QML
 ports of themes from Darkkal44/qylock (GPL-3.0), and 7 original video
-wallpaper designs built from wallsflow.com live wallpapers.
+wallpaper designs built from wallsflow.com live wallpapers. Every video,
+image and font downloads on demand; the repository holds only QML,
+thumbnails and the catalog.
 
 It is a clone of omarchy.lock (manifest `omarchy.clonedFrom`), so the
 session lock, PAM password and fingerprint flows, blanking and stranded-lock
@@ -52,8 +54,11 @@ with media paths accepted only inside that folder). The picker can launch the la
 terminal, where sudo asks for the password; nothing is installed without it.
 
 Network access: on-demand asset downloads only, when the user clicks
-Download. Every URL in designs/thirdparty-assets.json is pinned to a full
-commit of Darkkal44/qylock and carries a repository-owned SHA-256 and size.
+Download. Every URL in designs/thirdparty-assets.json carries a
+repository-owned SHA-256 and size and points at an immutable source: a full
+commit of Darkkal44/qylock for the qylock ports, or the media-1 GitHub
+release of this repository for the seven wallsflow videos (kept out of git
+so a clone stays small).
 The downloader fetches to a .part file, verifies the digest, and only then
 publishes the file; entries without a digest are refused and mismatches are
 discarded and reported. tools/pin-assets.sh regenerates the catalog,

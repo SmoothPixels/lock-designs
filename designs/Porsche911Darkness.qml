@@ -1,11 +1,11 @@
 // source: wallsflow
 // name: Porsche 911 Darkness
-// description: Wallsflow live wallpaper, bundled
+// description: Wallsflow live wallpaper
 // "Porsche 911 Timeless Performance in Darkness" live wallpaper
 // (wallsflow.com), used as a lock screen background with a clock, date and
-// the shared password field over it — see BlackCatWater.qml's header for
-// why this is a fresh minimal layout rather than a ported UI, and why the
-// video is bundled locally instead of fetched on demand.
+// the shared password field over it;
+// see BlackCatWater.qml's header for why this is a fresh minimal layout
+// rather than a ported UI, and where the video comes from.
 import QtQuick
 import QtQuick.Effects
 import QtMultimedia

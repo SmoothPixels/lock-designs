@@ -1,19 +1,10 @@
-# Real video/font assets for Third Party designs are fetched on demand
-# (see the "Download" button in the lock screen picker) and can be
-# regenerated from thirdparty-assets.json at any time, never commit them,
-# that's the entire point of the download-on-demand design.
+# Video, image and font assets for downloadable designs are fetched on
+# demand (the Download button in the picker) from the URLs in
+# designs/thirdparty-assets.json and verified against its digests. The
+# wallsflow videos live on this repository's own GitHub release. Never
+# commit any of them; that is the entire point of the download-on-demand
+# design and it keeps a clone small.
 *-assets/
-
-# The wallsflow-sourced designs below have no legitimate re-download URL
-# (their CDN blocks scripted access), so their videos are committed
-# directly instead of going through the download-on-demand system.
-!anime-girl-gtr-assets/
-!black-cat-water-assets/
-!moonlit-rooftop-cat-assets/
-!nissan-350z-night-assets/
-!porsche-911-darkness-assets/
-!skyline-r34-rain-assets/
-!supercar-sakura-assets/
 
 # Local test output for the SDDM theme, never the real config.
 sddm/lock-designs/theme.conf.user

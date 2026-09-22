@@ -1,20 +1,18 @@
 // source: wallsflow
 // name: Black Cat Water
-// description: Wallsflow live wallpaper, bundled
+// description: Wallsflow live wallpaper
 // "Black Cat Glowing Water" live wallpaper (wallsflow.com), used here as a
 // lock screen background with a clock, date and the shared password field
 // over it. Unlike the qylock ports elsewhere in this folder, there is no
-// theme/UI to port — wallsflow only distributes the video itself — so this
+// theme or UI to port, wallsflow only distributes the video itself, so this
 // is a fresh, minimal DesignBase layout built around it, not a
 // reinterpretation of someone else's screen design.
 //
-// The video is bundled locally (~/.config/omarchy/lock-designs/
-// black-cat-water-assets/bg.mp4) rather than fetched on demand like the
-// qylock designs: wallsflow's video CDN sits behind a Cloudflare bot
-// challenge that blocks plain curl, so there is no URL that could actually
-// go in thirdparty-assets.json. That also means this design (and its two
-// siblings) only works on a machine where the video has been placed by
-// hand — there is no legitimate re-download path.
+// The video is fetched on demand like every other downloadable design,
+// from this plugin's own GitHub release (see designs/thirdparty-assets.json),
+// because wallsflow's CDN sits behind a bot challenge that blocks plain
+// curl and offers no URL that could be pinned. The catalog carries the
+// file's SHA-256, so the downloader verifies it like any other asset.
 import QtQuick
 import QtQuick.Effects
 import QtMultimedia

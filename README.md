@@ -53,7 +53,7 @@ Browsing is cheap on purpose: cards show a small JPEG, so scrolling never starts
 
 ## Assets and verification
 
-Most qylock ports fetch their video, image and font files on demand, so this repository stays small. Every entry in `designs/thirdparty-assets.json` points at a full commit of `Darkkal44/qylock` and carries the file's SHA-256 and size:
+Every design with a video, image or font fetches it on demand, so a clone of this repository stays small. Each entry in `designs/thirdparty-assets.json` carries the file's SHA-256 and size and points at an immutable source: a full commit of `Darkkal44/qylock` for the qylock ports, or a GitHub release of this repository for the wallsflow videos:
 
 ```json
 "my-forest": {
@@ -72,13 +72,13 @@ Most qylock ports fetch their video, image and font files on demand, so this rep
 
 The downloader fetches each file to a `.part` file, hashes it, and only moves it into place when the digest matches. A catalog entry without a digest is refused outright, and a mismatch is reported on the card and the file discarded. Optional `mirrors` are tried in order after `url`; the digest has to match whichever source answered, so a mirror can never weaken the check. The only network access this plugin ever makes is these downloads, and only when you ask for one.
 
-Downloaded assets live in `~/.config/omarchy/lock-designs/<design>-assets/`. The 7 wallsflow-sourced designs bundle their video directly, because that site blocks scripted downloads.
+Downloaded assets live in `~/.config/omarchy/lock-designs/<design>-assets/`. The 7 wallsflow videos are served from the `media-1` release of this repository, because wallsflow's own CDN blocks scripted downloads and offers nothing that could be pinned; their digests sit in the same catalog and go through the same check.
 
 Maintainer tools:
 
 | Tool | Purpose |
 |---|---|
-| `tools/pin-assets.sh <commit>` | Re-point every URL at a qylock commit and record fresh digests and sizes |
+| `tools/pin-assets.sh <commit>` | Re-point every qylock URL at a commit and record fresh digests and sizes for every file, release-hosted ones included |
 | `tools/verify-assets.sh` | Check every downloaded asset on this machine against the catalog |
 | `tools/mirror-assets.sh <tag>` | Optional: publish the pinned set as a GitHub release and add the URLs as mirrors (read the licensing note in the script first) |
 
@@ -182,7 +182,7 @@ Horizon, Tide, Fireflies, Spotlight, Starry City, Pixel Pet and Circuit animate;
 | **Porsche 911 Darkness**<br><img src="assets/Porsche911Darkness.gif" width="380"/> | **Supercar Sakura**<br><img src="assets/SupercarSakura.gif" width="380"/> |
 | **Skyline R34 Rain**<br><img src="assets/SkylineR34Rain.gif" width="380"/> | |
 
-`SkylineR34Rain.qml`'s video is re-encoded to 1080p (down from the original 4K source, which was 113MB, over GitHub's 100MB per-file limit) to fit in this repo at a fraction of the size with no visible quality loss on a lock screen background.
+`SkylineR34Rain.qml`'s video is a 1080p re-encode of the 4K original, made when the videos still lived in git and had to fit under GitHub's per-file limit; it has no visible quality loss as a lock screen background. The other six are the 4K originals.
 
 ### Qylock ports
 
@@ -251,7 +251,7 @@ The QML in this repo is written from scratch, none of it is copy-pasted from qyl
 
 ### Wallsflow originals
 
-Videos bundled directly in this repo, wallsflow's CDN blocks scripted downloads, so there is no on-demand fetch option for these.
+Downloaded on demand from the `media-1` release of this repository and verified against the catalog, since wallsflow's CDN blocks scripted downloads and has nothing that could be pinned.
 
 | Design | Wallpaper source |
 |---|---|

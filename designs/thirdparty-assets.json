@@ -674,5 +674,82 @@
         "size": 13208
       }
     ]
+  },
+  "my-animegirlgtr": {
+    "assetsDir": "anime-girl-gtr-assets",
+    "files": [
+      {
+        "path": "bg.mp4",
+        "url": "https://github.com/SmoothPixels/lock-designs/releases/download/media-1/animegirlgtr--bg.mp4",
+        "sha256": "4179272f923af7ea5ef133df9f51e82eec7665ffbf1023f272075fb4c7393546",
+        "size": 20668578
+      }
+    ]
+  },
+  "my-blackcatwater": {
+    "assetsDir": "black-cat-water-assets",
+    "files": [
+      {
+        "path": "bg.mp4",
+        "url": "https://github.com/SmoothPixels/lock-designs/releases/download/media-1/blackcatwater--bg.mp4",
+        "sha256": "68265c8a27abb482da6b078f3637ac832cf5fcb725746c69c16e40b93c142f18",
+        "size": 84682313
+      }
+    ]
+  },
+  "my-moonlitroofcat": {
+    "assetsDir": "moonlit-rooftop-cat-assets",
+    "files": [
+      {
+        "path": "bg.mp4",
+        "url": "https://github.com/SmoothPixels/lock-designs/releases/download/media-1/moonlitroofcat--bg.mp4",
+        "sha256": "481ea913d9c1177af889a18f520c1d8cbdcd7ccd11f48061f88f4c3ea03052fa",
+        "size": 17436205
+      }
+    ]
+  },
+  "my-nissan350znight": {
+    "assetsDir": "nissan-350z-night-assets",
+    "files": [
+      {
+        "path": "bg.mp4",
+        "url": "https://github.com/SmoothPixels/lock-designs/releases/download/media-1/nissan350znight--bg.mp4",
+        "sha256": "d3e8024588a72d2fa306e40b34f6c5e451f9918739438f26358433ce6e67efba",
+        "size": 46991038
+      }
+    ]
+  },
+  "my-porsche911darkness": {
+    "assetsDir": "porsche-911-darkness-assets",
+    "files": [
+      {
+        "path": "bg.mp4",
+        "url": "https://github.com/SmoothPixels/lock-designs/releases/download/media-1/porsche911darkness--bg.mp4",
+        "sha256": "091e07ee3985a687f5e28334731c9f01b8eccf81e48bf4e925a200726981384d",
+        "size": 8756843
+      }
+    ]
+  },
+  "my-skyliner34rain": {
+    "assetsDir": "skyline-r34-rain-assets",
+    "files": [
+      {
+        "path": "bg.mp4",
+        "url": "https://github.com/SmoothPixels/lock-designs/releases/download/media-1/skyliner34rain--bg.mp4",
+        "sha256": "acb939039c134d2383e9b5c9742e828e30cb8379da76718dd3f17a5e0393a31d",
+        "size": 7949382
+      }
+    ]
+  },
+  "my-supercarsakura": {
+    "assetsDir": "supercar-sakura-assets",
+    "files": [
+      {
+        "path": "bg.mp4",
+        "url": "https://github.com/SmoothPixels/lock-designs/releases/download/media-1/supercarsakura--bg.mp4",
+        "sha256": "f34433c2c58560b05c395faf6f1a5d54f04f1557c7885234c2e1a1f643bc8446",
+        "size": 61402817
+      }
+    ]
   }
 }

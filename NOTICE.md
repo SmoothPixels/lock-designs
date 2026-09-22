@@ -19,8 +19,9 @@ into or redistributed from this repository, so this plugin stays MIT despite
 the inspiration. Full credit for those assets, and the original wallpaper
 artists behind them, is in `README.md`.
 
-The `designs/*-assets/` folders bundled directly in this repository (the
-wallsflow car and cat designs) are original video wallpapers from
-[wallsflow.com](https://wallsflow.com), bundled because that site blocks
-scripted downloads, so there is no URL for this plugin to fetch them from
-later. See `README.md` for per-design credit links.
+The seven car and cat designs marked `// source: wallsflow` use live
+wallpapers from [wallsflow.com](https://wallsflow.com). That site blocks
+scripted downloads and has no URL that could be pinned, so those videos are
+attached to a GitHub release of this repository and fetched from there on
+demand, with their SHA-256 digests in the same catalog. Nothing in git holds
+them. See `README.md` for per-design credit links.
