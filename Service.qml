@@ -542,11 +542,23 @@ Item {
     if (loginInstallProc.running) return
     loginInstallProc.command = ["omarchy-launch-floating-terminal-with-presentation", "sudo " + shq(pluginDir + "/tools/install-login-theme.sh")]
     loginInstallProc.running = true
+    loginInstallWatch.expectInstalled = true
     loginInstallWatch.remaining = 40
     loginInstallWatch.restart()
   }
 
   function shq(s) { return "'" + String(s).replace(/'/g, "'\\''") + "'" }
+
+  // Same terminal, same script with --remove: puts SDDM back on Omarchy's
+  // theme and deletes the installed files, then re-checks so the tab updates.
+  function removeLoginTheme() {
+    if (loginInstallProc.running) return
+    loginInstallProc.command = ["omarchy-launch-floating-terminal-with-presentation", "sudo " + shq(pluginDir + "/tools/install-login-theme.sh") + " --remove"]
+    loginInstallProc.running = true
+    loginInstallWatch.expectInstalled = false
+    loginInstallWatch.remaining = 40
+    loginInstallWatch.restart()
+  }
 
   function performLoginSync() {
     if (!loginInstalled || !loginFollow) return
@@ -629,10 +641,11 @@ Item {
     interval: 3000
     repeat: true
     property int remaining: 0
+    property bool expectInstalled: true
     onTriggered: {
       remaining -= 1
       root.checkLoginTheme()
-      if (remaining <= 0 || root.loginInstalled) stop()
+      if (remaining <= 0 || root.loginInstalled === expectInstalled) stop()
     }
   }
 
@@ -1416,6 +1429,7 @@ Item {
     function checkLoginTheme() { root.checkLoginTheme() }
     function setLoginFollow(on) { root.setLoginFollow(on) }
     function installLoginTheme() { root.installLoginTheme() }
+    function removeLoginTheme() { root.removeLoginTheme() }
     function designUsable(d) { return root.designUsable(d) }
     function setDesign(id) { return root.setDesign(id) }
     function setTwelveHour(on) { root.setTwelveHour(on) }

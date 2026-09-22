@@ -108,7 +108,7 @@ Preview any time without logging out with **Preview login screen**, or:
 sddm-greeter-qt6 --test-mode --theme /usr/share/sddm/themes/lock-designs
 ```
 
-Remove it with `sudo tools/install-login-theme.sh --remove`, which puts SDDM back on Omarchy's own theme. `tools/install-login-theme.sh --stage <dir>` builds the theme into a folder without root, for previewing or review.
+**Remove login screen** in the same tab, or `sudo tools/install-login-theme.sh --remove`, puts SDDM back on Omarchy's own theme and deletes the installed files. `tools/install-login-theme.sh --stage <dir>` builds the theme into a folder without root, for previewing or review.
 
 ## Settings and commands
 
@@ -147,6 +147,20 @@ omarchy-shell lock status
 Locking is as quick as the stock lock: a design compiles and instantiates in a few milliseconds, and Qt's multimedia module, which costs about 700 ms the first time it loads, is warmed up a few seconds after the shell starts so the first video lock does not pay for it. A design that needs assets you have not downloaded, or one that fails to load, is never left on a locked screen: the lock falls back to the Omarchy default design, and if even that fails, to a bare password field with no dependencies at all.
 
 ## Remove
+
+If you set up the login screen, take it down first, while the plugin's files are still there. **Remove login screen** in the Login screen tab does this, or:
+
+```sh
+sudo ~/.config/omarchy/plugins/io.github.smoothpixels.lock-designs/tools/install-login-theme.sh --remove
+```
+
+That puts SDDM back on Omarchy's own theme and deletes everything the installer placed under `/usr/share/sddm/themes/lock-designs` and `/etc/sddm.conf.d`. If you added the menu row, drop it the same way:
+
+```sh
+~/.config/omarchy/plugins/io.github.smoothpixels.lock-designs/tools/install-menu-entries.sh --remove
+```
+
+Then remove the plugin and hand the lock back to Omarchy:
 
 ```sh
 omarchy plugin remove io.github.smoothpixels.lock-designs

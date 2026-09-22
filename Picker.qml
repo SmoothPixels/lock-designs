@@ -958,13 +958,26 @@ Item {
                   root.service.installLoginTheme()
                 }
               }
+              Button {
+                text: "Remove login screen"
+                iconText: "󰆴"
+                tooltipText: "Puts SDDM back on Omarchy's own login screen and deletes the installed theme. Asks for your password in a terminal."
+                foreground: root.foreground
+                accent: root.accent
+                fontFamily: root.fontFamily
+                onClicked: {
+                  if (!root.service) return
+                  root.dismiss()
+                  root.service.removeLoginTheme()
+                }
+              }
             }
 
             Text {
               visible: loginTab.installed
               width: Math.min(parent.width, Style.space(720))
               wrapMode: Text.Wrap
-              text: "New designs reach the login screen when you run the installer again after a plugin update. Remove it with: sudo tools/install-login-theme.sh --remove"
+              text: "New designs reach the login screen when you run the installer again after a plugin update. Removing the login screen leaves the lock screen as it is."
               color: Util.alpha(root.foreground, 0.4)
               font.family: root.fontFamily
               font.pixelSize: Style.font.caption
