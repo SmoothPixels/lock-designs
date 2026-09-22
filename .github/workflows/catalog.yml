@@ -1,0 +1,80 @@
+name: Asset catalog
+
+# The downloader trusts designs/thirdparty-assets.json and nothing else, so
+# this checks that every entry is something it can verify: an immutable URL
+# (a full qylock commit, or a release of this repository), a SHA-256 digest
+# and a byte size. On demand it also downloads every file and confirms the
+# digests, which is the same check the plugin performs on a user's machine.
+
+on:
+  push:
+    paths:
+      - designs/thirdparty-assets.json
+      - tools/verify-assets.sh
+      - .github/workflows/catalog.yml
+  pull_request:
+    paths:
+      - designs/thirdparty-assets.json
+      - tools/verify-assets.sh
+      - .github/workflows/catalog.yml
+  workflow_dispatch:
+    inputs:
+      download:
+        description: Download every file and verify its digest
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  shape:
+    name: Every entry is pinned and has a digest
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - name: Check the catalog
+        run: |
+          set -euo pipefail
+          catalog=designs/thirdparty-assets.json
+          jq -e 'type == "object"' "$catalog" >/dev/null
+          bad=0
+          while IFS=$'\t' read -r id dir path url sha size; do
+            if [[ ! $dir =~ ^[a-z0-9-]+-assets$ ]]; then echo "::error::$id: bad assetsDir '$dir'"; bad=1; fi
+            if [[ $path == /* || $path == *..* || -z $path ]]; then echo "::error::$id: bad path '$path'"; bad=1; fi
+            if [[ ! $sha =~ ^[0-9a-f]{64}$ ]]; then echo "::error::$id/$path: missing or malformed sha256"; bad=1; fi
+            if [[ ! $size =~ ^[1-9][0-9]*$ ]]; then echo "::error::$id/$path: missing or malformed size"; bad=1; fi
+            case $url in
+              https://raw.githubusercontent.com/Darkkal44/qylock/[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f]/*) ;;
+              https://github.com/SmoothPixels/lock-designs/releases/download/*/*) ;;
+              *) echo "::error::$id/$path: URL is not pinned to a qylock commit or a release of this repository: $url"; bad=1 ;;
+            esac
+          done < <(jq -r 'to_entries[] | .key as $id | .value.assetsDir as $dir | .value.files[] | [$id, $dir, .path, .url, (.sha256 // ""), (.size // "" | tostring)] | @tsv' "$catalog")
+          total=$(jq '[.[].files[]] | length' "$catalog")
+          echo "$total files checked"
+          exit $bad
+
+  download:
+    name: Download every file and verify it
+    if: github.event_name == 'workflow_dispatch' && inputs.download
+    needs: shape
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - name: Fetch into a scratch designs folder and verify
+        run: |
+          set -euo pipefail
+          catalog=designs/thirdparty-assets.json
+          scratch="$RUNNER_TEMP/lock-designs"
+          mkdir -p "$scratch"
+          while IFS=$'\t' read -r id dir path url; do
+            dest="$scratch/$dir/$path"
+            mkdir -p "$(dirname "$dest")"
+            echo "$id/$path"
+            curl -fsSL --retry 3 --retry-delay 2 --connect-timeout 20 -o "$dest" "$url"
+          done < <(jq -r 'to_entries[] | .key as $id | .value.assetsDir as $dir | .value.files[] | [$id, $dir, .path, .url] | @tsv' "$catalog")
+          tools/verify-assets.sh "$scratch"
+          # Every file was fetched, so none may be reported as not downloaded.
+          tools/verify-assets.sh "$scratch" | grep -q 'not downloaded: 0 '

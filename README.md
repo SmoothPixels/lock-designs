@@ -82,6 +82,8 @@ Maintainer tools:
 | `tools/verify-assets.sh` | Check every downloaded asset on this machine against the catalog |
 | `tools/mirror-assets.sh <tag>` | Optional: publish the pinned set as a GitHub release and add the URLs as mirrors (read the licensing note in the script first) |
 
+A GitHub Actions workflow (`.github/workflows/catalog.yml`) checks on every change to the catalog that each entry points at a qylock commit or a release of this repository and carries a digest and size; run it by hand to download every file and verify the digests too.
+
 ## Login screen
 
 The picker has two tabs. **Lock screen** is everything above. **Login screen** decides what SDDM shows before you sign in, chosen separately from the lock design:
