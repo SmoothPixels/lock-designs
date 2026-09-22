@@ -2,11 +2,13 @@
 
 ![preview](preview.png)
 
-45 extra lock screen designs for [Lock Screen Explorer](https://github.com/SirJul1337/omarchy-lock-explorer)'s Third Party tab: 38 fresh QML ports of themes from [Darkkal44/qylock](https://github.com/Darkkal44/qylock), plus 7 original video wallpaper designs built from [wallsflow.com](https://wallsflow.com) live wallpapers. Also throws in one original design, Starry City, a procedural pixel skyline that follows your active Omarchy theme.
+A lock screen for Omarchy with 58 designs and a picker to switch between them: thirteen originals that follow your active Omarchy theme and need nothing downloaded, starting with the stock Omarchy lock screen itself, 38 fresh QML ports of themes from [Darkkal44/qylock](https://github.com/Darkkal44/qylock), and 7 original video wallpaper designs built from [wallsflow.com](https://wallsflow.com) live wallpapers.
 
-Two of the qylock ports, **Genshin Impact** and **Terraria**, change their background on their own depending on the time of day: Genshin cycles through dawn/day/dusk/night video clips by wall-clock hour, Terraria switches between 5 screenshots the same way. Both are marked "Time-based" in the picker's Third Party tab.
+It replaces the stock lock screen as a clone of Omarchy's own `omarchy.lock`, so the session lock, the PAM password and fingerprint flows, display blanking and stranded-lock recovery are exactly the stock ones. Only what is drawn on the lock surface changes.
 
-[Install](#install) • [Settings](#settings) • [Remove](#remove) • [Gallery](#gallery) • [Acknowledgements](#acknowledgements) • [Development](#development)
+Two of the qylock ports, **Genshin Impact** and **Terraria**, change their background by the time of day. Both are marked "time-based" in the picker.
+
+[Install](#install) • [The picker](#the-picker) • [Assets and verification](#assets-and-verification) • [Settings and commands](#settings-and-commands) • [Remove](#remove) • [Gallery](#gallery) • [Acknowledgements](#acknowledgements) • [Development](#development)
 
 ## Install
 
@@ -14,27 +16,162 @@ Two of the qylock ports, **Genshin Impact** and **Terraria**, change their backg
 omarchy plugin add https://github.com/SmoothPixels/lock-designs.git --enable
 ```
 
-This plugin only supplies content, it does nothing on its own. It requires [Lock Screen Explorer](https://github.com/SirJul1337/omarchy-lock-explorer) to actually render the lock screen and its picker:
+Only one lock screen plugin can be active at a time, so disable any other lock plugin first (`omarchy plugin list` shows what is enabled). Then open the picker:
 
 ```sh
-omarchy plugin add https://github.com/SirJul1337/omarchy-lock-explorer.git --enable
+omarchy-shell lock explore
 ```
 
-Order does not matter, install both, then open the lock screen picker and check the **Third Party** tab. Most designs need their video/font assets downloaded first (a Download button on each card), that keeps this plugin small since those assets are fetched straight from Darkkal44's own hosted files rather than bundled here. The wallsflow-sourced designs (the cats and cars) work immediately, their video is bundled directly.
+Bind that command to a key in your Hyprland bindings, or add a **Style > Lock Designs** row to the Omarchy menu with the bundled, opt-in script (run it again after an update if the snippet changes):
 
-## Settings
+```sh
+~/.config/omarchy/plugins/io.github.smoothpixels.lock-designs/tools/install-menu-entries.sh
+```
 
-None. This is a `service`-kind plugin with no UI or configuration of its own, it just places design files where Lock Screen Explorer looks for them.
+Nothing outside `~/.config/omarchy/lock-designs/` is written. No sudo.
+
+## The picker
+
+A grid of every design with a still preview, its source, and whether it is ready. The **Originals** filter shows only the theme-following designs, **Third party** only the ports. A click selects a design; apply it with the **Use design** button, the check button on the card, Enter, or a double-click. For a design that still needs its video or fonts, the same action downloads them first. Space or the eye button shows a design full screen without locking. While previewing, the arrow keys, Page Up and Page Down step through every ready design; Enter adopts the one on screen, Esc closes.
+
+| Key | Action |
+|---|---|
+| Arrows, Home, End | Move |
+| Click | Select a design |
+| Enter, double-click | Use the selected design, or start its download |
+| Space, P | Preview full screen |
+| D | Download, cancel, or remove a design's assets |
+| L | Lock now |
+| Page Up, Page Down | Move two rows |
+| Wheel | Scroll the grid |
+| / or any letter | Search |
+| Esc | Close |
+
+The footer switches every clock between 24-hour and 12-hour, previews the current design, and locks the screen. The **Font** dropdown in the header lists every font installed on the machine; the originals draw their clocks and captions in the one you pick, and "Theme font" puts them back on Omarchy's own. Third-party ports keep their bundled fonts.
+
+Browsing is cheap on purpose: cards show a small JPEG, so scrolling never starts a video decoder. Only designs without a shipped still (the originals and your own files) are rendered live, paused. At most one design ever plays for real, in the preview or on the lock screen itself.
+
+## Assets and verification
+
+Most qylock ports fetch their video, image and font files on demand, so this repository stays small. Every entry in `designs/thirdparty-assets.json` points at a full commit of `Darkkal44/qylock` and carries the file's SHA-256 and size:
+
+```json
+"my-forest": {
+  "assetsDir": "forest-assets",
+  "files": [
+    {
+      "path": "bg.mp4",
+      "url": "https://raw.githubusercontent.com/Darkkal44/qylock/f6561e2c…/themes/forest/bg.mp4",
+      "sha256": "97d54ce5…",
+      "size": 53320657,
+      "mirrors": []
+    }
+  ]
+}
+```
+
+The downloader fetches each file to a `.part` file, hashes it, and only moves it into place when the digest matches. A catalog entry without a digest is refused outright, and a mismatch is reported on the card and the file discarded. Optional `mirrors` are tried in order after `url`; the digest has to match whichever source answered, so a mirror can never weaken the check. The only network access this plugin ever makes is these downloads, and only when you ask for one.
+
+Downloaded assets live in `~/.config/omarchy/lock-designs/<design>-assets/`. The 7 wallsflow-sourced designs bundle their video directly, because that site blocks scripted downloads.
+
+Maintainer tools:
+
+| Tool | Purpose |
+|---|---|
+| `tools/pin-assets.sh <commit>` | Re-point every URL at a qylock commit and record fresh digests and sizes |
+| `tools/verify-assets.sh` | Check every downloaded asset on this machine against the catalog |
+| `tools/mirror-assets.sh <tag>` | Optional: publish the pinned set as a GitHub release and add the URLs as mirrors (read the licensing note in the script first) |
+
+## Login screen
+
+The picker has two tabs. **Lock screen** is everything above. **Login screen** decides what SDDM shows before you sign in, chosen separately from the lock design:
+
+| Choice | Login screen |
+|---|---|
+| Omarchy default | Omarchy's stock login screen, loaded from its own theme folder, exactly as it ships |
+| Omarchy default, theme colors | The same layout, recolored from your active theme |
+| Same as the lock screen | Your lock design itself, running live in the greeter, with its video, fonts and clock |
+
+Setup needs root once, to place the theme under `/usr/share/sddm/themes` and select it in `/etc/sddm.conf.d`. Use **Set up login screen** in the Login screen tab, which opens Omarchy's floating terminal and asks for your password there, or run it yourself:
+
+```sh
+sudo ~/.config/omarchy/plugins/io.github.smoothpixels.lock-designs/tools/install-login-theme.sh
+```
+
+After that nothing asks for privileges. Root owns the greeter's QML, small stand-ins for the shell modules the designs use, and a snapshot of every design with its imports pointed at those stand-ins. Your account owns only `theme.conf.user` and a `current/` folder inside the theme; the service rewrites them whenever the theme colors, wallpaper, font, lock design or login choice change, copying the chosen design's assets in and pruning the rest. The greeter reads those as data, accepts media paths only from inside its own `current/` folder, and never loads QML from anything your account can write. A new design therefore only reaches the login screen through the installer. The installer records a fingerprint of the files it snapshotted; when the files on disk differ from that snapshot, the Login screen tab shows a notice that the lock screen files have changed and highlights **Update login screen files**. Updates that touch only the lock side need nothing.
+
+Details worth knowing: a user chip bottom left shows who will be signed in and, on machines with several accounts, opens a list to switch; Omarchy's own mode is shown exactly as it ships, without it. Sleep, restart and shut down controls sit bottom right in every mode except Omarchy's own. If a design cannot load in the greeter, a plain built-in layout on your wallpaper takes its place, so the login screen always has a password field.
+
+Preview any time without logging out with **Preview login screen**, or:
+
+```sh
+sddm-greeter-qt6 --test-mode --theme /usr/share/sddm/themes/lock-designs
+```
+
+Remove it with `sudo tools/install-login-theme.sh --remove`, which puts SDDM back on Omarchy's own theme. `tools/install-login-theme.sh --stage <dir>` builds the theme into a folder without root, for previewing or review.
+
+## Settings and commands
+
+Settings are kept in `~/.config/omarchy/lock-designs/settings.json`:
+
+| Key | Meaning |
+|---|---|
+| `design` | Id of the selected design, for example `my-forest` |
+| `twelveHour` | `true` for 12-hour clocks |
+| `font` | Family the originals use for text, for example `Adwaita Sans`; empty follows the theme font |
+| `loginFollow` | `false` stops updating the SDDM login theme |
+| `loginSource` | `omarchy`, `omarchy-theme`, `lock` (default), or a design id to pin one design to the login screen |
+
+Everything the picker does is also reachable from the command line through the stock `lock` target, which this plugin answers as the active lock:
+
+```sh
+omarchy-shell lock explore                   # open or close the picker
+omarchy-shell lock designs                   # JSON list with ids, names and readiness
+omarchy-shell lock design                    # id of the design in use
+omarchy-shell lock setDesign my-forest
+omarchy-shell lock previewDesign my-forest   # full screen, no lock; hidePreview closes it
+omarchy-shell lock previewDesignOn my-forest DP-2   # same, on a named monitor
+omarchy-shell lock previewStep 1             # next ready design in the preview (-1 for previous)
+omarchy-shell lock download my-forest        # verified download of its assets
+omarchy-shell lock removeAssets my-forest
+omarchy-shell lock setClockFormat 12         # or 24
+omarchy-shell lock setFont "Adwaita Sans"     # font for the originals; empty string follows the theme
+omarchy-shell lock syncLogin                 # rewrite the SDDM theme config now (if installed)
+omarchy-shell lock loginStatus               # whether the login theme is installed, following, and its source
+omarchy-shell lock setLoginSource lock       # omarchy, omarchy-theme, lock, or a design id
+omarchy-shell lock previewLogin              # open the greeter in a window
+omarchy-shell lock lock                      # same as the stock lock
+omarchy-shell lock status
+```
+
+Locking is as quick as the stock lock: a design compiles and instantiates in a few milliseconds, and Qt's multimedia module, which costs about 700 ms the first time it loads, is warmed up a few seconds after the shell starts so the first video lock does not pay for it. A design that needs assets you have not downloaded, or one that fails to load, is never left on a locked screen: the lock falls back to the Omarchy default design, and if even that fails, to a bare password field with no dependencies at all.
 
 ## Remove
 
 ```sh
 omarchy plugin remove io.github.smoothpixels.lock-designs
+omarchy plugin enable omarchy.lock
 ```
 
-This does not delete the files already copied into `~/.config/omarchy/lock-designs/`, that folder is shared with Lock Screen Explorer's own drop-in mechanism, so removing the plugin should not break anything currently in use. Delete the ones this plugin added yourself if you want them gone, being careful not to remove any of your own custom designs mixed into that same folder.
+The second line matters: removing the active clone leaves the stock lock disabled until you enable it again. Files already copied into `~/.config/omarchy/lock-designs/` are left in place, including downloaded assets and any designs of your own; delete the folder yourself if you want it gone.
 
 ## Gallery
+
+### Originals
+
+Written from scratch for this plugin. Every color comes from the active Omarchy theme, so they change with it; these captures use the Miasma theme, at night. Nothing to download.
+
+| | |
+|:---:|:---:|
+| **Omarchy default**, the stock lock screen<br><img src="assets/originals/Classic.jpg" width="380"/> | **Bento**, frosted tiles over your wallpaper<br><img src="assets/originals/Bento.jpg" width="380"/> |
+| **Horizon** *(time-based)*, sun and moon follow the hour<br><img src="assets/originals/Horizon.jpg" width="380"/> | **Dot Matrix**, the time on an LED board<br><img src="assets/originals/DotMatrix.jpg" width="380"/> |
+| **Tide**, slow waves in your theme's colors<br><img src="assets/originals/Tide.jpg" width="380"/> | **Fireflies**, drifting points of accent light<br><img src="assets/originals/Fireflies.jpg" width="380"/> |
+| **Spotlight**, your wallpaper lit around the sign-in<br><img src="assets/originals/Spotlight.jpg" width="380"/> | **Starry City**, a pixel skyline whose windows come on and go out<br><img src="assets/originals/StarryCity.jpg" width="380"/> |
+| **Word Clock**, the time spelled out in a letter grid<br><img src="assets/originals/WordClock.jpg" width="380"/> | **Nixie**, glass tubes with the digits glowing inside<br><img src="assets/originals/Nixie.jpg" width="380"/> |
+| **Pixel Pet**, a cat that blinks, watches you type and sulks at a wrong password<br><img src="assets/originals/PixelPet.jpg" width="380"/> | **Binary**, the time in binary-coded decimal<br><img src="assets/originals/Binary.jpg" width="380"/> |
+| **Circuit**, a chip carrying the time, pulses running along the traces<br><img src="assets/originals/Circuit.jpg" width="380"/> | |
+
+Horizon, Tide, Fireflies, Spotlight, Starry City, Pixel Pet and Circuit animate; their motion is tied to the display being awake, so nothing runs behind a blanked screen or inside the picker's paused thumbnails.
 
 ### Wallsflow originals
 
@@ -73,7 +210,7 @@ This does not delete the files already copied into `~/.config/omarchy/lock-desig
 
 ## Acknowledgements
 
-The QML in this repo is written from scratch against Omarchy's `DesignBase`/`PasswordField`, none of it is copy-pasted from qylock's GPL-3.0 source. The video/image/font assets are a different matter, those are fetched at install time straight from Darkkal44's own hosted copies, so full credit for them (and the original wallpaper artists behind them) belongs there.
+The QML in this repo is written from scratch, none of it is copy-pasted from qylock's GPL-3.0 source. The video/image/font assets are a different matter, those are fetched on demand straight from Darkkal44's own hosted copies at a pinned commit, so full credit for them (and the original wallpaper artists behind them) belongs there.
 
 | Design | Wallpaper source | Bundled font |
 |---|---|---|
@@ -126,17 +263,31 @@ Videos bundled directly in this repo, wallsflow's CDN blocks scripted downloads,
 | Supercar Sakura | [WallsFlow](https://wallsflow.com/live-wallpapers/cars/495-supercar-dreamscape-under-sakura-blossoms.html) |
 | Porsche 911 Darkness | [WallsFlow](https://wallsflow.com/live-wallpapers/cars/756-porsche-911-timeless-performance-in-darkness-live-wallpaper.html) |
 
-Lock Screen Explorer itself is [MIT licensed](https://github.com/SirJul1337/omarchy-lock-explorer), by SirJul1337.
+The design components (`DesignBase`, `PasswordField`, `LockInput`, `Avatar`) and every design are this plugin's own work.
 
 ## Development
 
-Any `DesignBase`-derived `.qml` file dropped in `designs/` shows up automatically once copied into `~/.config/omarchy/lock-designs/`. A `// source: qylock` or `// source: wallsflow` marker comment (first line) routes it into the picker's Third Party tab instead of Styling. Qylock ports that fetch assets on demand need an entry in `designs/thirdparty-assets.json`, pointing at the real files in Darkkal44's repo.
+Designs are plain QML files in `designs/`, each with a `DesignBase` root. They sit next to `DesignBase.qml`, `PasswordField.qml`, `LockInput.qml` and `Avatar.qml`, so no import line is needed. The service mirrors that folder into `~/.config/omarchy/lock-designs/` on every shell start, and a design dropped straight into that folder shows up in the picker too.
+
+Originals draw text in `lock.displayFont` (the user's Font choice, defaulting to the theme font) and give large clocks `renderType: Text.CurveRendering` so they stay sharp at any size. For depth they shade the theme background with `lock.deepen(color, factor)`, which darkens on dark themes and lightens on light ones so panels always move away from the text color, and `lock.raise()` for the opposite; plain `Qt.darker` is kept only for things that are dark on any theme, such as shadows and silhouettes. Marker comments in the first lines of a file describe it to the picker:
+
+```qml
+// source: qylock          third-party badge (or wallsflow, or anything)
+// timebased: 1            "time-based" badge
+// name: Honkai: Star Rail  overrides the name derived from the file name
+// description: Video from YouTube
+```
+
+A design that fetches assets needs an entry in `designs/thirdparty-assets.json`; run `tools/pin-assets.sh <commit>` afterwards to fill in the URLs, digests and sizes. Designs are compiled from their file contents each time the lock or preview loads them, so edits are picked up without restarting the shell; the picker's live thumbnails re-render when you reopen it. The shared components (`DesignBase`, `PasswordField`, `LockInput`, `Avatar`) are cached by the QML engine, so after editing those run `omarchy restart shell`.
 
 Validate before publishing:
 
 ```sh
 omarchy plugin validate ~/.config/omarchy/plugins/io.github.smoothpixels.lock-designs
-qmllint -I "$OMARCHY_PATH/shell" Service.qml
+/usr/lib/qt6/bin/qmllint -I /usr/share/omarchy/shell -I /usr/lib/qt6/qml Service.qml LockHost.qml Picker.qml designs/*.qml
+tools/verify-assets.sh
 ```
+
+If a lock screen change ever leaves you unable to unlock, switch to a TTY (Ctrl+Alt+F3), log in, and run `omarchy plugin disable io.github.smoothpixels.lock-designs && omarchy plugin enable omarchy.lock`, then `omarchy restart shell`.
 
 See [NOTICE.md](NOTICE.md) for the full licensing picture.
