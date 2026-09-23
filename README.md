@@ -283,6 +283,8 @@ The design components (`DesignBase`, `PasswordField`, `LockInput`, `Avatar`) and
 
 ## Development
 
+Changes by version are in [CHANGELOG.md](CHANGELOG.md).
+
 Designs are plain QML files in `designs/`, each with a `DesignBase` root. They sit next to `DesignBase.qml`, `PasswordField.qml`, `LockInput.qml` and `Avatar.qml`, so no import line is needed. The service mirrors that folder into `~/.config/omarchy/lock-designs/` on every shell start, and a design dropped straight into that folder shows up in the picker too.
 
 Originals draw text in `lock.displayFont` (the user's Font choice, defaulting to the theme font) and give large clocks `renderType: Text.CurveRendering` so they stay sharp at any size. For depth they shade the theme background with `lock.deepen(color, factor)`, which darkens on dark themes and lightens on light ones so panels always move away from the text color, and `lock.raise()` for the opposite; plain `Qt.darker` is kept only for things that are dark on any theme, such as shadows and silhouettes. Marker comments in the first lines of a file describe it to the picker:
