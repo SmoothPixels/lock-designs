@@ -2,7 +2,7 @@
 
 ![preview](preview.png)
 
-A lock screen for Omarchy with 58 designs and a picker to switch between them: thirteen originals that follow your active Omarchy theme and need nothing downloaded, starting with the stock Omarchy lock screen itself, 38 fresh QML ports of themes from [Darkkal44/qylock](https://github.com/Darkkal44/qylock), and 7 original video wallpaper designs built from [wallsflow.com](https://wallsflow.com) live wallpapers.
+A lock screen for Omarchy with 66 designs and a picker to switch between them: twenty-one originals that follow your active Omarchy theme and need nothing downloaded, starting with the stock Omarchy lock screen itself, 38 fresh QML ports of themes from [Darkkal44/qylock](https://github.com/Darkkal44/qylock), and 7 original video wallpaper designs built from [wallsflow.com](https://wallsflow.com) live wallpapers.
 
 It replaces the stock lock screen as a clone of Omarchy's own `omarchy.lock`, so the session lock, the PAM password and fingerprint flows, display blanking and stranded-lock recovery are exactly the stock ones. Only what is drawn on the lock surface changes.
 
@@ -47,7 +47,7 @@ A grid of every design with a still preview, its source, and whether it is ready
 | / or any letter | Search |
 | Esc | Close |
 
-The footer switches every clock between 24-hour and 12-hour, previews the current design, and locks the screen. The **Font** dropdown in the header lists every font installed on the machine; the originals draw their clocks and captions in the one you pick, and "Theme font" puts them back on Omarchy's own. Third-party ports keep their bundled fonts.
+The header names the active Omarchy theme, and a key legend runs along the bottom of the picker. The footer switches every clock between 24-hour and 12-hour, previews the current design, and locks the screen. The **Font** dropdown in the header lists every font installed on the machine; the originals draw their clocks and captions in the one you pick, and "Theme font" puts them back on Omarchy's own. Third-party ports keep their bundled fonts.
 
 Browsing is cheap on purpose: cards show a small JPEG, so scrolling never starts a video decoder. Only designs without a shipped still (the originals and your own files) are rendered live, paused. At most one design ever plays for real, in the preview or on the lock screen itself.
 
@@ -98,6 +98,7 @@ Everything the picker does is also reachable from the command line through the s
 
 ```sh
 omarchy-shell lock explore                   # open or close the picker
+omarchy-shell shell toggle io.github.smoothpixels.lock-designs '{"screen":"DP-2"}'   # the picker on a named monitor
 omarchy-shell lock designs                   # JSON list with ids, names and readiness
 omarchy-shell lock design                    # id of the design in use
 omarchy-shell lock setDesign my-forest
@@ -135,7 +136,7 @@ The second line matters: removing the active clone leaves the stock lock disable
 
 ### Originals
 
-Written from scratch for this plugin. Every color comes from the active Omarchy theme, so they change with it; these captures use the Miasma theme, at night. Nothing to download.
+Written from scratch for this plugin. Every color comes from the active Omarchy theme, so they change with it; these captures use the Tokyo Night theme, in the morning. Nothing to download.
 
 | | |
 |:---:|:---:|
@@ -145,9 +146,13 @@ Written from scratch for this plugin. Every color comes from the active Omarchy 
 | **Spotlight**, your wallpaper lit around the sign-in<br><img src="assets/originals/Spotlight.jpg" width="380"/> | **Starry City**, a pixel skyline whose windows come on and go out<br><img src="assets/originals/StarryCity.jpg" width="380"/> |
 | **Word Clock**, the time spelled out in a letter grid<br><img src="assets/originals/WordClock.jpg" width="380"/> | **Nixie**, glass tubes with the digits glowing inside<br><img src="assets/originals/Nixie.jpg" width="380"/> |
 | **Pixel Pet**, a cat that blinks, watches you type and sulks at a wrong password<br><img src="assets/originals/PixelPet.jpg" width="380"/> | **Binary**, the time in binary-coded decimal<br><img src="assets/originals/Binary.jpg" width="380"/> |
-| **Circuit**, a chip carrying the time, pulses running along the traces<br><img src="assets/originals/Circuit.jpg" width="380"/> | |
+| **Circuit**, a chip carrying the time, pulses running along the traces<br><img src="assets/originals/Circuit.jpg" width="380"/> | **Postcard**, clock, avatar and greeting on one frosted card<br><img src="assets/originals/Postcard.jpg" width="380"/> |
+| **Masthead**, a big clock bottom left, editorial style<br><img src="assets/originals/Masthead.jpg" width="380"/> | **Hush**, no box at all, a dot appears for every letter you type<br><img src="assets/originals/Hush.jpg" width="380"/> |
+| **Sidecar**, wallpaper on the left, the sign-in on a panel to the right<br><img src="assets/originals/Sidecar.jpg" width="380"/> | **TTY**, a console login prompt<br><img src="assets/originals/TTY.jpg" width="380"/> |
+| **Halo**, a ring around the clock that fills as you type<br><img src="assets/originals/Halo.jpg" width="380"/> | **Billboard**, huge stacked hours and minutes<br><img src="assets/originals/Billboard.jpg" width="380"/> |
+| **Shelf**, everything on a slim shelf along the bottom<br><img src="assets/originals/Shelf.jpg" width="380"/> | |
 
-Horizon, Tide, Fireflies, Spotlight, Starry City, Pixel Pet and Circuit animate; their motion is tied to the display being awake, so nothing runs behind a blanked screen or inside the picker's paused thumbnails.
+Horizon, Tide, Fireflies, Spotlight, Starry City, Pixel Pet, Circuit and TTY animate; their motion is tied to the display being awake, so nothing runs behind a blanked screen or inside the picker's paused thumbnails. Hush, Halo and TTY react to typing instead of showing a box: dots appear, a ring fills, a cursor blinks.
 
 ### Wallsflow originals
 

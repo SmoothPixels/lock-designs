@@ -29,7 +29,7 @@ Lock Screen
 
 **Maintainer notes**
 ```
-A lock screen for Omarchy with 58 designs and a picker: thirteen originals
+A lock screen for Omarchy with 66 designs and a picker: twenty-one originals
 that follow the active Omarchy theme and need nothing downloaded, 38 QML
 ports of themes from Darkkal44/qylock (GPL-3.0), and 7 designs built on
 wallsflow.com live wallpapers. Every video, image and font downloads on

@@ -49,6 +49,12 @@ Item {
 
   // The screen Hyprland says has focus, so the window opens where the user
   // is looking on a multi-monitor desk; falls back to the first screen.
+  function screenNamed(name) {
+    var screens = Quickshell.screens || []
+    for (var i = 0; i < screens.length; i++) if (screens[i].name === name) return screens[i]
+    return null
+  }
+
   function focusedScreen() {
     var name = Hyprland.focusedMonitor ? String(Hyprland.focusedMonitor.name || "") : ""
     var screens = Quickshell.screens || []
@@ -56,9 +62,15 @@ Item {
     return screens.length > 0 ? screens[0] : null
   }
 
-  function open() {
+  function open(payload) {
     adopt()
     root.targetScreen = focusedScreen()
+    // `omarchy-shell shell toggle <id> '{"screen":"DP-2"}'` opens on a named
+    // monitor instead of the focused one.
+    try {
+      var p = typeof payload === "string" && payload.length > 0 ? JSON.parse(payload) : payload
+      if (p && typeof p.screen === "string") root.targetScreen = screenNamed(p.screen) || root.targetScreen
+    } catch (e) {}
     if (root.service) root.service.rescanDesigns()
     root.opened = true
     Qt.callLater(function() { keys.forceActiveFocus() })
@@ -258,7 +270,9 @@ Item {
               font.weight: Font.Bold
             }
             Text {
-              text: root.designs.length + " designs · " + (root.activeDesign ? "using " + root.activeDesign.name : "")
+              text: root.designs.length + " designs"
+                + (root.service && root.service.themeName.length > 0 ? " · " + root.service.themeName + " theme" : "")
+                + (root.activeDesign ? " · using " + root.activeDesign.name : "")
               color: root.muted
               font.family: root.fontFamily
               font.pixelSize: Style.font.caption
@@ -354,15 +368,6 @@ Item {
           }
         }
 
-        Text {
-          anchors.right: parent.right
-          anchors.verticalCenter: chips.verticalCenter
-          text: "Click selects · Enter or double-click uses · Space previews · D downloads or removes · L locks · Esc closes"
-          color: root.muted
-          font.family: root.fontFamily
-          font.pixelSize: Style.font.caption
-        }
-
         // ---- grid -------------------------------------------------------
         GridView {
           id: grid
@@ -370,7 +375,7 @@ Item {
           anchors.topMargin: Style.space(12)
           anchors.left: parent.left
           anchors.right: parent.right
-          anchors.bottom: footer.top
+          anchors.bottom: legend.top
           anchors.bottomMargin: Style.space(12)
           clip: true
           // GridView counts columns against the width minus its margins, so
@@ -640,6 +645,25 @@ Item {
               }
             }
           }
+        }
+
+        // ---- key legend -------------------------------------------------
+        Text {
+          id: legend
+          anchors.left: parent.left
+          anchors.right: parent.right
+          anchors.bottom: footer.top
+          anchors.bottomMargin: Style.space(6)
+          textFormat: Text.StyledText
+          text: [
+            ["Arrows", "move"], ["Home End", "first, last"], ["PgUp PgDn", "two rows"],
+            ["Click", "select"], ["Enter", "use, or download"], ["Space", "preview"],
+            ["D", "download or remove"], ["L", "lock now"], ["/", "search"], ["Esc", "close"]
+          ].map(function(k) { return "<b>" + k[0] + "</b> " + k[1] }).join("&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;")
+          color: root.muted
+          elide: Text.ElideRight
+          font.family: root.fontFamily
+          font.pixelSize: Style.font.caption
         }
 
         // ---- footer -----------------------------------------------------

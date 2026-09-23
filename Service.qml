@@ -36,6 +36,21 @@ Item {
   readonly property string fallbackDesignPath: designsDir + "/Classic.qml"
   readonly property string defaultDesignId: "my-classic"
   readonly property string currentBackgroundLink: home + "/.local/state/omarchy/current/background"
+  // Name of the active Omarchy theme, shown in the picker header. Omarchy
+  // writes it lower-case with dashes; shown as words.
+  readonly property string themeNamePath: home + "/.local/state/omarchy/current/theme.name"
+  property string themeName: ""
+  function titleCase(s) {
+    return String(s).split(/[-_ ]+/).filter(function(w) { return w.length > 0 })
+      .map(function(w) { return w.charAt(0).toUpperCase() + w.slice(1) }).join(" ")
+  }
+  FileView {
+    path: root.themeNamePath
+    watchChanges: true
+    printErrors: false
+    onLoaded: root.themeName = root.titleCase(String(text() || "").trim())
+    onFileChanged: reload()
+  }
 
   // ---------------------------------------------------------------------
   // Lock state. Same shape as omarchy.lock so the behaviour users know
@@ -474,7 +489,17 @@ Item {
 
   // Optional screen name (as `hyprctl monitors` lists them) puts the preview
   // on that output instead of the focused one.
+  // The hint pill in the preview fades a few seconds after the last key or
+  // wheel step, so a design can be looked at (or captured) without it.
+  property bool previewHintShown: true
+  Timer {
+    interval: 4000
+    running: root.previewVisible && root.previewHintShown
+    onTriggered: root.previewHintShown = false
+  }
+
   function showPreview(id, screenName) {
+    previewHintShown = true
     var wanted = String(screenName || "")
     var chosen = null
     if (wanted.length > 0) {
@@ -606,6 +631,7 @@ Item {
       anchors.fill: parent
       focus: true
       Keys.onPressed: function(event) {
+        root.previewHintShown = true
         if (event.key === Qt.Key_Escape || event.key === Qt.Key_Q) {
           root.previewVisible = false
           event.accepted = true
@@ -627,6 +653,7 @@ Item {
       property real wheelAccum: 0
       WheelHandler {
         onWheel: function(event) {
+          root.previewHintShown = true
           var d = event.angleDelta.y !== 0 ? event.angleDelta.y : -event.angleDelta.x
           previewKeys.wheelAccum += d
           if (Math.abs(previewKeys.wheelAccum) >= 100) {
@@ -645,6 +672,9 @@ Item {
       height: hint.implicitHeight + Style.space(14)
       radius: height / 2
       color: Qt.rgba(0, 0, 0, 0.55)
+      opacity: root.previewHintShown ? 1 : 0
+      visible: opacity > 0
+      Behavior on opacity { NumberAnimation { duration: 350 } }
       Text {
         id: hint
         anchors.centerIn: parent
@@ -1153,6 +1183,7 @@ Item {
     readonly property bool twelveHour: root.twelveHour
     readonly property string fontSetting: root.fontSetting
     readonly property string displayFont: root.displayFont
+    readonly property string themeName: root.themeName
     readonly property bool previewVisible: root.previewVisible
     readonly property bool locked: root.locked
     function designUsable(d) { return root.designUsable(d) }

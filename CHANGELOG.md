@@ -7,7 +7,26 @@ screen crossed a privilege boundary: its installer ran as root from the
 plugin checkout, a folder the user account can write to, and installed QML
 and designs from that same folder. The plugin is now unprivileged end to
 end. Nothing it ships runs as root or asks for a password, and it writes
-nowhere outside `~/.config/omarchy/lock-designs/`.
+nowhere outside `~/.config/omarchy/lock-designs/`. The same release adds
+eight originals in everyday layouts, the kind you leave on.
+
+### Added
+
+- Eight original designs, all following the active theme and needing
+  nothing downloaded: Postcard (clock, avatar and greeting on one frosted
+  card), Masthead (a big clock bottom left, editorial style), Hush (no box
+  at all, a dot per typed letter), Sidecar (wallpaper left, sign-in panel
+  right), TTY (a console login prompt with a blinking cursor and "Login
+  incorrect" on a miss), Halo (a ring around the clock that fills as you
+  type and spins while checking), Billboard (huge stacked hours and
+  minutes) and Shelf (everything on a slim bar along the bottom). That makes
+  66 designs, 21 of them originals.
+- The picker header names the active Omarchy theme, and a legend of every
+  key runs along the bottom of the picker.
+- The hint pill in the full-screen preview fades out a few seconds after
+  the last key or wheel step and comes back on the next one.
+- The picker can be opened on a named monitor:
+  `omarchy-shell shell toggle io.github.smoothpixels.lock-designs '{"screen":"DP-2"}'`.
 
 ### Removed
 
