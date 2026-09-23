@@ -40,7 +40,9 @@ The plugin is a standalone lock screen. It is a clone of omarchy.lock
 (manifest `omarchy.clonedFrom`), so the session lock, PAM password and
 fingerprint flows, blanking and stranded-lock recovery are Omarchy's own
 code; only the drawn design changes. `service` kind for the lock, `overlay`
-kind for the picker, opened with `omarchy-shell lock explore`.
+kind for the picker, opened with `omarchy-shell lock explore`. The picker
+names the active Omarchy theme in its header and lists every key along its
+bottom edge.
 
 Writes only to ~/.config/omarchy/lock-designs/ (designs, previews, the asset
 catalog, downloaded assets, settings.json). Nothing in the plugin runs as

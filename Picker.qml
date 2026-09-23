@@ -270,9 +270,10 @@ Item {
               font.weight: Font.Bold
             }
             Text {
-              text: root.designs.length + " designs"
-                + (root.service && root.service.themeName.length > 0 ? " · " + root.service.themeName + " theme" : "")
-                + (root.activeDesign ? " · using " + root.activeDesign.name : "")
+              text: [
+                root.service && root.service.themeName.length > 0 ? root.service.themeName + " theme" : "",
+                root.activeDesign ? "using " + root.activeDesign.name : ""
+              ].filter(function(s) { return s.length > 0 }).join(" · ")
               color: root.muted
               font.family: root.fontFamily
               font.pixelSize: Style.font.caption
@@ -356,14 +357,32 @@ Item {
               { id: "video", label: "Video" },
               { id: "missing", label: "Not downloaded" }
             ]
-            delegate: Button {
+            // The kit's selected state is a faint wash of the label color,
+            // which reads as a hover on many themes, and it recolors the
+            // label with the theme's selected token. The chosen filter is
+            // left unselected in the kit's eyes and gets a solid accent pill
+            // behind it with its label in the background color instead,
+            // legible whatever the theme's accent is.
+            delegate: Item {
+              id: chipCell
               required property var modelData
-              text: modelData.label
-              selected: root.filter === modelData.id
-              foreground: root.foreground
-              accent: root.accent
-              fontFamily: root.fontFamily
-              onClicked: { root.filter = modelData.id; root.currentIndex = 0; keys.forceActiveFocus() }
+              readonly property bool current: root.filter === modelData.id
+              width: chip.implicitWidth
+              height: chip.implicitHeight
+              Rectangle {
+                anchors.fill: parent
+                radius: chip.radius
+                color: root.accent
+                visible: chipCell.current
+              }
+              Button {
+                id: chip
+                text: chipCell.modelData.label
+                foreground: chipCell.current ? root.background : root.foreground
+                accent: root.accent
+                fontFamily: root.fontFamily
+                onClicked: { root.filter = chipCell.modelData.id; root.currentIndex = 0; keys.forceActiveFocus() }
+              }
             }
           }
         }
@@ -700,22 +719,36 @@ Item {
               fontFamily: root.fontFamily
               onClicked: if (root.service) root.service.setTwelveHour(!root.service.twelveHour)
             }
-            Button {
+            // The primary action: a solid accent pill, same as the chosen
+            // filter chip, so it is the one obvious button in the row.
+            Item {
+              id: useCell
               readonly property var d: root.current
               readonly property bool inUse: d !== null && d.id === root.activeId
               readonly property bool ready: root.isReady(d)
               readonly property var dl: root.downloadOf(d)
-              text: d === null ? "Use design"
-                : inUse ? "In use"
-                : (dl && dl.phase !== "failed") ? root.stateLabel(d)
-                : ready ? "Use design" : "Download " + root.sizeLabel(d)
-              iconText: inUse ? "󰄬" : (ready ? "󰄬" : "󰇚")
-              selected: !inUse && d !== null
+              readonly property bool primary: !inUse && d !== null
+              width: useButton.implicitWidth
+              height: useButton.implicitHeight
               opacity: inUse || d === null ? 0.55 : 1
-              foreground: root.foreground
-              accent: root.accent
-              fontFamily: root.fontFamily
-              onClicked: if (!inUse) root.activate(d)
+              Rectangle {
+                anchors.fill: parent
+                radius: useButton.radius
+                color: root.accent
+                visible: useCell.primary
+              }
+              Button {
+                id: useButton
+                text: useCell.d === null ? "Use design"
+                  : useCell.inUse ? "In use"
+                  : (useCell.dl && useCell.dl.phase !== "failed") ? root.stateLabel(useCell.d)
+                  : useCell.ready ? "Use design" : "Download " + root.sizeLabel(useCell.d)
+                iconText: useCell.inUse ? "󰄬" : (useCell.ready ? "󰄬" : "󰇚")
+                foreground: useCell.primary ? root.background : root.foreground
+                accent: root.accent
+                fontFamily: root.fontFamily
+                onClicked: if (!useCell.inUse) root.activate(useCell.d)
+              }
             }
             Button {
               text: "Preview"

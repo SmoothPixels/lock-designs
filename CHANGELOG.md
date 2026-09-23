@@ -43,6 +43,11 @@ eight originals in everyday layouts, the kind you leave on.
 ### Changed
 
 - The design grid moved up into the space the tab strip used.
+- The chosen filter chip and the Use design button sit on a solid accent
+  pill with their label in the background color, so the selection reads on
+  any theme; the kit's own selected state was a faint wash that looked like
+  a hover on monochrome themes. The header line names the theme and the
+  design in use and no longer counts the designs.
 
 ## 2.0.0 (2026-09-22)
 
