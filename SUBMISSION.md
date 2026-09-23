@@ -55,7 +55,8 @@ and a data folder that the greeter reads as data, with media paths accepted
 only inside that folder. The picker can launch that installer through
 Omarchy's floating terminal, where sudo asks for the password, and can
 remove it the same way. Nothing is installed without it. This is the
-`privilege` capability the baseline reports.
+`privilege` capability the baseline reports. The Login screen tab says
+what the login screen currently follows and when it last synced.
 
 Network access: on-demand downloads only, when the user clicks Download.
 Every entry in designs/thirdparty-assets.json carries a repository-owned

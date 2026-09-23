@@ -977,6 +977,25 @@ Item {
               visible: loginTab.installed
               width: Math.min(parent.width, Style.space(720))
               wrapMode: Text.Wrap
+              text: {
+                if (!root.service) return ""
+                var mode = root.service.loginSyncedMode
+                var at = root.service.loginSyncedAt
+                var when = at ? " Synced at " + Qt.formatTime(at, root.service.twelveHour ? "h:mm AP" : "HH:mm") + "." : ""
+                if (mode === "design") return "The login screen follows the lock screen and currently shows " + root.service.loginSyncedDesign + "." + when
+                if (mode === "omarchy-theme") return "The login screen follows your theme colors." + when
+                if (mode === "omarchy") return "Omarchy's own login screen, nothing to keep in sync."
+                return "The login screen has not been synced in this session yet."
+              }
+              color: Util.alpha(root.foreground, 0.6)
+              font.family: root.fontFamily
+              font.pixelSize: Style.font.caption
+            }
+
+            Text {
+              visible: loginTab.installed
+              width: Math.min(parent.width, Style.space(720))
+              wrapMode: Text.Wrap
               text: "New designs reach the login screen when you run the installer again after a plugin update. Removing the login screen leaves the lock screen as it is."
               color: Util.alpha(root.foreground, 0.4)
               font.family: root.fontFamily

@@ -484,6 +484,11 @@ Item {
     var d = designById(loginSource)
     return designUsable(d) ? d : null
   }
+  // What the last successful sync wrote into the theme, shown in the picker.
+  property string loginSyncedMode: ""
+  property string loginSyncedDesign: ""
+  property var loginSyncedAt: null
+
   readonly property string loginMode: {
     if (loginSource === "omarchy" || loginSource === "omarchy-theme") return loginSource
     return loginSourceDesign ? "design" : ""
@@ -577,6 +582,8 @@ Item {
     ]
     var assets = loginMode === "design" && designAssetsDir(loginSourceDesign).length > 0
       ? designsDir + "/" + designAssetsDir(loginSourceDesign) : ""
+    loginSyncProc.pendingMode = loginMode
+    loginSyncProc.pendingDesign = loginMode === "design" ? String(loginSourceDesign.name || loginSourceDesign.file) : ""
     loginSyncProc.command = ["bash", "-c", root.loginSyncScript, "lock-designs-login", root.backgroundPath, root.loginDropDir, root.loginConfPath, lines.join("\n"), assets]
     loginSyncProc.running = true
   }
@@ -680,9 +687,17 @@ Item {
 
   Process {
     id: loginSyncProc
+    property string pendingMode: ""
+    property string pendingDesign: ""
     onExited: function(exitCode) {
-      if (exitCode === 0) root.logEvent("login-synced")
-      else console.warn("lock-designs: could not update the login screen theme (exit " + exitCode + ")")
+      if (exitCode === 0) {
+        root.loginSyncedMode = pendingMode
+        root.loginSyncedDesign = pendingDesign
+        root.loginSyncedAt = new Date()
+        root.logEvent("login-synced")
+      } else {
+        console.warn("lock-designs: could not update the login screen theme (exit " + exitCode + ")")
+      }
     }
   }
 
@@ -1424,6 +1439,9 @@ Item {
     readonly property bool loginFollow: root.loginFollow
     readonly property string loginSource: root.loginSource
     readonly property string loginMode: root.loginMode
+    readonly property string loginSyncedMode: root.loginSyncedMode
+    readonly property string loginSyncedDesign: root.loginSyncedDesign
+    readonly property var loginSyncedAt: root.loginSyncedAt
     function setLoginSource(value) { return root.setLoginSource(value) }
     function previewLogin() { return root.previewLogin() }
     function checkLoginTheme() { root.checkLoginTheme() }
