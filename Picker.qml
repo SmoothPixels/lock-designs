@@ -56,18 +56,10 @@ Item {
     return screens.length > 0 ? screens[0] : null
   }
 
-  function open(payload) {
+  function open() {
     adopt()
     root.targetScreen = focusedScreen()
-    // `omarchy-shell shell toggle <id> '{"tab":"login"}'` opens straight on a tab.
-    try {
-      var p = typeof payload === "string" && payload.length > 0 ? JSON.parse(payload) : payload
-      if (p && (p.tab === "lock" || p.tab === "login")) root.tab = p.tab
-    } catch (e) {}
-    if (root.service) {
-      root.service.rescanDesigns()
-      root.service.checkLoginTheme()
-    }
+    if (root.service) root.service.rescanDesigns()
     root.opened = true
     Qt.callLater(function() { keys.forceActiveFocus() })
   }
@@ -83,8 +75,6 @@ Item {
   property string query: ""
   property string filter: "all"
   property int currentIndex: 0
-  // "lock" shows the design grid; "login" the SDDM login screen choices.
-  property string tab: "lock"
 
   readonly property var designs: service ? (service.designs || []) : []
   readonly property var catalog: service ? (service.catalog || ({})) : ({})
@@ -226,13 +216,6 @@ Item {
         Keys.onPressed: function(event) {
           var ctrl = (event.modifiers & Qt.ControlModifier) !== 0
           if (event.key === Qt.Key_Escape) { root.dismiss(); event.accepted = true; return }
-          if (event.key === Qt.Key_Tab || event.key === Qt.Key_Backtab) { root.tab = root.tab === "lock" ? "login" : "lock"; event.accepted = true; return }
-          if (root.tab === "login") {
-            var picks = { }
-            picks[Qt.Key_1] = "omarchy"; picks[Qt.Key_2] = "omarchy-theme"; picks[Qt.Key_3] = "lock"
-            if (picks[event.key] && root.service && root.service.loginInstalled) { root.service.setLoginSource(picks[event.key]); event.accepted = true }
-            return
-          }
           if (event.key === Qt.Key_Left) { root.move(-1); event.accepted = true; return }
           if (event.key === Qt.Key_Right) { root.move(1); event.accepted = true; return }
           if (event.key === Qt.Key_Up) { root.move(-grid.columns); event.accepted = true; return }
@@ -296,7 +279,6 @@ Item {
 
           SearchableDropdown {
             id: fontPicker
-            visible: root.tab === "lock"
             anchors.right: search.left
             anchors.rightMargin: Style.spacing.controlGap
             anchors.verticalCenter: parent.verticalCenter
@@ -317,7 +299,6 @@ Item {
 
           TextField {
             id: search
-            visible: root.tab === "lock"
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
             width: Style.space(280)
@@ -337,47 +318,11 @@ Item {
           }
         }
 
-        // ---- tabs -------------------------------------------------------
-        Row {
-          id: tabs
-          anchors.top: header.bottom
-          anchors.topMargin: Style.space(10)
-          anchors.left: parent.left
-          spacing: Style.spacing.controlGap
-          Button {
-            text: "Lock screen"
-            iconText: "󰌾"
-            selected: root.tab === "lock"
-            foreground: root.foreground
-            accent: root.accent
-            fontFamily: root.fontFamily
-            onClicked: { root.tab = "lock"; keys.forceActiveFocus() }
-          }
-          Button {
-            text: "Login screen"
-            iconText: "󰍹"
-            selected: root.tab === "login"
-            foreground: root.foreground
-            accent: root.accent
-            fontFamily: root.fontFamily
-            onClicked: { root.tab = "login"; if (root.service) root.service.checkLoginTheme(); keys.forceActiveFocus() }
-          }
-        }
-        Text {
-          anchors.right: parent.right
-          anchors.verticalCenter: tabs.verticalCenter
-          text: "Tab switches"
-          color: root.muted
-          font.family: root.fontFamily
-          font.pixelSize: Style.font.caption
-        }
-
         // ================= Lock screen tab =================
         Item {
           id: lockTab
-          visible: root.tab === "lock"
-          anchors.top: tabs.bottom
-          anchors.topMargin: Style.space(12)
+          anchors.top: header.bottom
+          anchors.topMargin: Style.space(14)
           anchors.left: parent.left
           anchors.right: parent.right
           anchors.bottom: parent.bottom
@@ -773,235 +718,6 @@ Item {
             }
           }
         }
-        }
-
-        // ================= Login screen tab =================
-        Item {
-          id: loginTab
-          visible: root.tab === "login"
-          anchors.top: tabs.bottom
-          anchors.topMargin: Style.space(16)
-          anchors.left: parent.left
-          anchors.right: parent.right
-          anchors.bottom: parent.bottom
-          readonly property bool installed: root.service ? root.service.loginInstalled : false
-          readonly property bool stale: root.service ? root.service.loginStale : false
-          readonly property string source: root.service ? root.service.loginSource : ""
-
-          // One selectable choice for what the login screen shows.
-          component Choice: Rectangle {
-            id: choice
-            property string value: ""
-            property string title: ""
-            property string detail: ""
-            property string glyph: ""
-            readonly property bool picked: loginTab.source === value
-            width: Math.min(parent.width, Style.space(720))
-            height: Style.space(64)
-            radius: Math.max(Style.cornerRadius, 8)
-            color: picked ? Color.menu.selectedBackground : (choiceHover.hovered ? Util.alpha(root.foreground, 0.04) : "transparent")
-            border.width: picked ? 2 : 1
-            border.color: picked ? root.accent : Util.alpha(root.foreground, 0.15)
-            HoverHandler { id: choiceHover }
-            MouseArea {
-              anchors.fill: parent
-              cursorShape: Qt.PointingHandCursor
-              enabled: loginTab.installed
-              onClicked: { if (root.service) root.service.setLoginSource(choice.value); keys.forceActiveFocus() }
-            }
-            Row {
-              anchors.fill: parent
-              anchors.leftMargin: Style.space(16)
-              anchors.rightMargin: Style.space(16)
-              spacing: Style.space(14)
-              Rectangle {
-                anchors.verticalCenter: parent.verticalCenter
-                width: Style.space(16)
-                height: width
-                radius: width / 2
-                color: "transparent"
-                border.width: 2
-                border.color: choice.picked ? root.accent : Util.alpha(root.foreground, 0.4)
-                Rectangle {
-                  anchors.centerIn: parent
-                  width: parent.width * 0.5
-                  height: width
-                  radius: width / 2
-                  color: root.accent
-                  visible: choice.picked
-                }
-              }
-              Text {
-                anchors.verticalCenter: parent.verticalCenter
-                text: choice.glyph
-                color: choice.picked ? root.accent : root.muted
-                font.family: root.fontFamily
-                font.pixelSize: Style.font.display
-              }
-              Column {
-                anchors.verticalCenter: parent.verticalCenter
-                spacing: Style.space(3)
-                Text {
-                  text: choice.title
-                  color: root.foreground
-                  font.family: root.fontFamily
-                  font.pixelSize: Style.font.subtitle
-                  font.weight: Font.Bold
-                }
-                Text {
-                  text: choice.detail
-                  color: root.muted
-                  font.family: root.fontFamily
-                  font.pixelSize: Style.font.caption
-                }
-              }
-            }
-          }
-
-          Column {
-            anchors.left: parent.left
-            anchors.top: parent.top
-            width: parent.width
-            spacing: Style.space(12)
-
-            Text {
-              width: Math.min(parent.width, Style.space(720))
-              wrapMode: Text.Wrap
-              text: loginTab.installed
-                ? "What SDDM shows before you sign in. It updates on its own when your theme, wallpaper, font or lock design change, and applies from the next login."
-                : "The login screen (SDDM) can follow your theme or show your lock design. Setting it up needs your password once, in a terminal; after that nothing here asks for privileges."
-              color: root.muted
-              font.family: root.fontFamily
-              font.pixelSize: Style.font.body
-            }
-
-            Rectangle {
-              visible: loginTab.installed && loginTab.stale
-              width: Math.min(parent.width, Style.space(720))
-              height: staleText.implicitHeight + Style.space(20)
-              radius: Math.max(Style.cornerRadius, 8)
-              color: Util.alpha(root.accent, 0.10)
-              border.width: 1
-              border.color: Util.alpha(root.accent, 0.5)
-              Text {
-                id: staleText
-                anchors.fill: parent
-                anchors.margins: Style.space(10)
-                wrapMode: Text.Wrap
-                text: "The lock screen files on disk have changed since the login screen was last set up. Press Update login screen files below to bring the login screen in line with them."
-                color: root.foreground
-                font.family: root.fontFamily
-                font.pixelSize: Style.font.body
-              }
-            }
-
-            Button {
-              visible: !loginTab.installed
-              text: "Set up login screen"
-              iconText: "󰍹"
-              selected: true
-              foreground: root.foreground
-              accent: root.accent
-              fontFamily: root.fontFamily
-              onClicked: {
-                if (!root.service) return
-                root.dismiss()
-                root.service.installLoginTheme()
-              }
-            }
-
-            Choice {
-              visible: loginTab.installed
-              value: "omarchy"
-              glyph: ""
-              title: "Omarchy default"
-              detail: "Omarchy's stock login screen, exactly as it ships"
-            }
-            Choice {
-              visible: loginTab.installed
-              value: "omarchy-theme"
-              glyph: "󰏘"
-              title: "Omarchy default, theme colors"
-              detail: "The same layout, recolored with your active theme"
-            }
-            Choice {
-              visible: loginTab.installed
-              value: "lock"
-              glyph: "󰌾"
-              title: "Same as the lock screen"
-              detail: "Your lock design, live on the login screen" + (root.activeDesign ? " (currently " + root.activeDesign.name + ")" : "")
-            }
-
-            Row {
-              visible: loginTab.installed
-              spacing: Style.spacing.controlGap
-              Button {
-                text: "Preview login screen"
-                iconText: "󰈈"
-                tooltipText: "Opens the greeter in a window, without logging out"
-                foreground: root.foreground
-                accent: root.accent
-                fontFamily: root.fontFamily
-                onClicked: if (root.service) root.service.previewLogin()
-              }
-              Button {
-                text: "Update login screen files"
-                iconText: "󰑐"
-                selected: loginTab.stale
-                tooltipText: "Re-run the installer so the login screen gets the designs from the current plugin version. Asks for your password in a terminal."
-                foreground: root.foreground
-                accent: root.accent
-                fontFamily: root.fontFamily
-                onClicked: {
-                  if (!root.service) return
-                  root.dismiss()
-                  root.service.installLoginTheme()
-                }
-              }
-              Button {
-                text: "Remove login screen"
-                iconText: "󰆴"
-                tooltipText: "Puts SDDM back on Omarchy's own login screen and deletes the installed theme. Asks for your password in a terminal."
-                foreground: root.foreground
-                accent: root.accent
-                fontFamily: root.fontFamily
-                onClicked: {
-                  if (!root.service) return
-                  root.dismiss()
-                  root.service.removeLoginTheme()
-                }
-              }
-            }
-
-            Text {
-              visible: loginTab.installed
-              width: Math.min(parent.width, Style.space(720))
-              wrapMode: Text.Wrap
-              text: {
-                if (!root.service) return ""
-                var mode = root.service.loginSyncedMode
-                var at = root.service.loginSyncedAt
-                var when = at ? " Synced at " + Qt.formatTime(at, root.service.twelveHour ? "h:mm AP" : "HH:mm") + "." : ""
-                if (mode === "design") return "The login screen follows the lock screen and currently shows " + root.service.loginSyncedDesign + "." + when
-                if (mode === "omarchy-theme") return "The login screen follows your theme colors." + when
-                if (mode === "omarchy") return "Omarchy's own login screen, nothing to keep in sync."
-                return "The login screen has not been synced in this session yet."
-              }
-              color: Util.alpha(root.foreground, 0.6)
-              font.family: root.fontFamily
-              font.pixelSize: Style.font.caption
-            }
-
-            Text {
-              visible: loginTab.installed
-              width: Math.min(parent.width, Style.space(720))
-              wrapMode: Text.Wrap
-              text: "New designs reach the login screen when you run the installer again after a plugin update. Removing the login screen leaves the lock screen as it is."
-              color: Util.alpha(root.foreground, 0.4)
-              font.family: root.fontFamily
-              font.pixelSize: Style.font.caption
-            }
-          }
         }
       }
     }

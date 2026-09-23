@@ -446,276 +446,13 @@ Item {
     return "ok"
   }
 
-  // ---------------------------------------------------------------------
-  // Login screen. If the Lock Designs SDDM theme is installed (see
-  // tools/install-login-theme.sh), its user-owned theme.conf.user and
-  // current/ folder are rewritten here whenever the Omarchy theme colors,
-  // the wallpaper, the display font or the chosen design change. No
-  // privilege is involved after the one-time install.
-  // ---------------------------------------------------------------------
-  readonly property string loginThemeDir: "/usr/share/sddm/themes/lock-designs"
-  readonly property string loginConfPath: loginThemeDir + "/theme.conf.user"
-  readonly property string loginDropDir: loginThemeDir + "/current"
-  property bool loginInstalled: false
-  // True when the installed root-owned snapshot was built from older plugin
-  // files than the ones on disk now; the Login screen tab then asks for the
-  // installer to be run again.
-  property bool loginStale: false
-  readonly property bool loginFollow: !(settings && settings.loginFollow === false)
-  // What the login screen shows. "omarchy": Omarchy's stock greeter;
-  // "omarchy-theme": the same layout in theme colors; "lock": the lock
-  // design itself, live in the greeter; or a design id to pin one design
-  // there regardless of the lock. Chosen separately from the lock design.
-  readonly property string loginSource: settings && settings.loginSource ? String(settings.loginSource) : "lock"
-  readonly property var loginModes: ["omarchy", "omarchy-theme", "lock"]
-
   function designAssetsDir(d) {
     if (!d) return ""
     if (d.assetsDir && d.assetsDir.length > 0) return d.assetsDir
     return catalog[d.id] ? String(catalog[d.id].assetsDir || "") : ""
   }
-  // A design can back the login screen when it has an assets folder and, if
-  // that folder is downloaded on demand, the download is complete.
-  function loginCapable(d) { return !!d && designAssetsDir(d).length > 0 && designUsable(d) }
-  // The design the greeter should run, if the choice calls for one.
-  readonly property var loginSourceDesign: {
-    if (loginSource === "lock") return activeDesign
-    if (loginModes.indexOf(loginSource) !== -1) return null
-    var d = designById(loginSource)
-    return designUsable(d) ? d : null
-  }
-  // What the last successful sync wrote into the theme, shown in the picker.
-  property string loginSyncedMode: ""
-  property string loginSyncedDesign: ""
-  property var loginSyncedAt: null
 
-  readonly property string loginMode: {
-    if (loginSource === "omarchy" || loginSource === "omarchy-theme") return loginSource
-    return loginSourceDesign ? "design" : ""
-  }
-
-  function setLoginSource(value) {
-    var v = String(value || "lock")
-    if (loginModes.indexOf(v) === -1 && !designById(v)) return "unknown-choice"
-    saveSettings({ loginSource: v, loginFollow: true })
-    requestLoginSync()
-    return "ok"
-  }
-
-  // Opens the greeter in a window, the way SDDM will show it, without
-  // logging out.
-  function previewLogin() {
-    if (!loginInstalled || loginPreviewProc.running) return "not-installed"
-    loginPreviewProc.command = ["setsid", "sddm-greeter-qt6", "--test-mode", "--theme", loginThemeDir]
-    loginPreviewProc.running = true
-    return "ok"
-  }
-  Process { id: loginPreviewProc }
-
-  property string hostName: ""
-  FileView {
-    path: "/etc/hostname"
-    printErrors: false
-    onLoaded: root.hostName = String(text() || "").trim()
-  }
-  property bool loginSyncWanted: false
-  property bool loginSyncAfterCheck: false
-
-  function hex(c) {
-    var s = String(c)
-    return s.length === 9 ? "#" + s.substring(3) : s
-  }
-
-  function checkLoginTheme() {
-    if (!loginCheckProc.running) loginCheckProc.running = true
-  }
-
-  // Debounced: several color properties change at once on a theme switch.
-  function requestLoginSync() {
-    if (!loginInstalled || !loginFollow) return
-    loginSyncTimer.restart()
-  }
-
-  function setLoginFollow(on) {
-    saveSettings({ loginFollow: on === true })
-    if (on) requestLoginSync()
-  }
-
-  // Runs the installer in Omarchy's floating terminal, which asks for the
-  // sudo password there, then watches for the theme to appear.
-  function installLoginTheme() {
-    if (loginInstallProc.running) return
-    loginInstallProc.command = ["omarchy-launch-floating-terminal-with-presentation", "sudo " + shq(pluginDir + "/tools/install-login-theme.sh")]
-    loginInstallProc.running = true
-    loginInstallWatch.expectInstalled = true
-    loginInstallWatch.remaining = 40
-    loginInstallWatch.restart()
-  }
-
-  function shq(s) { return "'" + String(s).replace(/'/g, "'\\''") + "'" }
-
-  // Same terminal, same script with --remove: puts SDDM back on Omarchy's
-  // theme and deletes the installed files, then re-checks so the tab updates.
-  function removeLoginTheme() {
-    if (loginInstallProc.running) return
-    loginInstallProc.command = ["omarchy-launch-floating-terminal-with-presentation", "sudo " + shq(pluginDir + "/tools/install-login-theme.sh") + " --remove"]
-    loginInstallProc.running = true
-    loginInstallWatch.expectInstalled = false
-    loginInstallWatch.remaining = 40
-    loginInstallWatch.restart()
-  }
-
-  function performLoginSync() {
-    if (!loginInstalled || !loginFollow) return
-    var lines = [
-      "[General]",
-      "background=" + hex(Color.background),
-      "foreground=" + hex(Color.foreground),
-      "accent=" + hex(Color.accent),
-      "muted=" + hex(Color.muted),
-      "urgent=" + hex(Color.urgent),
-      "font=" + displayFont,
-      "hostname=" + hostName,
-      "twelveHour=" + (twelveHour ? "true" : "false"),
-      "mode=" + loginMode,
-      "design=" + (loginMode === "design" ? loginSourceDesign.file : "")
-    ]
-    var assets = loginMode === "design" && designAssetsDir(loginSourceDesign).length > 0
-      ? designsDir + "/" + designAssetsDir(loginSourceDesign) : ""
-    loginSyncProc.pendingMode = loginMode
-    loginSyncProc.pendingDesign = loginMode === "design" ? String(loginSourceDesign.name || loginSourceDesign.file) : ""
-    loginSyncProc.command = ["bash", "-c", root.loginSyncScript, "lock-designs-login", root.backgroundPath, root.loginDropDir, root.loginConfPath, lines.join("\n"), assets]
-    loginSyncProc.running = true
-  }
-
-  // Copies the wallpaper into the user-owned folder and writes the config
-  // directly into the user-owned file (the directory itself is root's, so an
-  // atomic rename would not be allowed there).
-  // Copies the wallpaper, and for a design the whole of its assets folder,
-  // into the user-owned current/ folder the greeter reads from. A file is
-  // only re-copied when its bytes differ; other designs' assets are pruned.
-  readonly property string loginSyncScript: '
-    src="$1"; dir="$2"; conf="$3"; content="$4"; assets="$5"
-    [ -d "$dir" ] && [ -w "$dir" ] && [ -w "$conf" ] || exit 1
-    place() {
-      s="$1"; d="$2"
-      if [ -f "$d" ] && [ "$(stat -c%s -- "$s")" = "$(stat -c%s -- "$d")" ] && cmp -s -- "$s" "$d"; then return 0; fi
-      cp -f -- "$s" "$d.tmp" && mv -f -- "$d.tmp" "$d" && chmod 644 -- "$d"
-    }
-    wallpaper=""
-    if [ -n "$src" ] && [ -f "$src" ]; then
-      place "$src" "$dir/wallpaper.img" && wallpaper="$dir/wallpaper.img"
-    fi
-    mkdir -p -- "$dir/assets"
-    keep=""
-    if [ -n "$assets" ] && [ -d "$assets" ]; then
-      keep="${assets##*/}"
-      mkdir -p -- "$dir/assets/$keep"
-      if command -v rsync >/dev/null 2>&1; then
-        rsync -a --delete --chmod=D755,F644 -- "$assets/" "$dir/assets/$keep/"
-      else
-        cp -rf -- "$assets/." "$dir/assets/$keep/" && chmod -R a+rX -- "$dir/assets/$keep"
-      fi
-    fi
-    for d in "$dir"/assets/*/; do
-      [ -d "$d" ] || continue
-      n="$(basename -- "$d")"
-      [ "$n" = "$keep" ] || rm -rf -- "$d"
-    done
-    printf "%s\nwallpaper=%s\n" "$content" "$wallpaper" > "$conf"
-  '
-
-  Timer {
-    id: loginSyncTimer
-    interval: 700
-    onTriggered: {
-      root.loginSyncWanted = true
-      root.refreshBackground()
-    }
-  }
-
-  // The wallpaper symlink gives no change signal; look now and then while
-  // the login screen is meant to follow it.
-  Timer {
-    interval: 20000
-    repeat: true
-    running: root.loginInstalled && root.loginFollow
-    onTriggered: root.refreshBackground()
-  }
-
-  Timer {
-    id: loginInstallWatch
-    interval: 3000
-    repeat: true
-    property int remaining: 0
-    property bool expectInstalled: true
-    onTriggered: {
-      remaining -= 1
-      root.checkLoginTheme()
-      if (remaining <= 0 || root.loginInstalled === expectInstalled) stop()
-    }
-  }
-
-  // Prints "yes"/"no" for installed, then the installed snapshot's
-  // fingerprint and the one the current plugin files would produce.
-  Process {
-    id: loginCheckProc
-    command: ["bash", "-c", root.loginCheckScript, "lock-designs-login-check", root.loginConfPath, root.loginDropDir, root.loginThemeDir, root.pluginDir]
-    stdout: StdioCollector { id: loginCheckOut; waitForEnd: true }
-    onExited: {
-      var lines = String(loginCheckOut.text || "").trim().split("\n")
-      var installed = lines[0] === "yes"
-      var was = root.loginInstalled
-      root.loginInstalled = installed
-      root.loginStale = installed && (lines.length < 3 || lines[1].length === 0 || lines[1] !== lines[2])
-      if (installed && (!was || root.loginSyncAfterCheck)) root.requestLoginSync()
-      root.loginSyncAfterCheck = false
-    }
-  }
-  readonly property string loginCheckScript: '
-    conf="$1"; drop="$2"; theme="$3"; plugin="$4"
-    if [ -w "$conf" ] && [ -d "$drop" ] && [ -w "$drop" ]; then echo yes; else echo no; fi
-    cat -- "$theme/snapshot.sha256" 2>/dev/null || echo ""
-    src="$plugin/sddm/lock-designs"
-    { cat -- "$src/Main.qml" "$src/theme.conf" "$src/metadata.desktop"
-      find "$src/shim" -type f | LC_ALL=C sort | xargs cat --
-      ls "$plugin"/designs/*.qml | LC_ALL=C sort | xargs cat --
-    } 2>/dev/null | sha256sum | cut -d" " -f1
-  '
-
-  Process { id: loginInstallProc }
-
-  Process {
-    id: loginSyncProc
-    property string pendingMode: ""
-    property string pendingDesign: ""
-    onExited: function(exitCode) {
-      if (exitCode === 0) {
-        root.loginSyncedMode = pendingMode
-        root.loginSyncedDesign = pendingDesign
-        root.loginSyncedAt = new Date()
-        root.logEvent("login-synced")
-      } else {
-        console.warn("lock-designs: could not update the login screen theme (exit " + exitCode + ")")
-      }
-    }
-  }
-
-  Connections {
-    target: Color
-    function onBackgroundChanged() { root.requestLoginSync() }
-    function onForegroundChanged() { root.requestLoginSync() }
-    function onAccentChanged() { root.requestLoginSync() }
-    function onMutedChanged() { root.requestLoginSync() }
-  }
-  onDisplayFontChanged: requestLoginSync()
-  onLoginSourceChanged: requestLoginSync()
-  onActiveDesignIdChanged: {
-    if (loginSource === "lock") requestLoginSync()
-    prefetchTimer.restart()
-  }
-  onInstalledAssetsChanged: if (loginMode === "design") requestLoginSync()
-  onHostNameChanged: requestLoginSync()
+  onActiveDesignIdChanged: prefetchTimer.restart()
 
   // ---------------------------------------------------------------------
   // Preview: the design full screen on a layer above everything, without
@@ -974,12 +711,6 @@ Item {
         if (changed) {
           root.backgroundPath = next
           root.backgroundVersion += 1
-        }
-        if (root.loginSyncWanted) {
-          root.loginSyncWanted = false
-          root.performLoginSync()
-        } else if (changed) {
-          root.requestLoginSync()
         }
       }
     }
@@ -1368,23 +1099,13 @@ Item {
     function design(): string { return root.activeDesignId }
     function designs(): string {
       return JSON.stringify(root.designs.map(function(d) {
-        return { id: d.id, name: d.name, file: d.file, ready: root.designUsable(d), source: d.source, assets: root.designAssetsDir(d), loginCapable: root.loginCapable(d) }
+        return { id: d.id, name: d.name, file: d.file, ready: root.designUsable(d), source: d.source, assets: root.designAssetsDir(d) }
       }))
     }
     function setDesign(id: string): string { return root.setDesign(id) }
     function rescanDesigns(): string { root.rescanDesigns(); return "ok" }
     function download(id: string): string { return root.downloadAssets(id) }
     function removeAssets(id: string): string { return root.removeAssets(id) }
-    function syncLogin(): string {
-      root.loginSyncAfterCheck = true
-      root.checkLoginTheme()
-      return "ok"
-    }
-    function loginStatus(): string {
-      return JSON.stringify({ installed: root.loginInstalled, stale: root.loginStale, follow: root.loginFollow, source: root.loginSource, mode: root.loginMode, theme: root.loginThemeDir })
-    }
-    function setLoginSource(value: string): string { return root.setLoginSource(value) }
-    function previewLogin(): string { return root.previewLogin() }
     function font(): string { return root.displayFont }
     function setFont(family: string): string { root.setDisplayFont(family); return "ok" }
     function setClockFormat(value: string): string {
@@ -1434,20 +1155,6 @@ Item {
     readonly property string displayFont: root.displayFont
     readonly property bool previewVisible: root.previewVisible
     readonly property bool locked: root.locked
-    readonly property bool loginInstalled: root.loginInstalled
-    readonly property bool loginStale: root.loginStale
-    readonly property bool loginFollow: root.loginFollow
-    readonly property string loginSource: root.loginSource
-    readonly property string loginMode: root.loginMode
-    readonly property string loginSyncedMode: root.loginSyncedMode
-    readonly property string loginSyncedDesign: root.loginSyncedDesign
-    readonly property var loginSyncedAt: root.loginSyncedAt
-    function setLoginSource(value) { return root.setLoginSource(value) }
-    function previewLogin() { return root.previewLogin() }
-    function checkLoginTheme() { root.checkLoginTheme() }
-    function setLoginFollow(on) { root.setLoginFollow(on) }
-    function installLoginTheme() { root.installLoginTheme() }
-    function removeLoginTheme() { root.removeLoginTheme() }
     function designUsable(d) { return root.designUsable(d) }
     function setDesign(id) { return root.setDesign(id) }
     function setTwelveHour(on) { root.setTwelveHour(on) }
@@ -1491,7 +1198,6 @@ Item {
     refreshBackground()
     refreshFingerprintStatus()
     checkStrandedLock()
-    checkLoginTheme()
     syncProc.running = true
   }
   Component.onDestruction: Bridge.retract(facade)

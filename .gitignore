@@ -5,7 +5,3 @@
 # commit any of them; that is the entire point of the download-on-demand
 # design and it keeps a clone small.
 *-assets/
-
-# Local test output for the SDDM theme, never the real config.
-sddm/lock-designs/theme.conf.user
-sddm/lock-designs/current/

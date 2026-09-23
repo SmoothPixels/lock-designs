@@ -36,27 +36,22 @@ wallsflow.com live wallpapers. Every video, image and font downloads on
 demand; the repository holds only QML, thumbnails and the catalog, so a
 clone is about 40 MB.
 
-Since the last validation the plugin changed from a design pack for another
-picker into a standalone lock screen. It is a clone of omarchy.lock (manifest
-`omarchy.clonedFrom`), so the session lock, PAM password and fingerprint
-flows, blanking and stranded-lock recovery are Omarchy's own code; only the
-drawn design changes. `service` kind for the lock, `overlay` kind for the
-picker, opened with `omarchy-shell lock explore`.
+The plugin is a standalone lock screen. It is a clone of omarchy.lock
+(manifest `omarchy.clonedFrom`), so the session lock, PAM password and
+fingerprint flows, blanking and stranded-lock recovery are Omarchy's own
+code; only the drawn design changes. `service` kind for the lock, `overlay`
+kind for the picker, opened with `omarchy-shell lock explore`.
 
 Writes only to ~/.config/omarchy/lock-designs/ (designs, previews, the asset
-catalog, downloaded assets, settings.json). The plugin itself never
-escalates. Two opt-in scripts exist for the user to run.
+catalog, downloaded assets, settings.json). Nothing in the plugin runs as
+root or asks for a password, and no file it ships is meant to be run with
+elevated rights. One opt-in script exists for the user to run:
 tools/install-menu-entries.sh adds an Omarchy menu row, user files only,
-and `--remove` undoes it. tools/install-login-theme.sh, run with sudo once,
-installs an SDDM greeter theme under /usr/share/sddm/themes/lock-designs and
-selects it in /etc/sddm.conf.d. Root owns the greeter QML, the shell-module
-stand-ins and a snapshot of the designs; the user owns only a config file
-and a data folder that the greeter reads as data, with media paths accepted
-only inside that folder. The picker can launch that installer through
-Omarchy's floating terminal, where sudo asks for the password, and can
-remove it the same way. Nothing is installed without it. This is the
-`privilege` capability the baseline reports. The Login screen tab says
-what the login screen currently follows and when it last synced.
+and `--remove` undoes it. Version 2.0.0 had an optional SDDM login screen
+whose installer ran as root from the plugin checkout; the security review
+flagged that boundary and 2.1.0 removes the feature entirely (the sddm/
+folder, tools/install-login-theme.sh, the picker's Login screen tab, its
+settings and its commands).
 
 Network access: on-demand downloads only, when the user clicks Download.
 Every entry in designs/thirdparty-assets.json carries a repository-owned

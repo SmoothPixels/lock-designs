@@ -1,5 +1,30 @@
 # Changelog
 
+## 2.1.0 (2026-09-23)
+
+The marketplace security review of 2.0.0 found that the optional login
+screen crossed a privilege boundary: its installer ran as root from the
+plugin checkout, a folder the user account can write to, and installed QML
+and designs from that same folder. The plugin is now unprivileged end to
+end. Nothing it ships runs as root or asks for a password, and it writes
+nowhere outside `~/.config/omarchy/lock-designs/`.
+
+### Removed
+
+- The login screen. Gone are the Login screen tab, the SDDM greeter theme
+  under `sddm/`, `tools/install-login-theme.sh`, the `loginSource` and
+  `loginFollow` settings, and the `syncLogin`, `loginStatus`,
+  `setLoginSource` and `previewLogin` commands. A login screen installed
+  from 2.0.0 keeps showing whatever it last synced but no longer follows the
+  theme or the lock design. Take it down with that version's installer and
+  `--remove`, or delete `/usr/share/sddm/themes/lock-designs` and
+  `/etc/sddm.conf.d/99-zz-lock-designs.conf` as root.
+- The Tab key in the picker, which switched between the two tabs.
+
+### Changed
+
+- The design grid moved up into the space the tab strip used.
+
 ## 2.0.0 (2026-09-22)
 
 Lock Designs became a lock screen. Version 1 was a pack of designs for a

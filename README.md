@@ -84,34 +84,6 @@ Maintainer tools:
 
 A GitHub Actions workflow (`.github/workflows/catalog.yml`) checks on every change to the catalog that each entry points at a qylock commit or a release of this repository and carries a digest and size; run it by hand to download every file and verify the digests too.
 
-## Login screen
-
-The picker has two tabs. **Lock screen** is everything above. **Login screen** decides what SDDM shows before you sign in, chosen separately from the lock design:
-
-| Choice | Login screen |
-|---|---|
-| Omarchy default | Omarchy's stock login screen, loaded from its own theme folder, exactly as it ships |
-| Omarchy default, theme colors | The same layout, recolored from your active theme |
-| Same as the lock screen | Your lock design itself, running live in the greeter, with its video, fonts and clock |
-
-Setup needs root once, to place the theme under `/usr/share/sddm/themes` and select it in `/etc/sddm.conf.d`. Use **Set up login screen** in the Login screen tab, which opens Omarchy's floating terminal and asks for your password there, or run it yourself:
-
-```sh
-sudo ~/.config/omarchy/plugins/io.github.smoothpixels.lock-designs/tools/install-login-theme.sh
-```
-
-After that nothing asks for privileges. Root owns the greeter's QML, small stand-ins for the shell modules the designs use, and a snapshot of every design with its imports pointed at those stand-ins. Your account owns only `theme.conf.user` and a `current/` folder inside the theme; the service rewrites them whenever the theme colors, wallpaper, font, lock design or login choice change, copying the chosen design's assets in and pruning the rest. The greeter reads those as data, accepts media paths only from inside its own `current/` folder, and never loads QML from anything your account can write. A new design therefore only reaches the login screen through the installer. The installer records a fingerprint of the files it snapshotted; when the files on disk differ from that snapshot, the Login screen tab shows a notice that the lock screen files have changed and highlights **Update login screen files**. Updates that touch only the lock side need nothing.
-
-Details worth knowing: a user chip bottom left shows who will be signed in and, on machines with several accounts, opens a list to switch; Omarchy's own mode is shown exactly as it ships, without it. Sleep, restart and shut down controls sit bottom right in every mode except Omarchy's own. If a design cannot load in the greeter, a plain built-in layout on your wallpaper takes its place, so the login screen always has a password field.
-
-Preview any time without logging out with **Preview login screen**, or:
-
-```sh
-sddm-greeter-qt6 --test-mode --theme /usr/share/sddm/themes/lock-designs
-```
-
-**Remove login screen** in the same tab, or `sudo tools/install-login-theme.sh --remove`, puts SDDM back on Omarchy's own theme and deletes the installed files. `tools/install-login-theme.sh --stage <dir>` builds the theme into a folder without root, for previewing or review.
-
 ## Settings and commands
 
 Settings are kept in `~/.config/omarchy/lock-designs/settings.json`:
@@ -121,8 +93,6 @@ Settings are kept in `~/.config/omarchy/lock-designs/settings.json`:
 | `design` | Id of the selected design, for example `my-forest` |
 | `twelveHour` | `true` for 12-hour clocks |
 | `font` | Family the originals use for text, for example `Adwaita Sans`; empty follows the theme font |
-| `loginFollow` | `false` stops updating the SDDM login theme |
-| `loginSource` | `omarchy`, `omarchy-theme`, `lock` (default), or a design id to pin one design to the login screen |
 
 Everything the picker does is also reachable from the command line through the stock `lock` target, which this plugin answers as the active lock:
 
@@ -138,10 +108,6 @@ omarchy-shell lock download my-forest        # verified download of its assets
 omarchy-shell lock removeAssets my-forest
 omarchy-shell lock setClockFormat 12         # or 24
 omarchy-shell lock setFont "Adwaita Sans"     # font for the originals; empty string follows the theme
-omarchy-shell lock syncLogin                 # rewrite the SDDM theme config now (if installed)
-omarchy-shell lock loginStatus               # whether the login theme is installed, following, and its source
-omarchy-shell lock setLoginSource lock       # omarchy, omarchy-theme, lock, or a design id
-omarchy-shell lock previewLogin              # open the greeter in a window
 omarchy-shell lock lock                      # same as the stock lock
 omarchy-shell lock status
 ```
@@ -150,13 +116,7 @@ Locking is as quick as the stock lock: a design compiles and instantiates in a f
 
 ## Remove
 
-If you set up the login screen, take it down first, while the plugin's files are still there. **Remove login screen** in the Login screen tab does this, or:
-
-```sh
-sudo ~/.config/omarchy/plugins/io.github.smoothpixels.lock-designs/tools/install-login-theme.sh --remove
-```
-
-That puts SDDM back on Omarchy's own theme and deletes everything the installer placed under `/usr/share/sddm/themes/lock-designs` and `/etc/sddm.conf.d`. If you added the menu row, drop it the same way:
+If you added the menu row, drop it with:
 
 ```sh
 ~/.config/omarchy/plugins/io.github.smoothpixels.lock-designs/tools/install-menu-entries.sh --remove

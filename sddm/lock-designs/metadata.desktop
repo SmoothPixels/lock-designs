@@ -1,9 +1,0 @@
-[SddmGreeterTheme]
-Name=Lock Designs
-Description=Login screen that follows the Omarchy theme, kept in sync by the Lock Designs plugin
-Author=Jean Alvarado
-Type=sddm-theme
-Version=1.0
-QtVersion=6
-MainScript=Main.qml
-ConfigFile=theme.conf
