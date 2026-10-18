@@ -4,6 +4,7 @@ import Quickshell
 import Quickshell.Hyprland
 import Quickshell.Wayland
 import qs.Commons
+import qs.Commons as Commons
 import qs.Ui
 import "Bridge.js" as Bridge
 
@@ -27,11 +28,11 @@ Item {
   property bool opened: false
 
   readonly property string pluginId: manifest && manifest.id ? String(manifest.id) : "io.github.smoothpixels.lock-designs"
-  readonly property color background: Color.menu.background
-  readonly property color foreground: Color.menu.text
+  readonly property color background: Commons.Color.menu.background
+  readonly property color foreground: Commons.Color.menu.text
   readonly property color muted: Util.alpha(foreground, 0.55)
   readonly property color faint: Util.alpha(foreground, 0.08)
-  readonly property color accent: Color.accent
+  readonly property color accent: Commons.Color.accent
   readonly property string fontFamily: Style.font.family
 
   function adopt() {
@@ -196,7 +197,7 @@ Item {
 
     Rectangle {
       anchors.fill: parent
-      color: Color.menu.scrim
+      color: Commons.Color.menu.scrim
     }
 
     MouseArea {
@@ -211,7 +212,7 @@ Item {
       anchors.centerIn: parent
       radius: Style.cornerRadius
       color: root.background
-      borderSpec: Border.surfaceSpec("menu", "border", Color.menu.border, Math.max(1, Style.space(2)))
+      borderSpec: Border.surfaceSpec("menu", "border", Commons.Color.menu.border, Math.max(1, Style.space(2)))
       padding: Style.spacing.panelPadding
 
       MouseArea { anchors.fill: parent; onClicked: {} }
@@ -458,7 +459,7 @@ Item {
               anchors.fill: parent
               anchors.margins: Style.space(6)
               radius: Math.max(Style.cornerRadius, 8)
-              color: cell.hot ? Color.menu.selectedBackground : "transparent"
+              color: cell.hot ? Commons.Color.menu.selectedBackground : "transparent"
               border.width: cell.current ? 2 : (cell.active ? 2 : 0)
               border.color: cell.current ? Util.alpha(root.foreground, 0.8) : Util.alpha(root.accent, 0.7)
 
@@ -567,12 +568,12 @@ Item {
                     width: stateText.implicitWidth + Style.space(12)
                     height: stateText.implicitHeight + Style.space(6)
                     radius: height / 2
-                    color: cell.active ? root.accent : (cell.dl && cell.dl.phase === "failed" ? Color.urgent : Qt.rgba(0, 0, 0, 0.55))
+                    color: cell.active ? root.accent : (cell.dl && cell.dl.phase === "failed" ? Commons.Color.urgent : Qt.rgba(0, 0, 0, 0.55))
                     Text {
                       id: stateText
                       anchors.centerIn: parent
                       text: root.stateLabel(cell.d)
-                      color: cell.active ? Color.background : "#f0f0f0"
+                      color: cell.active ? Commons.Color.background : "#f0f0f0"
                       font.family: root.fontFamily
                       font.pixelSize: Style.font.caption
                       font.weight: cell.active ? Font.Bold : Font.Normal
@@ -655,7 +656,7 @@ Item {
                     ? cell.dl.error
                     : (cell.d.description.length > 0 ? cell.d.description
                       : (cell.needs && !cell.ready ? "Click to download " + root.sizeLabel(cell.d) + ", verified against the catalog's SHA-256" : "Ready to use"))
-                  color: cell.dl && cell.dl.phase === "failed" ? Color.urgent : root.muted
+                  color: cell.dl && cell.dl.phase === "failed" ? Commons.Color.urgent : root.muted
                   elide: Text.ElideRight
                   maximumLineCount: 1
                   font.family: root.fontFamily

@@ -8,6 +8,7 @@
 // a small caption speaks only when there is something to say.
 import QtQuick
 import qs.Commons
+import qs.Commons as Commons
 
 DesignBase {
   id: lock
@@ -24,7 +25,7 @@ DesignBase {
   readonly property int pitch: Math.round(lock.u * 2.0)
   readonly property int dot: Math.round(lock.u * 1.05)
 
-  Rectangle { anchors.fill: parent; color: Color.background }
+  Rectangle { anchors.fill: parent; color: Commons.Color.background }
 
   Image {
     anchors.fill: parent
@@ -35,7 +36,7 @@ DesignBase {
     sourceSize.width: width
     sourceSize.height: height
   }
-  Rectangle { anchors.fill: parent; color: lock.withAlpha(Color.background, 0.55) }
+  Rectangle { anchors.fill: parent; color: lock.withAlpha(Commons.Color.background, 0.55) }
 
   MouseArea {
     anchors.fill: parent
@@ -52,7 +53,7 @@ DesignBase {
       anchors.horizontalCenter: parent.horizontalCenter
       text: lock.clock("HH:mm")
       renderType: Text.CurveRendering
-      color: Color.foreground
+      color: Commons.Color.foreground
       font.family: lock.displayFont
       font.pixelSize: Math.round(lock.u * 18)
       font.weight: Font.Light
@@ -62,7 +63,7 @@ DesignBase {
     Text {
       anchors.horizontalCenter: parent.horizontalCenter
       text: Qt.formatDate(lock.now, "dddd, d MMMM")
-      color: lock.withAlpha(Color.foreground, 0.7)
+      color: lock.withAlpha(Commons.Color.foreground, 0.7)
       font.family: lock.displayFont
       font.pixelSize: Math.round(lock.u * 1.8)
       font.letterSpacing: 3
@@ -89,7 +90,7 @@ DesignBase {
         width: lock.dot
         height: lock.dot
         radius: width / 2
-        color: lock.errorState ? Color.lock.textError : Color.foreground
+        color: lock.errorState ? Commons.Color.lock.textError : Commons.Color.foreground
         scale: on ? 1 : 0
         opacity: on ? 1 : 0
         Behavior on scale { NumberAnimation { duration: 180; easing.type: Easing.OutBack } }
@@ -115,7 +116,7 @@ DesignBase {
     y: dots.y - Math.round(lock.u * 0.7)
     visible: lock.passwordVisible
     text: lock.passwordText
-    color: Color.foreground
+    color: Commons.Color.foreground
     font.family: Style.font.family
     font.pixelSize: Math.round(lock.u * 2.2)
     font.letterSpacing: 2
@@ -130,7 +131,7 @@ DesignBase {
       if (lock.typed === 0) return lock.fingerprintConfigured ? "Just type your password, or touch the sensor" : "Just type your password"
       return ""
     }
-    color: lock.errorState ? Color.lock.textError : lock.withAlpha(Color.foreground, 0.5)
+    color: lock.errorState ? Commons.Color.lock.textError : lock.withAlpha(Commons.Color.foreground, 0.5)
     font.family: lock.displayFont
     font.pixelSize: Math.round(lock.u * 1.5)
     font.letterSpacing: 1

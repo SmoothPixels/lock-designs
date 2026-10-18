@@ -10,6 +10,7 @@
 import QtQuick
 import Quickshell.Io
 import qs.Commons
+import qs.Commons as Commons
 
 DesignBase {
   id: lock
@@ -18,8 +19,8 @@ DesignBase {
 
   readonly property real u: Math.min(width, height) / 100
   readonly property int fs: Math.round(lock.u * 2.1)
-  readonly property color ink: Color.foreground
-  readonly property color dim: lock.withAlpha(Color.foreground, 0.5)
+  readonly property color ink: Commons.Color.foreground
+  readonly property color dim: lock.withAlpha(Commons.Color.foreground, 0.5)
   property string kernel: ""
   property bool cursorOn: true
 
@@ -36,7 +37,7 @@ DesignBase {
   }
   onVideoPlayingChanged: if (!videoPlaying) cursorOn = true
 
-  Rectangle { anchors.fill: parent; color: Color.background }
+  Rectangle { anchors.fill: parent; color: Commons.Color.background }
 
   MouseArea {
     anchors.fill: parent
@@ -71,7 +72,7 @@ DesignBase {
         Line { text: lock.hostName + " login: " + lock.userName }
         Line { text: "Password: " }
         Line { text: " " }
-        Line { text: "Login incorrect"; color: Color.lock.textError }
+        Line { text: "Login incorrect"; color: Commons.Color.lock.textError }
         Line { text: " " }
       }
     }

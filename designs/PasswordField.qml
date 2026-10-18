@@ -1,5 +1,6 @@
 import QtQuick
 import qs.Commons
+import qs.Commons as Commons
 import qs.Ui
 
 // A complete password box: lock glyph, the input, a placeholder that doubles
@@ -14,8 +15,8 @@ BorderSurface {
   property bool showLockGlyph: true
   property bool shakeOnFail: true
   property int outlineThickness: 2
-  property color accentColor: Color.lock.borderActive
-  property color placeholderColor: Color.lock.placeholder
+  property color accentColor: Commons.Color.lock.borderActive
+  property color placeholderColor: Commons.Color.lock.placeholder
   property real fontScale: 1.0
   property int textAlignment: TextInput.AlignHCenter
   property int sidePadding: 18
@@ -47,14 +48,14 @@ BorderSurface {
 
   width: 400
   height: 60
-  color: Color.lock.background
+  color: Commons.Color.lock.background
   radius: Math.max(Style.cornerRadius, 12)
   clip: true
   // Opacity rather than visible for the bare snapshot, so surrounding layouts
   // do not reflow between captures.
   opacity: lock && lock.snapshotBare === true ? 0 : 1
   borderSpec: errorState
-    ? Border.surfaceSpec("lock", "border-error", Color.lock.borderError, field.outlineThickness, "border-alpha")
+    ? Border.surfaceSpec("lock", "border-error", Commons.Color.lock.borderError, field.outlineThickness, "border-alpha")
     : Border.surfaceSpec("lock", "border-active", field.accentColor, field.outlineThickness, "border-alpha")
 
   function focusInput() { input.forceActiveFocus() }
@@ -91,7 +92,7 @@ BorderSurface {
     anchors.verticalCenter: parent.verticalCenter
     visible: field.showLockGlyph && !field.snapshotBox
     text: field.authenticating ? "󰔟" : (field.errorState ? "󰍁" : "󰌾")
-    color: field.errorState ? Color.lock.textError : field.placeholderColor
+    color: field.errorState ? Commons.Color.lock.textError : field.placeholderColor
     font.family: Style.font.family
     font.pixelSize: field.iconSize
   }
@@ -131,7 +132,7 @@ BorderSurface {
       return field.placeholder
     }
     textFormat: Text.PlainText
-    color: field.authenticating ? Color.lock.text : (field.errorState ? Color.lock.textError : field.placeholderColor)
+    color: field.authenticating ? Commons.Color.lock.text : (field.errorState ? Commons.Color.lock.textError : field.placeholderColor)
     font.family: Style.font.family
     font.pixelSize: field.fieldFontSize
     font.italic: field.errorState && !field.authenticating
@@ -191,7 +192,7 @@ BorderSurface {
     Text {
       visible: field.fido2
       text: ""
-      color: field.fido2Active ? Color.lock.text : field.placeholderColor
+      color: field.fido2Active ? Commons.Color.lock.text : field.placeholderColor
       font.family: Style.font.family
       font.pixelSize: field.iconSize
       MouseArea {

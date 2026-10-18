@@ -9,6 +9,7 @@
 import QtQuick
 import QtQuick.Shapes
 import qs.Commons
+import qs.Commons as Commons
 
 DesignBase {
   id: lock
@@ -28,13 +29,13 @@ DesignBase {
     return Qt.rgba(a.r + (b.r - a.r) * t, a.g + (b.g - a.g) * t, a.b + (b.b - a.b) * t, 1)
   }
 
-  readonly property color nightTop: lock.deepen(Color.background, 1.7)
-  readonly property color nightBottom: Color.background
-  readonly property color dayTop: mix(Color.background, Color.foreground, 0.30)
-  readonly property color dayBottom: mix(Color.background, Color.accent, 0.30)
-  readonly property color skyTop: mix(mix(nightTop, dayTop, day), Color.accent, twilight * 0.20)
-  readonly property color skyBottom: mix(mix(nightBottom, dayBottom, day), Color.accent, twilight * 0.55)
-  readonly property color ink: Color.foreground
+  readonly property color nightTop: lock.deepen(Commons.Color.background, 1.7)
+  readonly property color nightBottom: Commons.Color.background
+  readonly property color dayTop: mix(Commons.Color.background, Commons.Color.foreground, 0.30)
+  readonly property color dayBottom: mix(Commons.Color.background, Commons.Color.accent, 0.30)
+  readonly property color skyTop: mix(mix(nightTop, dayTop, day), Commons.Color.accent, twilight * 0.20)
+  readonly property color skyBottom: mix(mix(nightBottom, dayBottom, day), Commons.Color.accent, twilight * 0.55)
+  readonly property color ink: Commons.Color.foreground
 
   Rectangle {
     anchors.fill: parent
@@ -71,7 +72,7 @@ DesignBase {
     y: lock.height * (0.66 - 0.52 * lock.arcElev) - size / 2
     width: size
     height: size
-    readonly property color body: lock.sunUp ? lock.mix(Color.accent, Color.foreground, 0.35) : lock.mix(Color.foreground, Color.background, 0.15)
+    readonly property color body: lock.sunUp ? lock.mix(Commons.Color.accent, Commons.Color.foreground, 0.35) : lock.mix(Commons.Color.foreground, Commons.Color.background, 0.15)
 
     // Halo: a radial falloff, so it fades into the sky instead of sitting on
     // it as a flat disc.
@@ -147,17 +148,17 @@ DesignBase {
     preferredRendererType: Shape.CurveRenderer
     ShapePath {
       strokeWidth: 0
-      fillColor: lock.mix(lock.skyBottom, Qt.darker(Color.background, 1.5), 0.45)
+      fillColor: lock.mix(lock.skyBottom, Qt.darker(Commons.Color.background, 1.5), 0.45)
       PathSvg { path: lock.ridge(11, 0.74, 0.14, 7) }
     }
     ShapePath {
       strokeWidth: 0
-      fillColor: lock.mix(lock.skyBottom, Qt.darker(Color.background, 1.6), 0.7)
+      fillColor: lock.mix(lock.skyBottom, Qt.darker(Commons.Color.background, 1.6), 0.7)
       PathSvg { path: lock.ridge(23, 0.82, 0.11, 6) }
     }
     ShapePath {
       strokeWidth: 0
-      fillColor: Qt.darker(Color.background, 1.7)
+      fillColor: Qt.darker(Commons.Color.background, 1.7)
       PathSvg { path: lock.ridge(37, 0.90, 0.08, 5) }
     }
   }
@@ -201,7 +202,7 @@ DesignBase {
     y: lock.height * 0.80 - height / 2
     width: Math.round(lock.u * 30)
     height: Math.round(lock.u * 4.4)
-    color: lock.withAlpha(lock.deepen(Color.background, 1.7), 0.85)
+    color: lock.withAlpha(lock.deepen(Commons.Color.background, 1.7), 0.85)
     placeholder: lock.greeting() + ", " + lock.userName
   }
 }

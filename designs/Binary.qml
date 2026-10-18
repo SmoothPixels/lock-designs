@@ -7,14 +7,15 @@
 // out rather than drawn dark.
 import QtQuick
 import qs.Commons
+import qs.Commons as Commons
 
 DesignBase {
   id: lock
   inputItem: field.input
 
   readonly property real u: Math.min(width, height) / 100
-  readonly property color lit: lock.errorState ? Color.lock.textError : Color.accent
-  readonly property color unlit: lock.withAlpha(Color.foreground, 0.10)
+  readonly property color lit: lock.errorState ? Commons.Color.lock.textError : Commons.Color.accent
+  readonly property color unlit: lock.withAlpha(Commons.Color.foreground, 0.10)
   readonly property real dot: u * 3.4
   readonly property real gap: u * 1.5
 
@@ -25,7 +26,7 @@ DesignBase {
   // Largest value each column can hold: tens of hours 2 (or 1 in 12-hour), tens of minutes and seconds 5.
   readonly property var maxima: [twelveHour ? 1 : 2, 9, 5, 9, 5, 9]
 
-  Rectangle { anchors.fill: parent; color: lock.deepen(Color.background, 1.25) }
+  Rectangle { anchors.fill: parent; color: lock.deepen(Commons.Color.background, 1.25) }
 
   MouseArea {
     anchors.fill: parent
@@ -52,7 +53,7 @@ DesignBase {
           Text {
             anchors.centerIn: parent
             text: modelData
-            color: lock.withAlpha(Color.foreground, 0.35)
+            color: lock.withAlpha(Commons.Color.foreground, 0.35)
             font.family: lock.displayFont
             font.pixelSize: Math.round(lock.u * 1.6)
           }
@@ -104,7 +105,7 @@ DesignBase {
           anchors.horizontalCenter: parent.horizontalCenter
           anchors.horizontalCenterOffset: column.leftPadding / 2
           text: column.value
-          color: lock.withAlpha(Color.foreground, 0.55)
+          color: lock.withAlpha(Commons.Color.foreground, 0.55)
           font.family: lock.displayFont
           font.pixelSize: Math.round(lock.u * 1.9)
           topPadding: lock.gap * 0.6
@@ -118,7 +119,7 @@ DesignBase {
     anchors.top: board.bottom
     anchors.topMargin: Math.round(lock.u * 3)
     text: Qt.formatDate(lock.now, "dddd  ·  d MMMM").toUpperCase() + (lock.meridiem.length > 0 ? "  ·  " + lock.meridiem : "")
-    color: lock.withAlpha(Color.foreground, 0.5)
+    color: lock.withAlpha(Commons.Color.foreground, 0.5)
     font.family: lock.displayFont
     font.pixelSize: Math.round(lock.u * 1.5)
     font.letterSpacing: 3
@@ -131,7 +132,7 @@ DesignBase {
     y: Math.round(lock.height * 0.78 - height / 2)
     width: Math.round(lock.u * 30)
     height: Math.round(lock.u * 4.4)
-    color: lock.withAlpha(lock.deepen(Color.background, 1.25), 0.92)
-    accentColor: Color.accent
+    color: lock.withAlpha(lock.deepen(Commons.Color.background, 1.25), 0.92)
+    accentColor: Commons.Color.accent
   }
 }

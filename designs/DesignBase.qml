@@ -2,6 +2,7 @@ import QtQuick
 import Quickshell
 import Quickshell.Io
 import qs.Commons
+import qs.Commons as Commons
 
 // Root item every lock design derives from. The host (LockHost.qml) binds the
 // authentication state onto these properties and listens to the signals; a
@@ -142,7 +143,7 @@ Item {
   // Panels and backdrops need to move away from the text color: darker on a
   // dark theme, lighter on a light one. deepen() does that; raise() goes the
   // other way, toward the foreground, for highlights that must stay visible.
-  readonly property bool lightTheme: (0.2126 * Color.background.r + 0.7152 * Color.background.g + 0.0722 * Color.background.b) > 0.5
+  readonly property bool lightTheme: (0.2126 * Commons.Color.background.r + 0.7152 * Commons.Color.background.g + 0.0722 * Commons.Color.background.b) > 0.5
   function deepen(c, factor) { return lightTheme ? Qt.lighter(c, factor) : Qt.darker(c, factor) }
   function raise(c, factor) { return lightTheme ? Qt.darker(c, factor) : Qt.lighter(c, factor) }
 
@@ -193,7 +194,7 @@ Item {
     id: flash
     anchors.fill: parent
     z: 1000
-    color: Color.lock.textError
+    color: Commons.Color.lock.textError
     opacity: 0
     visible: opacity > 0
   }

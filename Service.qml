@@ -5,6 +5,7 @@ import Quickshell.Services.Pam
 import Quickshell.Hyprland
 import Quickshell.Wayland
 import qs.Commons
+import qs.Commons as Commons
 import "Bridge.js" as Bridge
 
 // Lock Designs: the lock screen itself. A clone of Omarchy's omarchy.lock, so
@@ -564,7 +565,7 @@ Item {
     }
 
     WlSessionLockSurface {
-      color: Color.background
+      color: Commons.Color.background
 
       LockHost {
         anchors.fill: parent

@@ -7,19 +7,20 @@
 import QtQuick
 import QtQuick.Effects
 import qs.Commons
+import qs.Commons as Commons
 
 DesignBase {
   id: lock
   inputItem: field.input
 
   readonly property real u: Math.min(width, height) / 100
-  readonly property color tile: lock.withAlpha(Color.lock.background, 0.78)
-  readonly property color edge: lock.withAlpha(Color.lock.border, 0.14)
-  readonly property color ink: Color.lock.text
-  readonly property color dim: lock.withAlpha(Color.lock.text, 0.55)
+  readonly property color tile: lock.withAlpha(Commons.Color.lock.background, 0.78)
+  readonly property color edge: lock.withAlpha(Commons.Color.lock.border, 0.14)
+  readonly property color ink: Commons.Color.lock.text
+  readonly property color dim: lock.withAlpha(Commons.Color.lock.text, 0.55)
   readonly property int corner: Math.max(Style.cornerRadius, 14)
 
-  Rectangle { anchors.fill: parent; color: Color.background }
+  Rectangle { anchors.fill: parent; color: Commons.Color.background }
 
   Image {
     id: wallpaper
@@ -106,7 +107,7 @@ DesignBase {
           anchors.bottom: parent.bottom
           width: parent.width * lock.now.getSeconds() / 59
           radius: parent.radius
-          color: Color.lock.borderActive
+          color: Commons.Color.lock.borderActive
           Behavior on width { NumberAnimation { duration: 600; easing.type: Easing.OutCubic } }
         }
       }
@@ -123,7 +124,7 @@ DesignBase {
         Text {
           anchors.horizontalCenter: parent.horizontalCenter
           text: Qt.formatDate(lock.now, "d")
-          color: Color.lock.borderActive
+          color: Commons.Color.lock.borderActive
           font.family: lock.displayFont
           font.pixelSize: Math.round(board.row * 0.5)
           font.weight: Font.Bold
@@ -199,7 +200,7 @@ DesignBase {
               width: Math.round(lock.u * 1.7)
               height: width
               radius: width / 2
-              color: today ? Color.lock.borderActive : lock.withAlpha(lock.ink, 0.18)
+              color: today ? Commons.Color.lock.borderActive : lock.withAlpha(lock.ink, 0.18)
             }
             Text {
               anchors.horizontalCenter: parent.horizontalCenter
@@ -225,7 +226,7 @@ DesignBase {
         anchors.centerIn: parent
         width: parent.width - lock.u * 3
         height: Math.min(parent.height - lock.u * 3, lock.u * 4.6)
-        color: lock.withAlpha(Color.background, 0.35)
+        color: lock.withAlpha(Commons.Color.background, 0.35)
         radius: lock.corner - 4
         placeholder: "Enter password"
       }

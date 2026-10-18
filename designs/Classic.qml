@@ -7,6 +7,7 @@
 import QtQuick
 import QtQuick.Effects
 import qs.Commons
+import qs.Commons as Commons
 
 DesignBase {
   id: lock
@@ -14,7 +15,7 @@ DesignBase {
 
   Rectangle {
     anchors.fill: parent
-    color: Color.background
+    color: Commons.Color.background
   }
 
   Image {

@@ -8,6 +8,7 @@
 import QtQuick
 import QtQuick.Shapes
 import qs.Commons
+import qs.Commons as Commons
 
 DesignBase {
   id: lock
@@ -17,9 +18,9 @@ DesignBase {
   // Lit dots sit a notch toward the foreground so they clear the accent's own
   // brightness; unlit ones are only a faint trace of the grid, fainter on dark
   // themes where the glow already separates the digits.
-  readonly property color lit: lock.errorState ? Color.lock.textError : lock.raise(Color.accent, 1.1)
-  readonly property color unlit: lock.withAlpha(Color.foreground, lock.lightTheme ? 0.09 : 0.05)
-  readonly property color panel: lock.deepen(Color.background, 1.65)
+  readonly property color lit: lock.errorState ? Commons.Color.lock.textError : lock.raise(Commons.Color.accent, 1.1)
+  readonly property color unlit: lock.withAlpha(Commons.Color.foreground, lock.lightTheme ? 0.09 : 0.05)
+  readonly property color panel: lock.deepen(Commons.Color.background, 1.65)
   readonly property real pitch: lock.u * 2.8
   readonly property string digits: lock.clock("HH:mm").substring(0, 5)
   readonly property bool colonOn: lock.now.getSeconds() % 2 === 0
@@ -40,7 +41,7 @@ DesignBase {
     " ": ["00000", "00000", "00000", "00000", "00000", "00000", "00000"]
   })
 
-  Rectangle { anchors.fill: parent; color: lock.deepen(Color.background, 1.25) }
+  Rectangle { anchors.fill: parent; color: lock.deepen(Commons.Color.background, 1.25) }
 
   // Vignette: the room falls off into darkness away from the panel.
   Shape {
@@ -55,8 +56,8 @@ DesignBase {
         focalY: centerY
         centerRadius: lock.width * 0.7
         GradientStop { position: 0; color: "transparent" }
-        GradientStop { position: 0.55; color: lock.withAlpha(lock.deepen(Color.background, 1.8), 0.35) }
-        GradientStop { position: 1; color: lock.withAlpha(lock.deepen(Color.background, 1.8), 0.85) }
+        GradientStop { position: 0.55; color: lock.withAlpha(lock.deepen(Commons.Color.background, 1.8), 0.35) }
+        GradientStop { position: 1; color: lock.withAlpha(lock.deepen(Commons.Color.background, 1.8), 0.85) }
       }
       PathSvg { path: "M 0 0 H " + lock.width + " V " + lock.height + " H 0 Z" }
     }
@@ -75,9 +76,9 @@ DesignBase {
     width: board.width + lock.pitch * 3.2
     height: board.height + lock.pitch * 2.6
     radius: Math.round(lock.pitch * 0.9)
-    color: lock.deepen(Color.background, 1.45)
+    color: lock.deepen(Commons.Color.background, 1.45)
     border.width: 1
-    border.color: lock.withAlpha(Color.foreground, 0.10)
+    border.color: lock.withAlpha(Commons.Color.foreground, 0.10)
 
     Rectangle {
       anchors.fill: parent
@@ -85,7 +86,7 @@ DesignBase {
       radius: Math.round(lock.pitch * 0.6)
       color: lock.panel
       border.width: 1
-      border.color: lock.withAlpha(Color.background, 0.9)
+      border.color: lock.withAlpha(Commons.Color.background, 0.9)
     }
   }
 
@@ -141,7 +142,7 @@ DesignBase {
     anchors.top: board.bottom
     anchors.topMargin: Math.round(lock.u * 5.2)
     text: Qt.formatDate(lock.now, "dddd  ·  d MMMM").toUpperCase() + (lock.meridiem.length > 0 ? "  ·  " + lock.meridiem : "")
-    color: lock.withAlpha(Color.foreground, 0.6)
+    color: lock.withAlpha(Commons.Color.foreground, 0.6)
     font.family: lock.displayFont
     font.pixelSize: Math.round(lock.u * 1.5)
     font.letterSpacing: 3
@@ -155,7 +156,7 @@ DesignBase {
     width: Math.round(lock.u * 30)
     height: Math.round(lock.u * 4.4)
     color: lock.panel
-    accentColor: Color.accent
-    placeholderColor: lock.withAlpha(Color.foreground, 0.45)
+    accentColor: Commons.Color.accent
+    placeholderColor: lock.withAlpha(Commons.Color.foreground, 0.45)
   }
 }

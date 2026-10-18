@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Effects
 import qs.Commons
+import qs.Commons as Commons
 
 // Round user picture, falling back to the user's initial on a colored disc
 // when no avatar is set or the file cannot be read.
@@ -12,8 +13,8 @@ Item {
   property var lock: null
   property string source: lock ? lock.avatarUrl : ""
   property string initial: lock ? lock.userInitial : "?"
-  property color fillColor: Color.lock.borderActive
-  property color textColor: Color.background
+  property color fillColor: Commons.Color.lock.borderActive
+  property color textColor: Commons.Color.background
   property real fontScale: 0.5
   property int fontSize: Math.round(height * fontScale)
   property int borderWidth: 0

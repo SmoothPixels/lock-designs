@@ -7,6 +7,7 @@
 // color) when it was wrong. All motion stops with the display.
 import QtQuick
 import qs.Commons
+import qs.Commons as Commons
 
 DesignBase {
   id: lock
@@ -15,9 +16,9 @@ DesignBase {
 
   readonly property real u: Math.min(width, height) / 100
   readonly property real px: Math.max(4, Math.round(u * 1.55))
-  readonly property color fur: lock.errorState ? Color.lock.textError : Color.accent
-  readonly property color eye: lock.lightTheme ? Color.foreground : Qt.darker(Color.background, 1.4)
-  readonly property color shine: Color.foreground
+  readonly property color fur: lock.errorState ? Commons.Color.lock.textError : Commons.Color.accent
+  readonly property color eye: lock.lightTheme ? Commons.Color.foreground : Qt.darker(Commons.Color.background, 1.4)
+  readonly property color shine: Commons.Color.foreground
 
   readonly property var body: [
     ".X..........X.",
@@ -73,7 +74,7 @@ DesignBase {
     onTriggered: lock.tailFrame = 1 - lock.tailFrame
   }
 
-  Rectangle { anchors.fill: parent; color: lock.deepen(Color.background, 1.15) }
+  Rectangle { anchors.fill: parent; color: lock.deepen(Commons.Color.background, 1.15) }
 
   MouseArea {
     anchors.fill: parent
@@ -87,7 +88,7 @@ DesignBase {
     y: Math.round(lock.height * 0.12)
     text: lock.clock("HH:mm")
     renderType: Text.CurveRendering
-    color: Color.foreground
+    color: Commons.Color.foreground
     font.family: lock.displayFont
     font.pixelSize: Math.round(lock.u * 11)
     font.weight: Font.DemiBold
@@ -101,7 +102,7 @@ DesignBase {
     width: lock.px * (10 - Math.max(0, -sprite.bob) / lock.px * 2)
     height: lock.px * 0.8
     radius: height / 2
-    color: lock.withAlpha(Qt.darker(Color.background, 2.2), 0.8)
+    color: lock.withAlpha(Qt.darker(Commons.Color.background, 2.2), 0.8)
   }
 
   Item {
@@ -207,7 +208,7 @@ DesignBase {
     anchors.top: sprite.bottom
     anchors.topMargin: Math.round(lock.u * 3.5)
     text: lock.hurt ? "Hmm, that was not it" : (lock.thinking ? "Checking…" : (lock.typing ? "…" : lock.greeting() + ", " + lock.userName))
-    color: lock.withAlpha(Color.foreground, 0.7)
+    color: lock.withAlpha(Commons.Color.foreground, 0.7)
     font.family: lock.displayFont
     font.pixelSize: Math.round(lock.u * 1.8)
   }
@@ -219,6 +220,6 @@ DesignBase {
     y: Math.round(lock.height * 0.76 - height / 2)
     width: Math.round(lock.u * 30)
     height: Math.round(lock.u * 4.4)
-    color: lock.withAlpha(lock.deepen(Color.background, 1.15), 0.92)
+    color: lock.withAlpha(lock.deepen(Commons.Color.background, 1.15), 0.92)
   }
 }

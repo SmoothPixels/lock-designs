@@ -1,5 +1,6 @@
 import QtQuick
 import qs.Commons
+import qs.Commons as Commons
 
 // The bare password input. Designs that draw their own field chrome use this
 // directly; PasswordField wraps it with a box, placeholder and icons.
@@ -23,9 +24,9 @@ TextInput {
   // disabled item drops focus and stops delivering key presses, and Tab has
   // to keep working to switch factors.
   readOnly: lock ? (lock.authenticatingPassword || (lock.fido2Active && lock.fido2Authenticating && !lock.fido2NeedsPin)) : true
-  color: Color.lock.text
-  selectionColor: Color.lock.selection
-  selectedTextColor: Color.lock.text
+  color: Commons.Color.lock.text
+  selectionColor: Commons.Color.lock.selection
+  selectedTextColor: Commons.Color.lock.text
   font.family: Style.font.family
   font.pixelSize: Style.font.heading
 

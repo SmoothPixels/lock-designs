@@ -10,6 +10,7 @@ import QtQuick
 import QtQuick.Effects
 import QtQuick.Shapes
 import qs.Commons
+import qs.Commons as Commons
 
 DesignBase {
   id: lock
@@ -33,7 +34,7 @@ DesignBase {
     running: lock.authenticatingPassword && lock.videoPlaying
   }
 
-  Rectangle { anchors.fill: parent; color: Color.background }
+  Rectangle { anchors.fill: parent; color: Commons.Color.background }
 
   Image {
     id: wallpaper
@@ -74,7 +75,7 @@ DesignBase {
       preferredRendererType: Shape.CurveRenderer
       // Track.
       ShapePath {
-        strokeColor: lock.withAlpha(Color.foreground, 0.12)
+        strokeColor: lock.withAlpha(Commons.Color.foreground, 0.12)
         strokeWidth: lock.stroke
         fillColor: "transparent"
         PathAngleArc {
@@ -86,7 +87,7 @@ DesignBase {
       // Seconds, only while nothing is typed.
       ShapePath {
         strokeColor: lock.typed === 0 && !lock.errorState && !lock.authenticatingPassword
-          ? lock.withAlpha(Color.accent, 0.35) : "transparent"
+          ? lock.withAlpha(Commons.Color.accent, 0.35) : "transparent"
         strokeWidth: lock.stroke
         fillColor: "transparent"
         capStyle: ShapePath.RoundCap
@@ -99,7 +100,7 @@ DesignBase {
       // Progress, spinner, or the whole ring in the error color.
       ShapePath {
         strokeColor: lock.sweep < 0.5 && !lock.authenticatingPassword ? "transparent"
-          : (lock.errorState ? Color.lock.textError : Color.accent)
+          : (lock.errorState ? Commons.Color.lock.textError : Commons.Color.accent)
         strokeWidth: lock.stroke
         fillColor: "transparent"
         capStyle: ShapePath.RoundCap
@@ -119,7 +120,7 @@ DesignBase {
         anchors.horizontalCenter: parent.horizontalCenter
         text: lock.clock("HH:mm")
         renderType: Text.CurveRendering
-        color: Color.foreground
+        color: Commons.Color.foreground
         font.family: lock.displayFont
         font.pixelSize: Math.round(lock.u * 9)
         font.weight: Font.DemiBold
@@ -128,7 +129,7 @@ DesignBase {
       Text {
         anchors.horizontalCenter: parent.horizontalCenter
         text: Qt.formatDate(lock.now, "dddd, d MMMM")
-        color: lock.withAlpha(Color.foreground, 0.65)
+        color: lock.withAlpha(Commons.Color.foreground, 0.65)
         font.family: lock.displayFont
         font.pixelSize: Math.round(lock.u * 1.4)
         font.letterSpacing: 2
@@ -144,7 +145,7 @@ DesignBase {
     anchors.topMargin: Math.round(lock.u * 4)
     width: Math.round(lock.u * 24)
     height: Math.round(lock.u * 4)
-    color: lock.withAlpha(Color.background, 0.45)
+    color: lock.withAlpha(Commons.Color.background, 0.45)
     showLockGlyph: false
     placeholder: "Enter password"
   }

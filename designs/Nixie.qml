@@ -11,14 +11,15 @@ import QtQuick
 import QtQuick.Effects
 import QtQuick.Shapes
 import qs.Commons
+import qs.Commons as Commons
 
 DesignBase {
   id: lock
   inputItem: field.input
 
   readonly property real u: Math.min(width, height) / 100
-  readonly property color neon: lock.errorState ? Color.lock.textError : "#ff8f2e"
-  readonly property color core: lock.errorState ? Qt.lighter(Color.lock.textError, 1.5) : "#ffe9c6"
+  readonly property color neon: lock.errorState ? Commons.Color.lock.textError : "#ff8f2e"
+  readonly property color core: lock.errorState ? Qt.lighter(Commons.Color.lock.textError, 1.5) : "#ffe9c6"
   readonly property string digits: lock.clock("HH:mm").substring(0, 5)
   readonly property bool colonOn: lock.now.getSeconds() % 2 === 0
 
@@ -40,8 +41,8 @@ DesignBase {
   Rectangle {
     anchors.fill: parent
     gradient: Gradient {
-      GradientStop { position: 0; color: lock.deepen(Color.background, 1.85) }
-      GradientStop { position: 1; color: lock.deepen(Color.background, 1.25) }
+      GradientStop { position: 0; color: lock.deepen(Commons.Color.background, 1.85) }
+      GradientStop { position: 1; color: lock.deepen(Commons.Color.background, 1.25) }
     }
   }
 
@@ -118,9 +119,9 @@ DesignBase {
       width: tube.glassW * 0.86
       height: lock.u * 4.2
       radius: lock.u * 0.6
-      color: Qt.darker(Color.background, 2.5)
+      color: Qt.darker(Commons.Color.background, 2.5)
       border.width: 1
-      border.color: lock.withAlpha(Color.foreground, 0.12)
+      border.color: lock.withAlpha(Commons.Color.foreground, 0.12)
       Rectangle {
         anchors.top: parent.top
         anchors.left: parent.left
@@ -128,7 +129,7 @@ DesignBase {
         anchors.margins: 1
         height: Math.max(2, lock.u * 0.3)
         radius: height / 2
-        color: lock.withAlpha(Color.foreground, 0.22)
+        color: lock.withAlpha(Commons.Color.foreground, 0.22)
       }
       // The digit's light falling on the socket.
       Rectangle {
@@ -153,7 +154,7 @@ DesignBase {
         delegate: Rectangle {
           width: Math.max(2, lock.u * 0.3)
           height: lock.u * 1.8
-          color: lock.withAlpha(Color.foreground, 0.3)
+          color: lock.withAlpha(Commons.Color.foreground, 0.3)
         }
       }
     }
@@ -169,7 +170,7 @@ DesignBase {
       radius: width / 2
       color: Qt.rgba(0, 0, 0, 0.34)
       border.width: 1
-      border.color: lock.withAlpha(Color.foreground, 0.22)
+      border.color: lock.withAlpha(Commons.Color.foreground, 0.22)
       clip: true
 
       // Ionised gas: a soft orange fill around the lit digit that fades out
@@ -260,7 +261,7 @@ DesignBase {
         anchors.right: parent.right
         height: tube.glassH * 0.3
         gradient: Gradient {
-          GradientStop { position: 0; color: lock.withAlpha(Color.foreground, 0.09) }
+          GradientStop { position: 0; color: lock.withAlpha(Commons.Color.foreground, 0.09) }
           GradientStop { position: 1; color: "transparent" }
         }
       }
@@ -273,7 +274,7 @@ DesignBase {
         height: tube.glassH * 0.6
         radius: width / 2
         gradient: Gradient {
-          GradientStop { position: 0; color: lock.withAlpha(Color.foreground, 0.20) }
+          GradientStop { position: 0; color: lock.withAlpha(Commons.Color.foreground, 0.20) }
           GradientStop { position: 1; color: "transparent" }
         }
       }
@@ -289,7 +290,7 @@ DesignBase {
       radius: width / 2
       color: Qt.rgba(0, 0, 0, 0.34)
       border.width: 1
-      border.color: lock.withAlpha(Color.foreground, 0.16)
+      border.color: lock.withAlpha(Commons.Color.foreground, 0.16)
     }
   }
 
@@ -354,7 +355,7 @@ DesignBase {
     anchors.top: tubes.bottom
     anchors.topMargin: Math.round(lock.u * 3)
     text: Qt.formatDate(lock.now, "dddd  ·  d MMMM").toUpperCase() + (lock.meridiem.length > 0 ? "  ·  " + lock.meridiem : "")
-    color: lock.withAlpha(Color.foreground, 0.55)
+    color: lock.withAlpha(Commons.Color.foreground, 0.55)
     font.family: lock.displayFont
     font.pixelSize: Math.round(lock.u * 1.5)
     font.letterSpacing: 3
@@ -367,8 +368,8 @@ DesignBase {
     y: Math.round(lock.height * 0.81 - height / 2)
     width: Math.round(lock.u * 30)
     height: Math.round(lock.u * 4.4)
-    color: lock.withAlpha(lock.deepen(Color.background, 1.85), 0.92)
+    color: lock.withAlpha(lock.deepen(Commons.Color.background, 1.85), 0.92)
     accentColor: lock.neon
-    placeholderColor: lock.withAlpha(Color.foreground, 0.45)
+    placeholderColor: lock.withAlpha(Commons.Color.foreground, 0.45)
   }
 }

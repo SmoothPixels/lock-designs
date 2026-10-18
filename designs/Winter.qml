@@ -15,6 +15,7 @@
 import QtQuick
 import QtMultimedia
 import qs.Commons
+import qs.Commons as Commons
 
 DesignBase {
   id: lock
@@ -135,7 +136,7 @@ DesignBase {
         anchors.horizontalCenter: parent.horizontalCenter
         height: 1
         width: field.input.activeFocus ? parent.width : parent.width * 0.3
-        color: lock.errorState ? Color.lock.textError : lock.wiText
+        color: lock.errorState ? Commons.Color.lock.textError : lock.wiText
         opacity: field.input.activeFocus ? 0.8 : 0.25
         Behavior on width { NumberAnimation { duration: 300; easing.type: Easing.OutQuart } }
         Behavior on opacity { NumberAnimation { duration: 300 } }

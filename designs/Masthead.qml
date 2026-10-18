@@ -8,6 +8,7 @@
 // and the machine name keep to the opposite corners, small.
 import QtQuick
 import qs.Commons
+import qs.Commons as Commons
 
 DesignBase {
   id: lock
@@ -16,7 +17,7 @@ DesignBase {
   readonly property real u: Math.min(width, height) / 100
   readonly property int margin: Math.round(lock.u * 6)
 
-  Rectangle { anchors.fill: parent; color: Color.background }
+  Rectangle { anchors.fill: parent; color: Commons.Color.background }
 
   Image {
     anchors.fill: parent
@@ -31,9 +32,9 @@ DesignBase {
   Rectangle {
     anchors.fill: parent
     gradient: Gradient {
-      GradientStop { position: 0.0; color: lock.withAlpha(Color.background, 0.0) }
-      GradientStop { position: 0.45; color: lock.withAlpha(Color.background, 0.12) }
-      GradientStop { position: 1.0; color: lock.withAlpha(Color.background, 0.92) }
+      GradientStop { position: 0.0; color: lock.withAlpha(Commons.Color.background, 0.0) }
+      GradientStop { position: 0.45; color: lock.withAlpha(Commons.Color.background, 0.12) }
+      GradientStop { position: 1.0; color: lock.withAlpha(Commons.Color.background, 0.92) }
     }
   }
 
@@ -49,12 +50,12 @@ DesignBase {
     anchors.top: parent.top
     anchors.margins: lock.margin
     text: lock.greeting() + ", " + lock.userName
-    color: lock.withAlpha(Color.foreground, 0.75)
+    color: lock.withAlpha(Commons.Color.foreground, 0.75)
     font.family: lock.displayFont
     font.pixelSize: Math.round(lock.u * 1.7)
     font.letterSpacing: 1
     style: Text.Raised
-    styleColor: lock.withAlpha(Color.background, 0.5)
+    styleColor: lock.withAlpha(Commons.Color.background, 0.5)
   }
 
   Text {
@@ -62,7 +63,7 @@ DesignBase {
     anchors.bottom: parent.bottom
     anchors.margins: lock.margin
     text: lock.hostName.toUpperCase()
-    color: lock.withAlpha(Color.foreground, 0.5)
+    color: lock.withAlpha(Commons.Color.foreground, 0.5)
     font.family: lock.displayFont
     font.pixelSize: Math.round(lock.u * 1.3)
     font.letterSpacing: 4
@@ -77,7 +78,7 @@ DesignBase {
 
     Text {
       text: Qt.formatDate(lock.now, "dddd d MMMM").toUpperCase()
-      color: lock.withAlpha(Color.foreground, 0.85)
+      color: lock.withAlpha(Commons.Color.foreground, 0.85)
       font.family: lock.displayFont
       font.pixelSize: Math.round(lock.u * 1.6)
       font.letterSpacing: 5
@@ -85,12 +86,12 @@ DesignBase {
     Rectangle {
       width: Math.round(lock.u * 12)
       height: Math.max(2, Math.round(lock.u * 0.25))
-      color: Color.accent
+      color: Commons.Color.accent
     }
     Text {
       text: lock.clock("HH:mm")
       renderType: Text.CurveRendering
-      color: Color.foreground
+      color: Commons.Color.foreground
       font.family: lock.displayFont
       font.pixelSize: Math.round(lock.u * 22)
       font.weight: Font.Bold
@@ -102,7 +103,7 @@ DesignBase {
       lock: lock
       width: Math.round(lock.u * 34)
       height: Math.round(lock.u * 4.4)
-      color: lock.withAlpha(Color.background, 0.55)
+      color: lock.withAlpha(Commons.Color.background, 0.55)
       radius: Math.max(Style.cornerRadius, 8)
       textAlignment: TextInput.AlignLeft
       placeholder: "Enter password"

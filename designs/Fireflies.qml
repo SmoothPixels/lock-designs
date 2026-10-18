@@ -8,15 +8,16 @@
 import QtQuick
 import QtQuick.Shapes
 import qs.Commons
+import qs.Commons as Commons
 
 DesignBase {
   id: lock
   inputItem: field.input
 
   readonly property real u: Math.min(width, height) / 100
-  readonly property color glow: lock.errorState ? Color.lock.textError : Color.accent
+  readonly property color glow: lock.errorState ? Commons.Color.lock.textError : Commons.Color.accent
 
-  Rectangle { anchors.fill: parent; color: lock.deepen(Color.background, 1.5) }
+  Rectangle { anchors.fill: parent; color: lock.deepen(Commons.Color.background, 1.5) }
 
   // Ground glow.
   Shape {
@@ -107,7 +108,7 @@ DesignBase {
       anchors.horizontalCenter: parent.horizontalCenter
       text: lock.clock("HH:mm")
       renderType: Text.CurveRendering
-      color: Color.foreground
+      color: Commons.Color.foreground
       font.family: lock.displayFont
       font.pixelSize: Math.round(lock.u * 14)
       font.weight: Font.Normal
@@ -118,7 +119,7 @@ DesignBase {
     Text {
       anchors.horizontalCenter: parent.horizontalCenter
       text: lock.greeting() + ", " + lock.userName
-      color: lock.withAlpha(Color.foreground, 0.65)
+      color: lock.withAlpha(Commons.Color.foreground, 0.65)
       font.family: lock.displayFont
       font.pixelSize: Math.round(lock.u * 1.8)
     }
@@ -132,6 +133,6 @@ DesignBase {
     width: Math.round(lock.u * 30)
     height: Math.round(lock.u * 4.4)
     radius: height / 2
-    color: lock.withAlpha(lock.deepen(Color.background, 1.5), 0.9)
+    color: lock.withAlpha(lock.deepen(Commons.Color.background, 1.5), 0.9)
   }
 }

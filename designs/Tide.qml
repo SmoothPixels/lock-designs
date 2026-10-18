@@ -8,6 +8,7 @@
 import QtQuick
 import QtQuick.Shapes
 import qs.Commons
+import qs.Commons as Commons
 
 DesignBase {
   id: lock
@@ -29,8 +30,8 @@ DesignBase {
   Rectangle {
     anchors.fill: parent
     gradient: Gradient {
-      GradientStop { position: 0; color: lock.deepen(Color.background, 1.45) }
-      GradientStop { position: 1; color: Color.background }
+      GradientStop { position: 0; color: lock.deepen(Commons.Color.background, 1.45) }
+      GradientStop { position: 1; color: Commons.Color.background }
     }
   }
 
@@ -57,17 +58,17 @@ DesignBase {
     preferredRendererType: Shape.CurveRenderer
     ShapePath {
       strokeWidth: 0
-      fillColor: lock.withAlpha(Color.accent, 0.10)
+      fillColor: lock.withAlpha(Commons.Color.accent, 0.10)
       PathSvg { path: lock.wave(0.68, lock.u * 2.4, 1.6, 1.0, 0.0) }
     }
     ShapePath {
       strokeWidth: 0
-      fillColor: lock.withAlpha(Color.accent, 0.16)
+      fillColor: lock.withAlpha(Commons.Color.accent, 0.16)
       PathSvg { path: lock.wave(0.75, lock.u * 2.0, 2.2, -1.4, 1.9) }
     }
     ShapePath {
       strokeWidth: 0
-      fillColor: lock.mix(Color.background, Color.accent, 0.22)
+      fillColor: lock.mix(Commons.Color.background, Commons.Color.accent, 0.22)
       PathSvg { path: lock.wave(0.83, lock.u * 1.6, 2.8, 2.0, 4.1) }
     }
   }
@@ -88,7 +89,7 @@ DesignBase {
       anchors.horizontalCenter: parent.horizontalCenter
       text: lock.clock("HH:mm")
       renderType: Text.CurveRendering
-      color: Color.foreground
+      color: Commons.Color.foreground
       font.family: lock.displayFont
       font.pixelSize: Math.round(lock.u * 17)
       font.weight: Font.Light
@@ -97,7 +98,7 @@ DesignBase {
     Text {
       anchors.horizontalCenter: parent.horizontalCenter
       text: lock.greeting() + ", " + lock.userName + "  ·  " + Qt.formatDate(lock.now, "dddd d MMMM") + (lock.meridiem.length > 0 ? "  ·  " + lock.meridiem : "")
-      color: lock.withAlpha(Color.foreground, 0.6)
+      color: lock.withAlpha(Commons.Color.foreground, 0.6)
       font.family: lock.displayFont
       font.pixelSize: Math.round(lock.u * 1.6)
       font.letterSpacing: 2
@@ -112,6 +113,6 @@ DesignBase {
     width: Math.round(lock.u * 30)
     height: Math.round(lock.u * 4.4)
     radius: height / 2
-    color: lock.withAlpha(lock.deepen(Color.background, 1.45), 0.92)
+    color: lock.withAlpha(lock.deepen(Commons.Color.background, 1.45), 0.92)
   }
 }

@@ -7,14 +7,15 @@
 // layout is this plugin's own.
 import QtQuick
 import qs.Commons
+import qs.Commons as Commons
 
 DesignBase {
   id: lock
   inputItem: field.input
 
   readonly property real u: Math.min(width, height) / 100
-  readonly property color lit: lock.errorState ? Color.lock.textError : Color.foreground
-  readonly property color dim: lock.withAlpha(Color.foreground, 0.13)
+  readonly property color lit: lock.errorState ? Commons.Color.lock.textError : Commons.Color.foreground
+  readonly property color dim: lock.withAlpha(Commons.Color.foreground, 0.13)
 
   // Row, first column, length of every word the clock can say.
   readonly property var rows: [
@@ -71,7 +72,7 @@ DesignBase {
   readonly property int extraMinutes: now.getMinutes() % 5
   readonly property real cell: u * 5.2
 
-  Rectangle { anchors.fill: parent; color: lock.deepen(Color.background, 1.2) }
+  Rectangle { anchors.fill: parent; color: lock.deepen(Commons.Color.background, 1.2) }
 
   MouseArea {
     anchors.fill: parent
@@ -139,7 +140,7 @@ DesignBase {
     anchors.bottom: field.top
     anchors.bottomMargin: Math.round(lock.u * 2.2)
     text: lock.clock("HH:mm") + "  ·  " + Qt.formatDate(lock.now, "dddd d MMMM")
-    color: lock.withAlpha(Color.foreground, 0.5)
+    color: lock.withAlpha(Commons.Color.foreground, 0.5)
     font.family: lock.displayFont
     font.pixelSize: Math.round(lock.u * 1.5)
     font.letterSpacing: 2
@@ -152,6 +153,6 @@ DesignBase {
     y: Math.round(lock.height * 0.86 - height / 2)
     width: Math.round(lock.u * 30)
     height: Math.round(lock.u * 4.4)
-    color: lock.withAlpha(lock.deepen(Color.background, 1.2), 0.92)
+    color: lock.withAlpha(lock.deepen(Commons.Color.background, 1.2), 0.92)
   }
 }

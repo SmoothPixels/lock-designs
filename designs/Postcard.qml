@@ -7,16 +7,17 @@
 import QtQuick
 import QtQuick.Effects
 import qs.Commons
+import qs.Commons as Commons
 
 DesignBase {
   id: lock
   inputItem: field.input
 
   readonly property real u: Math.min(width, height) / 100
-  readonly property color ink: Color.lock.text
-  readonly property color dim: lock.withAlpha(Color.lock.text, 0.55)
+  readonly property color ink: Commons.Color.lock.text
+  readonly property color dim: lock.withAlpha(Commons.Color.lock.text, 0.55)
 
-  Rectangle { anchors.fill: parent; color: Color.background }
+  Rectangle { anchors.fill: parent; color: Commons.Color.background }
 
   Image {
     id: wallpaper
@@ -51,9 +52,9 @@ DesignBase {
     width: Math.round(Math.min(lock.width * 0.4, lock.u * 46))
     height: Math.round(lock.u * 54)
     radius: Math.max(Style.cornerRadius, 18)
-    color: lock.withAlpha(Color.lock.background, 0.78)
+    color: lock.withAlpha(Commons.Color.lock.background, 0.78)
     border.width: 1
-    border.color: lock.withAlpha(Color.lock.border, 0.18)
+    border.color: lock.withAlpha(Commons.Color.lock.border, 0.18)
     layer.enabled: true
     layer.effect: MultiEffect {
       shadowEnabled: true
@@ -97,7 +98,7 @@ DesignBase {
         lock: lock
         width: Math.round(lock.u * 11)
         borderWidth: 3
-        borderColor: Color.lock.borderActive
+        borderColor: Commons.Color.lock.borderActive
         shadow: false
       }
       Text {
@@ -118,7 +119,7 @@ DesignBase {
       anchors.bottomMargin: Math.round(lock.u * 4)
       width: card.width - Math.round(lock.u * 7)
       height: Math.round(lock.u * 4.6)
-      color: lock.withAlpha(Color.background, 0.4)
+      color: lock.withAlpha(Commons.Color.background, 0.4)
       placeholder: "Enter password"
     }
   }

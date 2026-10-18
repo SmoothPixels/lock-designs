@@ -8,13 +8,14 @@
 // is the same every time.
 import QtQuick
 import qs.Commons
+import qs.Commons as Commons
 
 DesignBase {
   id: lock
   inputItem: field.input
 
   readonly property real u: Math.min(width, height) / 100
-  readonly property color lit: lock.errorState ? Color.lock.textError : Color.accent
+  readonly property color lit: lock.errorState ? Commons.Color.lock.textError : Commons.Color.accent
   readonly property color traceColor: lock.withAlpha(lit, 0.30)
   readonly property color padColor: lock.withAlpha(lit, 0.55)
   readonly property real chipW: u * 46
@@ -60,7 +61,7 @@ DesignBase {
     return d
   }
 
-  Rectangle { anchors.fill: parent; color: lock.deepen(Color.background, 1.35) }
+  Rectangle { anchors.fill: parent; color: lock.deepen(Commons.Color.background, 1.35) }
 
   // Board: traces, pads and a scattering of vias, painted once.
   Canvas {
@@ -91,7 +92,7 @@ DesignBase {
         ctx.lineWidth = Math.max(2, lock.u * 0.4)
         ctx.strokeStyle = pad
         ctx.beginPath(); ctx.arc(e[0], e[1], lock.u * 0.9, 0, Math.PI * 2); ctx.stroke()
-        ctx.fillStyle = lock.deepen(Color.background, 1.35)
+        ctx.fillStyle = lock.deepen(Commons.Color.background, 1.35)
         ctx.beginPath(); ctx.arc(e[0], e[1], lock.u * 0.35, 0, Math.PI * 2); ctx.fill()
         ctx.lineWidth = Math.max(2, lock.u * 0.32)
         ctx.strokeStyle = stroke
@@ -173,7 +174,7 @@ DesignBase {
       radius: height / 3
       x: side < 0 ? lock.chipX - width : lock.chipX + lock.chipW
       y: lock.chipY + lock.chipH * (slot + 0.5) / lock.pinsPerSide - height / 2
-      color: lock.withAlpha(Color.foreground, 0.35)
+      color: lock.withAlpha(Commons.Color.foreground, 0.35)
     }
   }
 
@@ -185,9 +186,9 @@ DesignBase {
     width: lock.chipW
     height: lock.chipH
     radius: Math.round(lock.u * 1.1)
-    color: lock.deepen(Color.background, 1.75)
+    color: lock.deepen(Commons.Color.background, 1.75)
     border.width: 1
-    border.color: lock.withAlpha(Color.foreground, 0.16)
+    border.color: lock.withAlpha(Commons.Color.foreground, 0.16)
 
     // Pin-one mark.
     Rectangle {
@@ -196,7 +197,7 @@ DesignBase {
       width: lock.u * 1.1
       height: width
       radius: width / 2
-      color: lock.withAlpha(Color.foreground, 0.25)
+      color: lock.withAlpha(Commons.Color.foreground, 0.25)
     }
 
     Column {
@@ -215,7 +216,7 @@ DesignBase {
       Text {
         anchors.horizontalCenter: parent.horizontalCenter
         text: "OMARCHY  ·  " + Qt.formatDate(lock.now, "yyyy-MM-dd  ·  ddd").toUpperCase() + (lock.meridiem.length > 0 ? "  ·  " + lock.meridiem : "")
-        color: lock.withAlpha(Color.foreground, 0.55)
+        color: lock.withAlpha(Commons.Color.foreground, 0.55)
         font.family: lock.displayFont
         font.pixelSize: Math.round(lock.u * 1.4)
         font.letterSpacing: 3
@@ -230,8 +231,8 @@ DesignBase {
     y: Math.round(lock.height * 0.75 - height / 2)
     width: Math.round(lock.u * 30)
     height: Math.round(lock.u * 4.4)
-    color: lock.deepen(Color.background, 1.75)
-    accentColor: Color.accent
+    color: lock.deepen(Commons.Color.background, 1.75)
+    accentColor: Commons.Color.accent
     placeholder: lock.greeting() + ", " + lock.userName
   }
 }

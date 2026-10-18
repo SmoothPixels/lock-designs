@@ -6,19 +6,20 @@
 // following the active Omarchy theme instead of a fixed neon palette, it
 // stopped reading as "cyberpunk" — renamed to match what it actually is.
 //
-// Fully theme-following: every color reads from Color.lock.*/Color.accent
+// Fully theme-following: every color reads from Commons.Color.lock.*/Commons.Color.accent
 // so this matches whatever Omarchy theme is active, same as the built-in
 // designs (Zen, Neon, etc.) do. No fixed palette.
 import QtQuick
 import qs.Commons
+import qs.Commons as Commons
 
 DesignBase {
   id: lock
   inputItem: field.input
 
-  readonly property color glow: lock.errorState ? Color.lock.textError : Color.lock.borderActive
+  readonly property color glow: lock.errorState ? Commons.Color.lock.textError : Commons.Color.lock.borderActive
 
-  Rectangle { anchors.fill: parent; color: lock.deepen(Color.background, 1.15) }
+  Rectangle { anchors.fill: parent; color: lock.deepen(Commons.Color.background, 1.15) }
 
   // The skyline, generated once from a fixed seed: block buildings with a
   // grid of window slots. Most lit windows are painted onto the canvas and
@@ -56,7 +57,7 @@ DesignBase {
     onPaint: {
       var ctx = getContext("2d")
       ctx.reset()
-      ctx.fillStyle = Qt.rgba(Color.foreground.r, Color.foreground.g, Color.foreground.b, 0.06)
+      ctx.fillStyle = Qt.rgba(Commons.Color.foreground.r, Commons.Color.foreground.g, Commons.Color.foreground.b, 0.06)
       var b = scene.buildings
       for (var i = 0; i < b.length; i++) ctx.fillRect(b[i].x, b[i].y, b[i].w, b[i].h)
       ctx.fillStyle = Qt.rgba(lock.glow.r, lock.glow.g, lock.glow.b, 0.55)
@@ -127,7 +128,7 @@ DesignBase {
     Text {
       anchors.horizontalCenter: parent.horizontalCenter
       text: Qt.formatDate(lock.now, "dddd d MMMM").toUpperCase()
-      color: lock.withAlpha(Color.lock.text, 0.65)
+      color: lock.withAlpha(Commons.Color.lock.text, 0.65)
       font.family: lock.displayFont
       font.pixelSize: Style.font.subtitle
       font.letterSpacing: 3
@@ -145,7 +146,7 @@ DesignBase {
       anchors.horizontalCenter: parent.horizontalCenter
       visible: lock.errorState
       text: lock.failureMessage
-      color: Color.lock.textError
+      color: Commons.Color.lock.textError
       font.family: lock.displayFont
       font.pixelSize: Style.font.body
     }

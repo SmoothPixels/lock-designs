@@ -7,16 +7,17 @@
 // the right. Nothing else, so the wallpaper is the picture.
 import QtQuick
 import qs.Commons
+import qs.Commons as Commons
 
 DesignBase {
   id: lock
   inputItem: field.input
 
   readonly property real u: Math.min(width, height) / 100
-  readonly property color ink: Color.lock.text
-  readonly property color dim: lock.withAlpha(Color.lock.text, 0.55)
+  readonly property color ink: Commons.Color.lock.text
+  readonly property color dim: lock.withAlpha(Commons.Color.lock.text, 0.55)
 
-  Rectangle { anchors.fill: parent; color: Color.background }
+  Rectangle { anchors.fill: parent; color: Commons.Color.background }
 
   Image {
     anchors.fill: parent
@@ -43,9 +44,9 @@ DesignBase {
     width: Math.round(Math.min(lock.width - lock.u * 6, lock.u * 120))
     height: Math.round(lock.u * 8.5)
     radius: Math.max(Style.cornerRadius, 16)
-    color: lock.withAlpha(Color.lock.background, 0.82)
+    color: lock.withAlpha(Commons.Color.lock.background, 0.82)
     border.width: 1
-    border.color: lock.withAlpha(Color.lock.border, 0.2)
+    border.color: lock.withAlpha(Commons.Color.lock.border, 0.2)
 
     Row {
       anchors.left: parent.left
@@ -83,7 +84,7 @@ DesignBase {
       anchors.centerIn: parent
       width: Math.round(shelf.width * 0.36)
       height: Math.round(lock.u * 4.4)
-      color: lock.withAlpha(Color.background, 0.4)
+      color: lock.withAlpha(Commons.Color.background, 0.4)
       radius: Math.max(Style.cornerRadius, 12)
       placeholder: "Enter password"
     }
